@@ -145,31 +145,6 @@
 <!-- <img src="https://github.com/lingtengqiu/lingtengqiu.github.io/img/icon_wechat.png" width="0" height="0"> -->
 <!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
 
-<!-- Post Header -->
-<style type="text/css">
-    header.intro-header{
-        background-image: url('/img/home-bg.jpg')
-    }
-</style>
-<header class="intro-header" >
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="post-heading">
-                    <div class="tags">
-                        
-                    </div>
-                    <h1>Peeking into occluded joints</h1>
-                    <h2 class="subheading"></h2>
-                    <span class="meta">
-                        Posted by Lingteng Qiu on
-                        2020-03-22
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
 
 <!-- Post Content -->
 <article>
@@ -182,10 +157,17 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h2 id="Peeking-into-occluded-joints-A-novel-frameworkfor-crowd-pose-estimation"><a href="#Peeking-into-occluded-joints-A-novel-frameworkfor-crowd-pose-estimation" class="headerlink" title="Peeking into occluded joints: A novel frameworkfor crowd pose estimation"></a><center>Peeking into occluded joints: <br>A novel frameworkfor crowd pose estimation</center></h2><center>Lingteng Qiu<sup>1,2,3</sup>, Xuanye Zhang<sup>1,2</sup>, Yanran Li<sup>4</sup>, Guanbin Li<sup>5</sup> ,Xiaojun Wu<sup>3</sup>, Zixiang Xiong<sup>6</sup>, <br><a href="https://scholar.google.com.hk/citations?user=z-rqsR4AAAAJ&amp;hl=zh-CN&amp;oi=ao" target="_blank" rel="noopener">Xiaoguang Han<sup>1,2,*</sup></a>, Shuguang Cui<sup>1,2</sup></center><br><center><sup>1</sup>The Chinese University of Hong Kong, Shenzhen  &emsp; <sup>2</sup>Shenzhen Research Institute of Big Data<br> <sup>3</sup>Harbin Institute of Technology, Shenzhen &emsp; <sup>4</sup>Bournemouth University&emsp;<sup>5</sup>Sun Yat-sen University <br><sup>6</sup>Texas A&amp;M University</center>
+                <h2 id="Peeking-into-occluded-joints-A-novel-framework-for-crowd-pose-estimation"><a href="#Peeking-into-occluded-joints-A-novel-framework-for-crowd-pose-estimation" class="headerlink" title="Peeking into occluded joints: A novel framework for crowd pose estimation"></a><center>Peeking into occluded joints: <br>A novel framework for crowd pose estimation</center></h2><center>Lingteng Qiu<sup>1,2,3</sup>, Xuanye Zhang<sup>1,2</sup>, Yanran Li<sup>4</sup>, Guanbin Li<sup>5</sup> ,Xiaojun Wu<sup>3</sup>, Zixiang Xiong<sup>6</sup>, <br><a href="https://mypage.cuhk.edu.cn/academics/hanxiaoguang/" target="_blank" rel="noopener">Xiaoguang Han<sup>1,2,*</sup></a>, Shuguang Cui<sup>1,2</sup> <br>*corresponding email: <a href="mailto:hanxiaoguang@cuhk.edu.cn" target="_blank" rel="noopener">hanxiaoguang@cuhk.edu.cn</a> <br><sup>1</sup>The Chinese University of Hong Kong, Shenzhen  &emsp; <sup>2</sup>Shenzhen Research Institute of Big Data<br> <sup>3</sup>Harbin Institute of Technology, Shenzhen &emsp; <sup>4</sup>Bournemouth University&emsp;<sup>5</sup>Sun Yat-sen University <br><sup>6</sup>Texas A&amp;M University</center>
 
 <p><img src="highlight.png" alt="OCPose Result"></p>
-<h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p></p><p align="left">Although occlusion widely exists in nature and remains a fundamental challenge for pose estimation, existing heatmap-based approaches suffer serious degradation on occlusions. Their intrinsic problem is that they  directly localize the joints based on visual information; however, the invisible joints are lack of that. In contrast to localization, our framework estimates the invisible joints from an inference perspective by proposing an Image-Guided Progressive GCN module which provides a comprehensive understanding of both image context and pose structure. Moreover, existing benchmarks contain limited occlusions for evaluation. Therefore, we thoroughly pursue this problem and propose a novel OPEC-Net framework together with a new Occluded Pose (OCPose) dataset with 9k annotated images. Extensive quantitative and qualitative evaluations on benchmarks demonstrate that OPEC-Net achieves significant improvements over recent leading works. Notably, our OCPose is the most complex occlusion dataset with respect to average IoU between adjacent instances. Source code and OCPose will be publicly available.</p><p></p>
+<h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p align="left">Although occlusion widely exists in nature and remains a fundamental challenge for pose estimation, existing heatmap-based approaches suffer serious degradation on occlusions. Their intrinsic problem is that they  directly localize the joints based on visual information; however, the invisible joints are lack of that. In contrast to localization, our framework estimates the invisible joints from an inference perspective by proposing an Image-Guided Progressive GCN module which provides a comprehensive understanding of both image context and pose structure. Moreover, existing benchmarks contain limited occlusions for evaluation. Therefore, we thoroughly pursue this problem and propose a novel OPEC-Net framework together with a new Occluded Pose (OCPose) dataset with 9k annotated images. Extensive quantitative and qualitative evaluations on benchmarks demonstrate that OPEC-Net achieves significant improvements over recent leading works. Notably, our OCPose is the most complex occlusion dataset with respect to average IoU between adjacent instances. Source code and OCPose will be publicly available.</p>
+
+<h3 id="Download"><a href="#Download" class="headerlink" title="Download"></a>Download</h3><ul>
+<li><a href>Paper(PDF, OTW)</a></li>
+<li><a href>Code(Github, OTW)</a></li>
+</ul>
+<p>If you use OPEC-Net in your work, please consider citing our paper!<br>@article{</p>
+<p>}</p>
 <h3 id="Video-Demonstration"><a href="#Video-Demonstration" class="headerlink" title="Video Demonstration"></a>Video Demonstration</h3><p><center><iframe src="//player.youku.com/embed/XNDU5NTkxMjAxNg==" width="540" height="360" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe></center></p>
 <p><center><iframe src="//player.youku.com/embed/XNDU5NTkxMzczNg==" width="540" height="360" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe></center></p>
 <h3 id="Occluded-Pose-Dataset-OCPose"><a href="#Occluded-Pose-Dataset-OCPose" class="headerlink" title="Occluded Pose Dataset(OCPose)"></a>Occluded Pose Dataset(OCPose)</h3><p>We build a new dataset, called Occluded Pose(<a href="link">OCPose</a>), that includes more heavy occlusions to evaluate the MPPE. It contains challenging invisible jointsand complex intertwined human poses.</p>
@@ -243,14 +225,154 @@
 </tr>
 </tbody>
 </table>
+<h3 id="Performance"><a href="#Performance" class="headerlink" title="Performance"></a>Performance</h3><h5 id="Results-on-CrowdPose-test-datasets"><a href="#Results-on-CrowdPose-test-datasets" class="headerlink" title="Results on CrowdPose-test datasets:"></a>Results on CrowdPose-test datasets:</h5><table>
+<thead>
+<tr>
+<th style="text-align:center">Methods</th>
+<th style="text-align:center">mAP@50:95</th>
+<th style="text-align:center">AP50</th>
+<th style="text-align:center">AP75</th>
+<th style="text-align:center">AP80</th>
+<th style="text-align:center">AP90</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Mask RCNN</td>
+<td style="text-align:center">57.2</td>
+<td style="text-align:center">83.5</td>
+<td style="text-align:center">60.3</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">Simple Pose</td>
+<td style="text-align:center">60.8</td>
+<td style="text-align:center">81.4</td>
+<td style="text-align:center">65.7</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">Alphapose+</td>
+<td style="text-align:center">68.5</td>
+<td style="text-align:center">86.7</td>
+<td style="text-align:center">73.2</td>
+<td style="text-align:center">66.9</td>
+<td style="text-align:center">45.9</td>
+</tr>
+<tr>
+<td style="text-align:center">OPEC-Net</td>
+<td style="text-align:center"><strong>70.6</strong></td>
+<td style="text-align:center"><strong>86.8</strong></td>
+<td style="text-align:center"><strong>75.6</strong></td>
+<td style="text-align:center"><strong>70.1</strong></td>
+<td style="text-align:center"><strong>48.8</strong></td>
+</tr>
+</tbody>
+</table>
+<h5 id="Results-on-OCHuman-datasets"><a href="#Results-on-OCHuman-datasets" class="headerlink" title="Results on OCHuman datasets:"></a>Results on OCHuman datasets:</h5><table>
+<thead>
+<tr>
+<th style="text-align:center">Methods</th>
+<th style="text-align:center">mAP@50:95</th>
+<th style="text-align:center">AP50</th>
+<th style="text-align:center">AP75</th>
+<th style="text-align:center">AP80</th>
+<th style="text-align:center">AP90</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Mask RCNN</td>
+<td style="text-align:center">20.2</td>
+<td style="text-align:center">33.2</td>
+<td style="text-align:center">24.5</td>
+<td style="text-align:center">18.3</td>
+<td style="text-align:center">2.1</td>
+</tr>
+<tr>
+<td style="text-align:center">Simple Pose</td>
+<td style="text-align:center">24.1</td>
+<td style="text-align:center">37.4</td>
+<td style="text-align:center">26.8</td>
+<td style="text-align:center">22.6</td>
+<td style="text-align:center">4.5</td>
+</tr>
+<tr>
+<td style="text-align:center">Alphapose+</td>
+<td style="text-align:center">27.5</td>
+<td style="text-align:center">40.8</td>
+<td style="text-align:center">29.9</td>
+<td style="text-align:center">24.8</td>
+<td style="text-align:center">9.5</td>
+</tr>
+<tr>
+<td style="text-align:center">OPEC-Net</td>
+<td style="text-align:center"><strong>29.1</strong></td>
+<td style="text-align:center"><strong>41.3</strong></td>
+<td style="text-align:center"><strong>31.4</strong></td>
+<td style="text-align:center"><strong>27.0</strong></td>
+<td style="text-align:center"><strong>12.8</strong></td>
+</tr>
+</tbody>
+</table>
+<h5 id="Results-on-OCPose-datasets"><a href="#Results-on-OCPose-datasets" class="headerlink" title="Results on OCPose datasets:"></a>Results on OCPose datasets:</h5><table>
+<thead>
+<tr>
+<th style="text-align:center">Methods</th>
+<th style="text-align:center">mAP@50:95</th>
+<th style="text-align:center">AP50</th>
+<th style="text-align:center">AP75</th>
+<th style="text-align:center">AP80</th>
+<th style="text-align:center">AP90</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Mask RCNN</td>
+<td style="text-align:center">21.5</td>
+<td style="text-align:center">49.8</td>
+<td style="text-align:center">15.9</td>
+<td style="text-align:center">7.7</td>
+<td style="text-align:center">1.2</td>
+</tr>
+<tr>
+<td style="text-align:center">Simple Pose</td>
+<td style="text-align:center">27.1</td>
+<td style="text-align:center">54.3</td>
+<td style="text-align:center">24.2</td>
+<td style="text-align:center">16.8</td>
+<td style="text-align:center">4.7</td>
+</tr>
+<tr>
+<td style="text-align:center">Alphapose+</td>
+<td style="text-align:center">30.8</td>
+<td style="text-align:center">58.4</td>
+<td style="text-align:center">28.5</td>
+<td style="text-align:center">22.4</td>
+<td style="text-align:center">8.2</td>
+</tr>
+<tr>
+<td style="text-align:center">OPEC-Net</td>
+<td style="text-align:center"><strong>32.8</strong></td>
+<td style="text-align:center"><strong>60.5</strong></td>
+<td style="text-align:center"><strong>31.1</strong></td>
+<td style="text-align:center"><strong>24.0</strong></td>
+<td style="text-align:center"><strong>9.2</strong></td>
+</tr>
+<tr>
+<td style="text-align:center">CoupleGraph</td>
+<td style="text-align:center"><strong>33.6</strong></td>
+<td style="text-align:center"><strong>60.8</strong></td>
+<td style="text-align:center"><strong>32.5</strong></td>
+<td style="text-align:center"><strong>25.0</strong></td>
+<td style="text-align:center"><strong>9.8</strong></td>
+</tr>
+</tbody>
+</table>
 <h3 id="Results-in-Crowd-Datasets"><a href="#Results-in-Crowd-Datasets" class="headerlink" title="Results in Crowd Datasets"></a>Results in Crowd Datasets</h3><p>The left result is from Alphapose+ while the right is from ours!</p>
 <p><img src="OCPose.png" alt="OCPose Result"><br><img src="CrowdPose.png" alt="Crowd Pose Result"></p>
-<h2 id="Cite"><a href="#Cite" class="headerlink" title="Cite"></a>Cite</h2><ul>
-<li><a href>Paper(PDF, OTW)</a></li>
-<li><a href>Code(Github, OTW)</a></li>
-</ul>
-<p>If you use OPEC-Net in your work, please consider citing our paper!<br>@article{</p>
-<p>}</p>
 
 
                 <hr>
@@ -264,12 +386,6 @@
 
                 
 
-                
-                <!-- disqus 评论框 start -->
-                <div class="comment">
-                    <div id="disqus_thread" class="disqus-thread"></div>
-                </div>
-                <!-- disqus 评论框 end -->
                 
 
             </div>
@@ -285,14 +401,6 @@
 
                 <!-- Featured Tags -->
                 
-                <section>
-                    <!-- no hr -->
-                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
-                    <div class="tags">
-                       
-                    </div>
-                </section>
-                
 
                 <!-- Friends Blog -->
                 
@@ -304,21 +412,6 @@
 
 
 
-
-<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES * * */
-    var disqus_shortname = "hexo-theme-huxblog";
-    var disqus_identifier = "https://github.com/lingtengqiu/lingtengqiu.github.io/2020/03/22/OPEC-Net/";
-    var disqus_url = "https://github.com/lingtengqiu/lingtengqiu.github.io/2020/03/22/OPEC-Net/";
-
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-<!-- disqus 公共JS代码 end -->
 
 
 
@@ -336,15 +429,6 @@
                 
                 
 
-                
-                    <li>
-                        <a target="_blank" href="http://weibo.com/5138825984">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
                 
 
                 
