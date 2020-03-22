@@ -90,14 +90,14 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/projects/">Projects</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/projects/">Projects</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -182,9 +182,11 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h2 id="Peeking-into-occluded-joints-A-novel-frameworkfor-crowd-pose-estimation"><a href="#Peeking-into-occluded-joints-A-novel-frameworkfor-crowd-pose-estimation" class="headerlink" title="Peeking into occluded joints: A novel frameworkfor crowd pose estimation"></a><center>Peeking into occluded joints: <br>A novel frameworkfor crowd pose estimation</center></h2><p><center>Lingteng Qiu, Xuanye Zhang, Yanran Li, Guanbin Li ,Xiaojun Wu, Zixiang Xiong, <a href="https://scholar.google.com.hk/citations?user=z-rqsR4AAAAJ&amp;hl=zh-CN&amp;oi=ao" target="_blank" rel="noopener">Xiaoguang Han<sup>*</sup></a>, Shuguang Cui</center><br>It is an <strong>Awesome Pose Estimator</strong> for solving crowded situations. It can be easily uesd for all top-down methods (such as <a href="https://github.com/MVIG-SJTU/AlphaPose">Alphapose</a>, <a href="https://github.com/Microsoft/human-pose-estimation.pytorch">SimplePose</a>).<br><img src="pipeline.png" alt="OCPose Result"></p>
+                <h2 id="Peeking-into-occluded-joints-A-novel-frameworkfor-crowd-pose-estimation"><a href="#Peeking-into-occluded-joints-A-novel-frameworkfor-crowd-pose-estimation" class="headerlink" title="Peeking into occluded joints: A novel frameworkfor crowd pose estimation"></a><center>Peeking into occluded joints: <br>A novel frameworkfor crowd pose estimation</center></h2><center>Lingteng Qiu<sup>1,2,3</sup>, Xuanye Zhang<sup>1,2</sup>, Yanran Li<sup>4</sup>, Guanbin Li<sup>5</sup> ,Xiaojun Wu<sup>3</sup>, Zixiang Xiong<sup>6</sup>, <br><a href="https://scholar.google.com.hk/citations?user=z-rqsR4AAAAJ&amp;hl=zh-CN&amp;oi=ao" target="_blank" rel="noopener">Xiaoguang Han<sup>1,2,*</sup></a>, Shuguang Cui<sup>1,2</sup></center><br><center><sup>1</sup>The Chinese University of Hong Kong, Shenzhen  &emsp; <sup>2</sup>Shenzhen Research Institute of Big Data<br> <sup>3</sup>Harbin Institute of Technology, Shenzhen &emsp; <sup>4</sup>Bournemouth University&emsp;<sup>5</sup>Sun Yat-sen University <br><sup>6</sup>Texas A&amp;M University</center>
+
+<p><img src="highlight.png" alt="OCPose Result"></p>
 <h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p></p><p align="left">Although occlusion widely exists in nature and remains a fundamental challenge for pose estimation, existing heatmap-based approaches suffer serious degradation on occlusions. Their intrinsic problem is that they  directly localize the joints based on visual information; however, the invisible joints are lack of that. In contrast to localization, our framework estimates the invisible joints from an inference perspective by proposing an Image-Guided Progressive GCN module which provides a comprehensive understanding of both image context and pose structure. Moreover, existing benchmarks contain limited occlusions for evaluation. Therefore, we thoroughly pursue this problem and propose a novel OPEC-Net framework together with a new Occluded Pose (OCPose) dataset with 9k annotated images. Extensive quantitative and qualitative evaluations on benchmarks demonstrate that OPEC-Net achieves significant improvements over recent leading works. Notably, our OCPose is the most complex occlusion dataset with respect to average IoU between adjacent instances. Source code and OCPose will be publicly available.</p><p></p>
-<h3 id="Video-Show"><a href="#Video-Show" class="headerlink" title="Video Show"></a>Video Show</h3><p><center><iframe src="//player.youku.com/embed/XNDU5NTkxMjAxNg==" width="540" height="360" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe></center></p>
+<h3 id="Video-Demonstration"><a href="#Video-Demonstration" class="headerlink" title="Video Demonstration"></a>Video Demonstration</h3><p><center><iframe src="//player.youku.com/embed/XNDU5NTkxMjAxNg==" width="540" height="360" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe></center></p>
 <p><center><iframe src="//player.youku.com/embed/XNDU5NTkxMzczNg==" width="540" height="360" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe></center></p>
 <h3 id="Occluded-Pose-Dataset-OCPose"><a href="#Occluded-Pose-Dataset-OCPose" class="headerlink" title="Occluded Pose Dataset(OCPose)"></a>Occluded Pose Dataset(OCPose)</h3><p>We build a new dataset, called Occluded Pose(<a href="link">OCPose</a>), that includes more heavy occlusions to evaluate the MPPE. It contains challenging invisible jointsand complex intertwined human poses.</p>
 <table>
@@ -243,7 +245,12 @@
 </table>
 <h3 id="Results-in-Crowd-Datasets"><a href="#Results-in-Crowd-Datasets" class="headerlink" title="Results in Crowd Datasets"></a>Results in Crowd Datasets</h3><p>The left result is from Alphapose+ while the right is from ours!</p>
 <p><img src="OCPose.png" alt="OCPose Result"><br><img src="CrowdPose.png" alt="Crowd Pose Result"></p>
-<h2 id="Cite"><a href="#Cite" class="headerlink" title="Cite"></a>Cite</h2><p>If you use OPEC-Net in your work please cite our paper!</p>
+<h2 id="Cite"><a href="#Cite" class="headerlink" title="Cite"></a>Cite</h2><ul>
+<li><a href>Paper(PDF, OTW)</a></li>
+<li><a href>Code(Github, OTW)</a></li>
+</ul>
+<p>If you use OPEC-Net in your work, please consider citing our paper!<br>@article{</p>
+<p>}</p>
 
 
                 <hr>
