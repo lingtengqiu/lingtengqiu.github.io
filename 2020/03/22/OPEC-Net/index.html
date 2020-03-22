@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content>
     <meta name="keyword" content="Computer Vison, Pose estimtor, detection, Segmentation">
-    <link rel="shortcut icon" href="/lingtengqiu/img/favicon.ico">
+    <link rel="shortcut icon" href="/img/favicon.ico">
 
     <title>
         
@@ -17,16 +17,16 @@
         
     </title>
 
-    <link rel="canonical" href="http://kaijun.rocks/hexo-theme-huxblog/lingtengqiu/2020/03/22/OPEC-Net/">
+    <link rel="canonical" href="https://github.com/lingtengqiu/lingtengqiu.github.io/2020/03/22/OPEC-Net/">
 
     <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="/lingtengqiu/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/lingtengqiu/css/hux-blog.min.css">
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
 
     <!-- Pygments Highlight CSS -->
-    <link rel="stylesheet" href="/lingtengqiu/css/highlight.css">
+    <link rel="stylesheet" href="/css/highlight.css">
 
     <!-- Custom Fonts -->
     <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
@@ -67,7 +67,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/lingtengqiu/">Lingteng Qiu</a>
+            <a class="navbar-brand" href="/">Lingteng Qiu</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -80,7 +80,7 @@
             <div class="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="/lingtengqiu/">Home</a>
+                        <a href="/">Home</a>
                     </li>
 
                     
@@ -90,14 +90,14 @@
 
                         
                         <li>
-                            <a href="/lingtengqiu/projects/">Projects</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/lingtengqiu/about/">About</a>
+                            <a href="/projects/">Projects</a>
                         </li>
                         
                     
@@ -142,13 +142,13 @@
     <!-- Main Content -->
     
 <!-- Image to hack wechat -->
-<!-- <img src="http://kaijun.rocks/hexo-theme-huxblog/lingtengqiu/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="https://github.com/lingtengqiu/lingtengqiu.github.io/img/icon_wechat.png" width="0" height="0"> -->
 <!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
 
 <!-- Post Header -->
 <style type="text/css">
     header.intro-header{
-        background-image: url('/lingtengqiu/img/home-bg.jpg')
+        background-image: url('/img/home-bg.jpg')
     }
 </style>
 <header class="intro-header" >
@@ -182,7 +182,7 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h2 id="Peeking-into-occluded-joints-A-novel-frameworkfor-crowd-pose-estimation"><a href="#Peeking-into-occluded-joints-A-novel-frameworkfor-crowd-pose-estimation" class="headerlink" title="Peeking into occluded joints: A novel frameworkfor crowd pose estimation"></a><center>Peeking into occluded joints: <br>A novel frameworkfor crowd pose estimation</center></h2><p><center>Lingteng Qiu, Xuanye Zhang, Yanran Li, Guanbin Li ,Xiaojun Wu, Zixiang Xiong, <a href="https://scholar.google.com.hk/citations?user=z-rqsR4AAAAJ&amp;hl=zh-CN&amp;oi=ao" target="_blank" rel="noopener">Xiaoguang Han<sup>*</sup></a>, Shuguang Cui</center><br>It is an <strong>Awesome Pose Estimator</strong> for solving crowded situations. It can be easily uesd for all top-down methods (such as <a href="https://github.com/MVIG-SJTU/AlphaPose" target="_blank" rel="noopener">Alphapose</a>, <a href="https://github.com/Microsoft/human-pose-estimation.pytorch" target="_blank" rel="noopener">SimplePose</a>).<br><img src="pipeline.png" alt="OCPose Result"></p>
+                <h2 id="Peeking-into-occluded-joints-A-novel-frameworkfor-crowd-pose-estimation"><a href="#Peeking-into-occluded-joints-A-novel-frameworkfor-crowd-pose-estimation" class="headerlink" title="Peeking into occluded joints: A novel frameworkfor crowd pose estimation"></a><center>Peeking into occluded joints: <br>A novel frameworkfor crowd pose estimation</center></h2><p><center>Lingteng Qiu, Xuanye Zhang, Yanran Li, Guanbin Li ,Xiaojun Wu, Zixiang Xiong, <a href="https://scholar.google.com.hk/citations?user=z-rqsR4AAAAJ&amp;hl=zh-CN&amp;oi=ao" target="_blank" rel="noopener">Xiaoguang Han<sup>*</sup></a>, Shuguang Cui</center><br>It is an <strong>Awesome Pose Estimator</strong> for solving crowded situations. It can be easily uesd for all top-down methods (such as <a href="https://github.com/MVIG-SJTU/AlphaPose">Alphapose</a>, <a href="https://github.com/Microsoft/human-pose-estimation.pytorch">SimplePose</a>).<br><img src="pipeline.png" alt="OCPose Result"></p>
 <h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p></p><p align="left">Although occlusion widely exists in nature and remains a fundamental challenge for pose estimation, existing heatmap-based approaches suffer serious degradation on occlusions. Their intrinsic problem is that they  directly localize the joints based on visual information; however, the invisible joints are lack of that. In contrast to localization, our framework estimates the invisible joints from an inference perspective by proposing an Image-Guided Progressive GCN module which provides a comprehensive understanding of both image context and pose structure. Moreover, existing benchmarks contain limited occlusions for evaluation. Therefore, we thoroughly pursue this problem and propose a novel OPEC-Net framework together with a new Occluded Pose (OCPose) dataset with 9k annotated images. Extensive quantitative and qualitative evaluations on benchmarks demonstrate that OPEC-Net achieves significant improvements over recent leading works. Notably, our OCPose is the most complex occlusion dataset with respect to average IoU between adjacent instances. Source code and OCPose will be publicly available.</p><p></p>
 <h3 id="Video-Show"><a href="#Video-Show" class="headerlink" title="Video Show"></a>Video Show</h3><p><center><iframe src="//player.youku.com/embed/XNDU5NTkxMjAxNg==" width="540" height="360" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe></center></p>
 <p><center><iframe src="//player.youku.com/embed/XNDU5NTkxMzczNg==" width="540" height="360" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe></center></p>
@@ -280,7 +280,7 @@
                 
                 <section>
                     <!-- no hr -->
-                    <h5><a href="/lingtengqiu/tags/">FEATURED TAGS</a></h5>
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
                     </div>
@@ -302,8 +302,8 @@
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "hexo-theme-huxblog";
-    var disqus_identifier = "http://kaijun.rocks/hexo-theme-huxblog/2020/03/22/OPEC-Net/";
-    var disqus_url = "http://kaijun.rocks/hexo-theme-huxblog/2020/03/22/OPEC-Net/";
+    var disqus_identifier = "https://github.com/lingtengqiu/lingtengqiu.github.io/2020/03/22/OPEC-Net/";
+    var disqus_url = "https://github.com/lingtengqiu/lingtengqiu.github.io/2020/03/22/OPEC-Net/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -376,13 +376,13 @@
 </footer>
 
 <!-- jQuery -->
-<script src="/lingtengqiu/js/jquery.min.js"></script>
+<script src="/js/jquery.min.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="/lingtengqiu/js/bootstrap.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
 
 <!-- Custom Theme JavaScript -->
-<script src="/lingtengqiu/js/hux-blog.min.js"></script>
+<script src="/js/hux-blog.min.js"></script>
 
 
 <!-- async load function -->
@@ -420,7 +420,7 @@
 <script>
     // only load tagcloud.js in tag.html
     if($('#tag_cloud').length !== 0){
-        async("http://kaijun.rocks/hexo-theme-huxblog/lingtengqiu/js/jquery.tagcloud.js",function(){
+        async("https://github.com/lingtengqiu/lingtengqiu.github.io/js/jquery.tagcloud.js",function(){
             $.fn.tagcloud.defaults = {
                 //size: {start: 1, end: 1, unit: 'em'},
                 color: {start: '#bbbbee', end: '#0085a1'},
@@ -484,7 +484,7 @@
 
 
 <!-- Image to hack wechat -->
-<img src="http://kaijun.rocks/hexo-theme-huxblog/lingtengqiu/img/icon_wechat.png" width="0" height="0" />
+<img src="https://github.com/lingtengqiu/lingtengqiu.github.io/img/icon_wechat.png" width="0" height="0" />
 <!-- Migrate from head to bottom, no longer block render and still work -->
 
 </body>
