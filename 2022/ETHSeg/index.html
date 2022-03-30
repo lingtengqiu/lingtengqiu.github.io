@@ -18,7 +18,9 @@
 <br/>
 
 <div class="w3-container" id="paper">
-    <div class="w3-content" style="max-width:850px">
+    
+    <div class="w3-content" style="text-align: justify">
+        
   
     <h2 align="center" id="title"><b>ETHSeg: An Amodel Instance Segmentation Network and a Real-world Dataset
         for X-Ray Waste Inspection</b></h2>
@@ -49,7 +51,7 @@
         <sup>1</sup>The Future Network of Intelligence Institute, CUHK-Shenzhen
         &nbsp; &nbsp; &nbsp;
         <sup>2</sup>School of Science and Engineering, CUHK-Shenzhen  
-        &nbsp; &nbsp; &nbsp;
+        &nbsp; &nbsp; &nbsp;<br>
         <sup>3</sup>Shenzhen Research Institute of Big Data 
         &nbsp; &nbsp; &nbsp;      
     </p>
@@ -87,97 +89,56 @@
         <li><a href="https://lingtengqiu.github.io/2022/ETHSeg/" target="_blank" rel="noopener">Paper</a></li>
         <li><a href="https://lingtengqiu.github.io/2022/ETHSeg/">WIXRay(2GB)</a></li>
         <li><a href="https://lingtengqiu.github.io/2022/ETHSeg/" target="_blank">Supplementary</a></li>
+        <p>If you use ETHSeg in your work, please consider citing our paper!<br>@article{</p>
 
 
         <h3 class="w3-left-align" id="Dataset"><b>Dataset</b></h3>
         <p>
             According to current waste disposal
             scenarios, we classify the domestic wastes into four general types and twelve categories: Recyclable (PlasticBottle, Can, Carton, GlassBottle, Stick, and Tableware), Foodwaste (FoodWaste), Residual (HeatingPad, Desiccant, and
-            MealBox), and Hazardous (Battery and Bulb).
+            MealBox), and Hazardous (Battery and Bulb). In total, our WIXray contains 5, 038 X-ray images and
+            30, 845 waste instances covering 12 common waste categories. The following table summarizes the statistics of the introduced
+            dataset. Unlike existing X-ray datasets for security inspection which only annotate a few forbidden objects, we densely labeled the common waste items in the picture.
         </p>
-
-        <table>
-            <thead>
-            <tr>
-            <th style="text-align:center">Dataset</th>
-            <th style="text-align:center">Total</th>
-            <th style="text-align:center">IoU&gt;0.3</th>
-            <th style="text-align:center">IoU&gt;0.5</th>
-            <th style="text-align:center">IoU&gt;0.75</th>
-            <th style="text-align:center">Avg IoU</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-            <td style="text-align:center"> CrowdPose</td>
-            <td style="text-align:center">20000</td>
-            <td style="text-align:center">8704(44%)</td>
-            <td style="text-align:center">2909(15%)</td>
-            <td style="text-align:center">309(2%)</td>
-            <td style="text-align:center">0.27</td>
-            </tr>
-            <tr>
-            <td style="text-align:center"> COCO2017</td>
-            <td style="text-align:center">118287</td>
-            <td style="text-align:center">6504(5%)</td>
-            <td style="text-align:center">1209(1%)</td>
-            <td style="text-align:center">106(&lt;1%)</td>
-            <td style="text-align:center">0.06</td>
-            </tr>
-            <tr>
-            <td style="text-align:center"> MPII</td>
-            <td style="text-align:center">24987</td>
-            <td style="text-align:center">0</td>
-            <td style="text-align:center">0</td>
-            <td style="text-align:center">0</td>
-            <td style="text-align:center">0.11</td>
-            </tr>
-            <tr>
-            <td style="text-align:center"> OCuman</td>
-            <td style="text-align:center">4473</td>
-            <td style="text-align:center">3264(68%)</td>
-            <td style="text-align:center">3244(68%)</td>
-            <td style="text-align:center">1082(23%)</td>
-            <td style="text-align:center">0.46</td>
-            </tr>
-            <tr>
-            <td style="text-align:center"> Ours</td>
-            <td style="text-align:center">9000</td>
-            <td style="text-align:center">8105(<strong>90%</strong>)</td>
-            <td style="text-align:center">6843(<strong>76%</strong>)</td>
-            <td style="text-align:center">2442(<strong>27%</strong>)</td>
-            <td style="text-align:center"><strong>0.47</strong></td>
-            </tr>
-            </tbody>
-            </table>
-        <br>
         <center>
         <img src="./Categories_comparison.png" style="max-width:70%" /></a>
         </center><br>
-
-
-
-        <h3 class="w3-left-align" id="publication"><b>Publication</b></h3>
-        <!-- European Conference on Computer Vision (ECCV), 2020. <br/> -->
-        <!-- <a href="davezchen_eccv2020_scanrefer.pdf" target="__blank">Paper</a>  -->
-        Paper - Coming soon<!--<a href="https://arxiv.org/pdf/???" target="__blank">ArXiv - pdf</a> (<a href="https://arxiv.org/abs/2012.???" target="__blank">abs</a>)-->  | <a href="https://github.com/RudyQ/3DCaricShop" target="__blank">GitHub</a>
+    
         <center>
-            <a href="https://arxiv.org/pdf/2012.???" target="__blank"><img src="paper_preview.PNG" style="max-width:80%" /></a>
+            <img src="./table.png" style="max-width:100%" /></a>
         </center><br>
 
-        If you find our work useful, please consider citing it:
-        <pre class="w3-panel w3-leftbar w3-light-grey" style="white-space: pre-wrap; font-family: monospace; font-size: 11px">
 
-        
-        Coming soon
-        </pre>
-
-        
-        <h3 class="w3-left-align" id="dataset"><b>Dataset</b></h3>
+        <!-- Video Demonstration</h3><p><center><iframe src="//player.youku.com/embed/XNDU5NTkxMjAxNg==" width="540" height="360" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" -->
+        <h3 class="w3-left-align" id="Methodlogy"><b>Methodlogy</b></h3>
         <center>
-            <img src="paper-dataset.jpg" style="max-width:80%" /></a>
+            <img src="./pipeline.png" style="max-width:100%" /></a>
         </center><br>
-        We contribute to 3DCaricShop dataset, a large collection to caricature face images and the corresponding 3D models manully crafted. The dataset proposed has serveral appealing features:
+
+        
+        <h3 class="w3-left-align" id="dataset"><b>Quantitative Results</b></h3>
+        <center>
+            <img src="./quan_result1.png" style="max-width:90%" /></a>
+        </center><br>
+        <center>
+            <img src="./quan_result2.png" style="max-width:90%" /></a>
+        </center><br>
+
+        <h3 class="w3-left-align" id="Qualitative results"><b>Qualitative Results</b></h3>
+        <center>
+            <img src="./qualitative_results1.png" style="max-width:90%" /></a>
+            <br>
+            <img src="./qualitative_results2.png" style="max-width:90%" /></a>
+        </center><br>
+        <h3 class="w3-left-align" id="Acknowledgments"><b>Acknowledgments</b></h3>
+        The work was supported in part by the Basic Research Project 
+        No. HZQB-KCZYZ-2021067 of Hetao Shenzhen-HK S&T Cooperation Zone,
+         National Key R&D Program of China with grant No. 2018YFB1800800,
+          by Shenzhen Outstanding Talents Training Fund 202002, and by Guangdong Research Projects 
+          No. 2017ZT07X152 and No. 2019CX01X104. 
+          Thanks to Chaoyue Duan et al. for their contributions in dataset collection
+           and the ITSO in CUHKSZ for their High-Performance Computing Services.
+
     </div>
 
 
