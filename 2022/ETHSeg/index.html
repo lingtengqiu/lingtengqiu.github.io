@@ -3,7 +3,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>3DCaricShop: A Dataset and A Baseline Method for Single-view 3D Caricature Face Reconstruction</title>
+    <title> ETHSeg: An Amodel Instance Segmentation Network and a Real-world Dataset for X-Ray Waste Inspection</title>
     <link rel="stylesheet" href="w3.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -20,44 +20,43 @@
 <div class="w3-container" id="paper">
     <div class="w3-content" style="max-width:850px">
   
-    <h2 align="center" id="title"><b>3DCaricShop: A Dataset and A Baseline Method for Single-view 3D Caricature Face Reconstruction</b></h2>
+    <h2 align="center" id="title"><b>ETHSeg: An Amodel Instance Segmentation Network and a Real-world Dataset
+        for X-Ray Waste Inspection</b></h2>
     <br/>
     <!-- <p align="center" id="title">Conference Name (NAME), YYYY.</p> -->
 
     <p align="center" class="center_text" id="authors">
-        <a target="_blank" >Yuda Qiu</a><sup>1,2</sup>
+        <a target="_blank" href="https://lingtengqiu.github.io/">Lingteng Qiu</a><sup>1,2,3</sup>
         &nbsp;&nbsp;&nbsp;&nbsp;
-        <a target="_blank" >Xiaojie Xu</a><sup>2,4</sup>
+        <a target="_blank" >Zhangyang Xiong</a><sup>1,2</sup>
         &nbsp;&nbsp;&nbsp;&nbsp;
-        <a target="_blank" href="https://lingtengqiu.github.io/">Lingteng Qiu</a><sup>1,2</sup>
+        <a target="_blank" >Xuhao Wang</a><sup>2,3</sup>
         &nbsp;&nbsp;&nbsp;&nbsp;
-        <a target="_blank" >Yan Pan</a><sup>1,2</sup>
+        <a target="_blank" >KenKun Liu</a><sup>2</sup>
         &nbsp;&nbsp;&nbsp;&nbsp;
-        <a target="_blank" >Yushuang Wu</a><sup>1,2</sup>
+        <a target="_blank" >Yihan Li</a><sup>2</sup>
         &nbsp;&nbsp;&nbsp;&nbsp;
-        <a target="_blank" href="http://chenweikai.github.io/">Weikai Chen</a><sup>3</sup>
+        <br>
+        <a target="_blank" href="https://guanyingc.github.io/">Guanying Chen</a><sup>1,2</sup>
         &nbsp;&nbsp;&nbsp;&nbsp;
-        <a target="_blank" href="https://mypage.cuhk.edu.cn/academics/hanxiaoguang/">Xiaoguang Han#</a><sup>1,2*</sup>
-        &nbsp;&nbsp;&nbsp;&nbsp;        
-    </p>
-
-    <p class="center_text" align="center" id="comments">
-        <sup>*</sup>Corresponding email: hanxiaoguang@cuhk.edu.cn  
-    </p>
-    <p class="center_text" align="center">
-        <sup>1</sup>The Chinese University of Hong Kong, Shenzhen
+        <a target="_blank" href="https://mypage.cuhk.edu.cn/academics/hanxiaoguang/">Xiaoguang Han</a><sup>1,2*</sup>
+        &nbsp;&nbsp;&nbsp;&nbsp;  
+        <a target="_blank" ">Shuguang Cui</a><sup>1,2,3</sup>
+        &nbsp;&nbsp;&nbsp;&nbsp; 
+        <br>
+        <sup>*</sup>Corresponding email: hanxiaoguang@cuhk.edu.cn     
+        <br>
+        <sup>1</sup>The Future Network of Intelligence Institute, CUHK-Shenzhen
         &nbsp; &nbsp; &nbsp;
-        <sup>2</sup>Shenzhen Research Institute of Big Data  
+        <sup>2</sup>School of Science and Engineering, CUHK-Shenzhen  
         &nbsp; &nbsp; &nbsp;
-        <sup>3</sup>Tencent America  
-        &nbsp; &nbsp; &nbsp;
-        <sup>4</sup>University of Science and Technology of China  
-        &nbsp; &nbsp; &nbsp;        
+        <sup>3</sup>Shenzhen Research Institute of Big Data 
+        &nbsp; &nbsp; &nbsp;      
     </p>
 
     <br>
     <center>
-    <img src="paper-teaser.jpg" style="max-width:50%" /></a>
+    <img src="img_comparison.jpg" style="max-width:80%" /></a>
     </center><br>
 <!--         <h4 align="center" id="title"><b>Submit to our ScanRefer Localization Benchmark <a href="http://kaldir.vc.in.tum.de/scanrefer_benchmark/" target="__blank">here</a>!</b></h4>
         <br><center><a href="http://kaldir.vc.in.tum.de/scanrefer_benchmark/" target="__blank"><img src="teaser.png" style="max-width:100%" /></a></center><br> -->
@@ -65,20 +64,97 @@
         
         <h3 class="w3-left-align" id="video"><b>Introduction</b></h3>
         <p>
-            Caricature is an artistic representation that deliberately exaggerates the distinctive features of a human face to convey humor or sarcasm. However, reconstructing a 3D caricature from a 2D caricature image remains a challenging task, mostly due to the lack of data. 
-            We propose to fill this gap by introducing 3DCaricShop, the first largescale 3D caricature dataset that contains 2000 high-quality diversified 3D caricatures manually crafted by professional artists. 3DCaricShop also provides rich annotations including a paired 2D caricature image, camera parameters and 3D facial landmarks.
-            To demonstrate the advantage of 3DCaricShop, we present a novel baseline approach for single-view 3D caricature reconstruction. To ensure a faithful reconstruction with plausible face deformations, we propose to connect the good ends of the detailrich implicit functions and the parametric mesh representations. In particular, we first register a template mesh to the output of the implicit generator and iteratively project the registration result onto a pre-trained PCA space to resolve artifacts and self-intersections. To deal with the large deformation during non-rigid registration, we propose a novel view-collaborative graph convolution network (VCGCN) to extract key points from the implicit mesh for accurate alignment. 
-            Our method is able to generate high-fidelity 3D caricature in a pre-defined mesh topology that is animation-ready. Extensive experiments have been conducted on 3DCaricShop to verify the significance of the database and the effectiveness of the proposed method. 
+            Waste inspection for packaged waste is an important step in the pipeline of waste disposal.
+            Previous methods either rely on manual visual checking or RGB image-based inspection algorithm,
+            requiring costly preparation procedures (e.g., open the bag and spread the waste items).
+            Moreover, occluded items are very likely to be left out.
+            Inspired by the fact that X-ray has a strong penetrating power to see through the bag and overlapping objects,
+            we propose to perform waste inspection efficiently using X-ray images without the need to open the bag.
+            We introduce a novel problem of instance-level waste segmentation in X-ray image for intelligent waste inspection,
+            and contribute a real dataset consisting of 5,038 X-ray images (totally 30,881 waste items)
+            with high-quality annotations (i.e., waste categories, object boxes, and instance-level masks)
+            as a benchmark for this problem. As existing segmentation methods are mainly designed for natural images
+            and cannot take advantage of the characteristics of X-ray waste images
+            (e.g., heavy occlusions and penetration effect), we propose a new instance segmentation method to explicitly
+            take these image characteristics into account. Specifically, our method adopts an easy-to-hard disassembling 
+            strategy to use high confidence predictions to guide the segmentation of highly overlapped objects, 
+            and a global structure guidance module to better capture the complex contour information caused by the penetration effect.
+            Extensive experiments demonstrate the effectiveness of the proposed method.
 
         </p>
 
-        <h3 class="w3-left-align" id="video"><b>Video</b></h3>
+        <h3 class="w3-left-align" id="Download"><b>Download</b></h3>
+        <li><a href="https://lingtengqiu.github.io/2022/ETHSeg/" target="_blank" rel="noopener">Paper</a></li>
+        <li><a href="https://lingtengqiu.github.io/2022/ETHSeg/">WIXRay(2GB)</a></li>
+        <li><a href="https://lingtengqiu.github.io/2022/ETHSeg/" target="_blank">Supplementary</a></li>
+
+
+        <h3 class="w3-left-align" id="Dataset"><b>Dataset</b></h3>
         <p>
-        Coming soon...
-        <!--         <iframe width="850" height="480" src="https://www.youtube.com/embed/T9J5t-UEcNA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-         -->        
-            <!--iframe width="850" height="480" src="vid.mp4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe-->
-        <p/>
+            According to current waste disposal
+            scenarios, we classify the domestic wastes into four general types and twelve categories: Recyclable (PlasticBottle, Can, Carton, GlassBottle, Stick, and Tableware), Foodwaste (FoodWaste), Residual (HeatingPad, Desiccant, and
+            MealBox), and Hazardous (Battery and Bulb).
+        </p>
+
+        <table>
+            <thead>
+            <tr>
+            <th style="text-align:center">Dataset</th>
+            <th style="text-align:center">Total</th>
+            <th style="text-align:center">IoU&gt;0.3</th>
+            <th style="text-align:center">IoU&gt;0.5</th>
+            <th style="text-align:center">IoU&gt;0.75</th>
+            <th style="text-align:center">Avg IoU</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+            <td style="text-align:center"> CrowdPose</td>
+            <td style="text-align:center">20000</td>
+            <td style="text-align:center">8704(44%)</td>
+            <td style="text-align:center">2909(15%)</td>
+            <td style="text-align:center">309(2%)</td>
+            <td style="text-align:center">0.27</td>
+            </tr>
+            <tr>
+            <td style="text-align:center"> COCO2017</td>
+            <td style="text-align:center">118287</td>
+            <td style="text-align:center">6504(5%)</td>
+            <td style="text-align:center">1209(1%)</td>
+            <td style="text-align:center">106(&lt;1%)</td>
+            <td style="text-align:center">0.06</td>
+            </tr>
+            <tr>
+            <td style="text-align:center"> MPII</td>
+            <td style="text-align:center">24987</td>
+            <td style="text-align:center">0</td>
+            <td style="text-align:center">0</td>
+            <td style="text-align:center">0</td>
+            <td style="text-align:center">0.11</td>
+            </tr>
+            <tr>
+            <td style="text-align:center"> OCuman</td>
+            <td style="text-align:center">4473</td>
+            <td style="text-align:center">3264(68%)</td>
+            <td style="text-align:center">3244(68%)</td>
+            <td style="text-align:center">1082(23%)</td>
+            <td style="text-align:center">0.46</td>
+            </tr>
+            <tr>
+            <td style="text-align:center"> Ours</td>
+            <td style="text-align:center">9000</td>
+            <td style="text-align:center">8105(<strong>90%</strong>)</td>
+            <td style="text-align:center">6843(<strong>76%</strong>)</td>
+            <td style="text-align:center">2442(<strong>27%</strong>)</td>
+            <td style="text-align:center"><strong>0.47</strong></td>
+            </tr>
+            </tbody>
+            </table>
+        <br>
+        <center>
+        <img src="./Categories_comparison.png" style="max-width:70%" /></a>
+        </center><br>
+
 
 
         <h3 class="w3-left-align" id="publication"><b>Publication</b></h3>
