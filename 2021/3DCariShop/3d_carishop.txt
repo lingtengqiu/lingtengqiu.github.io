@@ -1,0 +1,7 @@
+@inproceedings{qiu20213dcaricshop,
+  title={3dcaricshop: A dataset and a baseline method for single-view 3d caricature face reconstruction},
+  author={Qiu, Yuda and Xu, Xiaojie and Qiu, Lingteng and Pan, Yan and Wu, Yushuang and Chen, Weikai and Han, Xiaoguang},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={10236--10245},
+  year={2021}
+}

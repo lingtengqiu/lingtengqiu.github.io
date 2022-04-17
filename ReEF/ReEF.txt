@@ -1,0 +1,6 @@
+@article{zhu2022registering,
+  title={Registering Explicit to Implicit: Towards High-Fidelity Garment mesh Reconstruction from Single Images},
+  author={Zhu, Heming and Qiu, Lingteng and Qiu, Yuda and Han, Xiaoguang},
+  journal={arXiv preprint arXiv:2203.15007},
+  year={2022}
+}
