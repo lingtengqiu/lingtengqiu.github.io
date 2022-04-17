@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FENeRF: Face Editing in Neural Radiance Fields</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap-4.4.1.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+  </head>
+
+  <!-- cover -->
+  <section>
+    <div class="jumbotron text-center mt-0">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h2> FENeRF: Face Editing in Neural Radiance Fields</h2>
+            <h4 style="color:#5a6268;">CVPR 2022</h4>
+            <hr>
+            <h6> <a href="https://github.com/MrTornado24" target="_blank">Jingxiang Sun</a><sup>1</sup>, 
+                <a href="https://mrtornado24.github.io/FENeRF/" target="_blank">Xuan Wang</a><sup>2</sup>,
+                <a href="https://yzhang2016.github.io/yongnorriszhang.github.io/" target="_blank">Yong Zhang</a><sup>2</sup>, 
+                <a href="https://xiaoyu258.github.io/" target="_blank">Xiaoyu Li</a><sup>1</sup>,
+                <a href="https://mrtornado24.github.io/FENeRF/" target="_blank">Qi Zhang</a><sup>2</sup>,
+                <a href="https://liuyebin.com/" target="_blank">Yebin Liu</a><sup>3</sup>, 
+                <a href="https://juewang725.github.io/" target="_blank">Jue Wang</a><sup>2</sup></h6>
+            <p><sup>1</sup>University of Illinois at Urbana-Champaign &nbsp;&nbsp; 
+                <sup>2</sup>Tencent AI Lab &nbsp;&nbsp;
+                <sup>3</sup>Tsinghua University</p>
+            <div class="row justify-content-center">
+              <div class="column">
+                  <p class="mb-5"><a class="btn btn-large btn-light" href="https://arxiv.org/pdf/2111.15490v1.pdf" role="button"  target="_blank">
+                    <i class="fa fa-file"></i> Paper</a> </p>
+              </div>
+              <div class="column">
+                  <p class="mb-5"><a class="btn btn-large btn-light" href="https://github.com/MrTornado24/FENeRF" role="button"  target="_blank">
+                    <i class="fa fa-github-alt"></i> Code</a> </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- abstract -->
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <h3>Abstract</h3>
+            <hr style="margin-top:0px">
+            <!-- <video width="100%" playsinline="" autoplay="autoplay" loop="loop" preload="" muted="">
+                  <source src="images/video-teaser_c.mp4" type="video/mp4">
+            </video> -->
+            <div class="text-center" style="margin-top: 60px; margin-bottom: 20px;">
+              <img src="images/teaser_v11.png" width=60% class="img-fluid" alt="Responsive image">
+            </div>
+              <!-- <br><br> -->
+          <p class="text-justify">  </p>
+          <p class="text-justify"> Previous portrait image generation methods roughly fall into two categories: 2D GANs and 3D-aware GANs. 2D GANs can generate high fidelity portraits but with low view consistency. 3D-aware GAN methods can maintain view consistency but their generated images are not locally editable. To overcome these limitations, we propose FENeRF, a 3D-aware generator that can produce view-consistent and locally-editable portrait images. Our method uses two decoupled latent codes to generate corresponding facial semantics and texture in a spatial aligned 3D volume with shared geometry. Benefiting from such underlying 3D representation, FENeRF can jointly render the boundary-aligned image and semantic mask and use the semantic mask to edit the 3D volume via GAN inversion. We further show such 3D representation can be learned from widely available monocular image and semantic mask pairs. Moreover, we reveal that joint learning semantics and texture helps to generate finer geometry. Our experiments demonstrate that FENeRF outperforms state-of-the-art methods in various face editing tasks. </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <br>
+
+
+<!--   overview -->
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <h3>Overview</h3>
+            <hr style="margin-top:0px">
+            <!-- <video width="100%" playsinline="" autoplay="autoplay" loop="loop" preload="" muted="">
+                  <source src="images/video-teaser_c.mp4" type="video/mp4">
+            </video> -->
+            <div class="text-center" style="margin-top: 60px; margin-bottom: 20px;">
+              <img src="images/method_v8.png" width=100% class="img-fluid" alt="Responsive image">
+            </div>
+              <!-- <br><br> -->
+          <p class="text-justify">  </p>
+          <p class="text-justify"> Figure 2. Overall pipeline of FENeRF. Our generator produces the spatially-aligned density, semantic and texture fields conditioned on
+disentangled latent codes Zs and Zt. The positional feature embedding ecorrd is also injected to the network together with view direction
+for color prediction to preserve high-frequency details in generated image. By sharing the same density, aligned rgb image and semantic
+map are rendered. Finally two discriminators Ds and Dc are fed with semantic map/image pairs and real/fake image pairs, and trained
+with adversarial objectives L<sub>D<sub>s</sub></sub> and L<sub>D<sub>c</sub></sub>, respectively.
+ </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <br>
+  
+
+  
+  <!-- Disentangled Interpolation and Style Mixing -->
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <h3>Disentangled Interpolation and Style Mixing</h3>
+            <hr style="margin-top:0px">
+            <div class="text-center" style="margin-top: 60px; margin-bottom: 20px;">
+              <img src="images/morphing.png" width=100% class="img-fluid" alt="Responsive image">
+            </div>
+          <p class="text-justify">  </p>
+<!--           <p class="text-justify"> hhhhh </p> -->
+          
+          <div class="text-center" style="margin-top: 60px; margin-bottom: 20px;">
+              <img src="images/style_mixing_trans_v2.png" width=100% class="img-fluid" alt="Responsive image">
+            </div>
+          <p class="text-justify">  </p>
+<!--           <p class="text-justify"> hhhhh </p> -->
+          
+        </div>
+      </div>
+    </div>
+  </section>
+  <br>
+  
+  <!-- Free-View Local Facial Editing -->
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <h3>Free-View Local Facial Editing</h3>
+            <hr style="margin-top:0px">
+            <div class="text-center" style="margin-top: 60px; margin-bottom: 20px;">
+              <img src="images/local_editing_v2.png" width=100% class="img-fluid" alt="Responsive image">
+            </div>
+          <p class="text-justify">  </p>
+<!--           <p class="text-justify"> hhhhh </p> -->
+         
+          
+        </div>
+      </div>
+    </div>
+  </section>
+  <br>
+  
+    <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+            <h3>Demo video</h3>
+            <hr style="margin-top:0px">
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe style="embed-responsive-item" src="https://www.youtube.com/embed/4VEh-ApxP8I" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <br>
+  
+<!--   </div>
+            <div class="row mb-4" id="overview-video">
+                <div class="col-md-8 mx-auto grey-container">
+                    <h4 class="pb-2">Narrated Overview</h4>
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/voebZx7f32g" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div> -->
+        
+<!--    <div class="row">
+            <div class="col-12 text-center">
+               
+                <h3>
+                    Demo Video
+                </h3>
+                <hr style="margin-top:0px">
+                <div class="text-center">
+                    <div style="position:relative;padding-top:56.25%;">
+                        <iframe src="https://www.youtube.com/watch?v=4VEh-ApxP8I" allowfullscreen=""
+                            style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+  <!-- citing -->
+  <section>
+  <div class="container">
+    <div class="row ">
+      <div class="col-12">
+          <h3>Citation</h3>
+          <hr style="margin-top:0px">
+              <pre style="background-color: #e9eeef;padding: 1.25em 1.5em">
+<code>@article{sun2021fenerf,
+  title={FENeRF: Face Editing in Neural Radiance Fields},
+  author={Sun, Jingxiang and Wang, Xuan and Zhang, Yong and Li, Xiaoyu and Zhang, Qi and Liu, Yebin and Wang, Jue},
+  journal={arXiv preprint arXiv:2111.15490},
+  year={2021}
+}</code></pre>
+          <hr>
+      </div>
+    </div>
+  </div>
+  <section>
+  <br>
+  
+  <section>
+  <div class="container">
+    <div class="row ">
+      <div class="col-12">
+          <h3>Acknowledgement</h3>
+          <hr style="margin-top:0px">
+              <p class="text-justify"> This paper is sponsed by NSFC No. 62125107.
+ </p>
+         
+      </div>
+    </div>
+  </div>
+  <section>
+
+  <footer class="text-center" style="margin-bottom:10px">
+      Thanks to <a href="https://lioryariv.github.io/" target="_blank">Lior Yariv</a> for the website template.
+  </footer>
+
+</body>
+</html>

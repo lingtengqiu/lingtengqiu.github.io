@@ -1,0 +1,6 @@
+@article{sun2021fenerf,
+  title={FENeRF: Face Editing in Neural Radiance Fields},
+  author={Sun, Jingxiang and Wang, Xuan and Zhang, Yong and Li, Xiaoyu and Zhang, Qi and Liu, Yebin and Wang, Jue},
+  journal={arXiv preprint arXiv:2111.15490},
+  year={2021}
+}

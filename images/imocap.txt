@@ -1,0 +1,8 @@
+@article{dong2022imocap,
+  title={iMoCap: Motion Capture from Internet Videos},
+  author={Dong, Junting and Shuai, Qing and Sun, Jingxiang and Zhang, Yuanqing and Bao, Hujun and Zhou, Xiaowei},
+  journal={International Journal of Computer Vision},
+  pages={1--16},
+  year={2022},
+  publisher={Springer}
+}

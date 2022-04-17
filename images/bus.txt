@@ -1,0 +1,9 @@
+@INPROCEEDINGS{9101265,
+  author={Liu, Dairui and Sun, Jingxiang and Wang, Shen},
+  booktitle={2020 5th IEEE International Conference on Big Data Analytics (ICBDA)}, 
+  title={BusTime: Which is the Right Prediction Model for My Bus Arrival Time?}, 
+  year={2020},
+  volume={},
+  number={},
+  pages={180-185},
+  doi={10.1109/ICBDA49040.2020.9101265}}
