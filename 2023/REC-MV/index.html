@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title> ETHSeg: An Amodel Instance Segmentation Network and a Real-world Dataset for X-Ray Waste Inspection</title>
+    <link rel="stylesheet" href="w3.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <meta name="google-site-verification" content="vIrKe6Ecwa3TVjmMt0OaJpDGw_SJa5IxzTA86wU44QE" />
+</head>
+
+<body>
+
+<br/>
+<br/>
+
+<div class="w3-container" id="paper">
+    
+    <div class="w3-content" style="text-align: justify">
+        
+  
+    <h2 align="center" id="title"><b>ETHSeg: An Amodel Instance Segmentation Network and a Real-world Dataset
+        for X-Ray Waste Inspection</b></h2>
+    <br/>
+    <!-- <p align="center" id="title">Conference Name (NAME), YYYY.</p> -->
+
+    <p align="center" class="center_text" id="authors">
+        <a target="_blank" href="https://lingtengqiu.github.io/">Lingteng Qiu</a><sup>1,2,3</sup>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <a target="_blank" >Zhangyang Xiong</a><sup>1,2</sup>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <a target="_blank" >Xuhao Wang</a><sup>2,3</sup>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <a target="_blank" >KenKun Liu</a><sup>2</sup>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <a target="_blank" >Yihan Li</a><sup>2</sup>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <br>
+        <a target="_blank" href="https://guanyingc.github.io/">Guanying Chen</a><sup>1,2</sup>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <a target="_blank" href="https://mypage.cuhk.edu.cn/academics/hanxiaoguang/">Xiaoguang Han</a><sup>1,2*</sup>
+        &nbsp;&nbsp;&nbsp;&nbsp;  
+        <a target="_blank" ">Shuguang Cui</a><sup>1,2,3</sup>
+        &nbsp;&nbsp;&nbsp;&nbsp; 
+        <br>
+        <sup>*</sup>Corresponding email: hanxiaoguang@cuhk.edu.cn     
+        <br>
+        <sup>1</sup>The Future Network of Intelligence Institute, CUHK-Shenzhen
+        &nbsp; &nbsp; &nbsp;
+        <sup>2</sup>School of Science and Engineering, CUHK-Shenzhen  
+        &nbsp; &nbsp; &nbsp;<br>
+        <sup>3</sup>Shenzhen Research Institute of Big Data 
+        &nbsp; &nbsp; &nbsp;      
+    </p>
+
+    <br>
+    <center>
+    <img src="img_comparison.jpg" style="max-width:80%" /></a>
+    </center><br>
+<!--         <h4 align="center" id="title"><b>Submit to our ScanRefer Localization Benchmark <a href="http://kaldir.vc.in.tum.de/scanrefer_benchmark/" target="__blank">here</a>!</b></h4>
+        <br><center><a href="http://kaldir.vc.in.tum.de/scanrefer_benchmark/" target="__blank"><img src="teaser.png" style="max-width:100%" /></a></center><br> -->
+
+        
+        <h3 class="w3-left-align" id="video"><b>Introduction</b></h3>
+        <p>
+            Waste inspection for packaged waste is an important step in the pipeline of waste disposal.
+            Previous methods either rely on manual visual checking or RGB image-based inspection algorithm,
+            requiring costly preparation procedures (e.g., open the bag and spread the waste items).
+            Moreover, occluded items are very likely to be left out.
+            Inspired by the fact that X-ray has a strong penetrating power to see through the bag and overlapping objects,
+            we propose to perform waste inspection efficiently using X-ray images without the need to open the bag.
+            We introduce a novel problem of instance-level waste segmentation in X-ray image for intelligent waste inspection,
+            and contribute a real dataset consisting of 5,038 X-ray images (totally 30,881 waste items)
+            with high-quality annotations (i.e., waste categories, object boxes, and instance-level masks)
+            as a benchmark for this problem. As existing segmentation methods are mainly designed for natural images
+            and cannot take advantage of the characteristics of X-ray waste images
+            (e.g., heavy occlusions and penetration effect), we propose a new instance segmentation method to explicitly
+            take these image characteristics into account. Specifically, our method adopts an easy-to-hard disassembling 
+            strategy to use high confidence predictions to guide the segmentation of highly overlapped objects, 
+            and a global structure guidance module to better capture the complex contour information caused by the penetration effect.
+            Extensive experiments demonstrate the effectiveness of the proposed method.
+
+        </p>
+
+        <h3 class="w3-left-align" id="Download"><b>Download</b></h3>
+        <li><a href="https://lingtengqiu.github.io/2022/ETHSeg/" target="_blank" rel="noopener">Paper</a></li>
+        <li><a href="https://lingtengqiu.github.io/2022/ETHSeg/">WIXRay(2GB)</a></li>
+        <li><a href="https://lingtengqiu.github.io/2022/ETHSeg/" target="_blank">Supplementary</a></li>
+        <p>If you use ETHSeg in your work, please consider citing our paper!<br>@article{</p>
+
+
+        <h3 class="w3-left-align" id="Dataset"><b>Dataset</b></h3>
+        <p>
+            According to current waste disposal
+            scenarios, we classify the domestic wastes into four general types and twelve categories: Recyclable (PlasticBottle, Can, Carton, GlassBottle, Stick, and Tableware), Foodwaste (FoodWaste), Residual (HeatingPad, Desiccant, and
+            MealBox), and Hazardous (Battery and Bulb). In total, our WIXray contains 5, 038 X-ray images and
+            30, 845 waste instances covering 12 common waste categories. The following table summarizes the statistics of the introduced
+            dataset. Unlike existing X-ray datasets for security inspection which only annotate a few forbidden objects, we densely labeled the common waste items in the picture.
+        </p>
+        <center>
+        <img src="./Categories_comparison.png" style="max-width:70%" /></a>
+        </center><br>
+    
+        <center>
+            <img src="./table.png" style="max-width:100%" /></a>
+        </center><br>
+
+
+        <!-- Video Demonstration</h3><p><center><iframe src="//player.youku.com/embed/XNDU5NTkxMjAxNg==" width="540" height="360" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" -->
+        <h3 class="w3-left-align" id="Methodology"><b>Methodology</b></h3>
+        <center>
+            <img src="./Pipeline.png" style="max-width:100%" /></a>
+        </center><br>
+
+        
+        <h3 class="w3-left-align" id="dataset"><b>Quantitative Results</b></h3>
+        <center>
+            <img src="./quan_result1.png" style="max-width:90%" /></a>
+        </center><br>
+        <center>
+            <img src="./quan_result2.png" style="max-width:90%" /></a>
+        </center><br>
+
+        <h3 class="w3-left-align" id="Qualitative results"><b>Qualitative Results</b></h3>
+        <center>
+            <img src="./qualitative_results1.png" style="max-width:90%" /></a>
+            <br>
+            <img src="./qualitative_results2.png" style="max-width:90%" /></a>
+        </center><br>
+        <h3 class="w3-left-align" id="Acknowledgments"><b>Acknowledgments</b></h3>
+        The work was supported in part by the Basic Research Project 
+        No. HZQB-KCZYZ-2021067 of Hetao Shenzhen-HK S&T Cooperation Zone,
+         National Key R&D Program of China with grant No. 2018YFB1800800,
+          by Shenzhen Outstanding Talents Training Fund 202002, and by Guangdong Research Projects 
+          No. 2017ZT07X152 and No. 2019CX01X104. 
+          Thanks to Chaoyue Duan et al. for their contributions in dataset collection
+           and the ITSO in CUHKSZ for their High-Performance Computing Services.
+
+    </div>
+
+
+</div>
+
+<br/>
+<br/>
+
+</body>
+</html>
