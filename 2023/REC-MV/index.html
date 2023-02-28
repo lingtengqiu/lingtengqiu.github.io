@@ -1,151 +1,274 @@
+
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title> ETHSeg: An Amodel Instance Segmentation Network and a Real-world Dataset for X-Ray Waste Inspection</title>
-    <link rel="stylesheet" href="w3.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-    <meta name="google-site-verification" content="vIrKe6Ecwa3TVjmMt0OaJpDGw_SJa5IxzTA86wU44QE" />
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>REC-MV</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel='icon' href='/icons/icon-bulb-2-512.png' sizes='512x512'>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+    <link rel="stylesheet" href="css/app.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+
+
+
+    <!-- Nerfies csc -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+  
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+  
+      gtag('js', new Date());
+  
+      gtag('config', 'G-PYVRSFMDRL');
+    </script> -->
+  
+    <!-- <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+          rel="stylesheet"> -->
+  
+    <!-- <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="icon" href="./static/images/favicon.svg"> -->
+  
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script> -->
+
+
+
+
+
+
+    
+    <script src="js/app.js"></script>
 </head>
 
 <body>
-
-<br/>
-<br/>
-
-<div class="w3-container" id="paper">
-    
-    <div class="w3-content" style="text-align: justify">
-        
-  
-    <h2 align="center" id="title"><b>ETHSeg: An Amodel Instance Segmentation Network and a Real-world Dataset
-        for X-Ray Waste Inspection</b></h2>
-    <br/>
-    <!-- <p align="center" id="title">Conference Name (NAME), YYYY.</p> -->
-
-    <p align="center" class="center_text" id="authors">
-        <a target="_blank" href="https://lingtengqiu.github.io/">Lingteng Qiu</a><sup>1,2,3</sup>
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <a target="_blank" >Zhangyang Xiong</a><sup>1,2</sup>
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <a target="_blank" >Xuhao Wang</a><sup>2,3</sup>
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <a target="_blank" >KenKun Liu</a><sup>2</sup>
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <a target="_blank" >Yihan Li</a><sup>2</sup>
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <br>
-        <a target="_blank" href="https://guanyingc.github.io/">Guanying Chen</a><sup>1,2</sup>
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <a target="_blank" href="https://mypage.cuhk.edu.cn/academics/hanxiaoguang/">Xiaoguang Han</a><sup>1,2*</sup>
-        &nbsp;&nbsp;&nbsp;&nbsp;  
-        <a target="_blank" ">Shuguang Cui</a><sup>1,2,3</sup>
-        &nbsp;&nbsp;&nbsp;&nbsp; 
-        <br>
-        <sup>*</sup>Corresponding email: hanxiaoguang@cuhk.edu.cn     
-        <br>
-        <sup>1</sup>The Future Network of Intelligence Institute, CUHK-Shenzhen
-        &nbsp; &nbsp; &nbsp;
-        <sup>2</sup>School of Science and Engineering, CUHK-Shenzhen  
-        &nbsp; &nbsp; &nbsp;<br>
-        <sup>3</sup>Shenzhen Research Institute of Big Data 
-        &nbsp; &nbsp; &nbsp;      
-    </p>
-
-    <br>
-    <center>
-    <img src="img_comparison.jpg" style="max-width:80%" /></a>
-    </center><br>
-<!--         <h4 align="center" id="title"><b>Submit to our ScanRefer Localization Benchmark <a href="http://kaldir.vc.in.tum.de/scanrefer_benchmark/" target="__blank">here</a>!</b></h4>
-        <br><center><a href="http://kaldir.vc.in.tum.de/scanrefer_benchmark/" target="__blank"><img src="teaser.png" style="max-width:100%" /></a></center><br> -->
-
-        
-        <h3 class="w3-left-align" id="video"><b>Introduction</b></h3>
-        <p>
-            Waste inspection for packaged waste is an important step in the pipeline of waste disposal.
-            Previous methods either rely on manual visual checking or RGB image-based inspection algorithm,
-            requiring costly preparation procedures (e.g., open the bag and spread the waste items).
-            Moreover, occluded items are very likely to be left out.
-            Inspired by the fact that X-ray has a strong penetrating power to see through the bag and overlapping objects,
-            we propose to perform waste inspection efficiently using X-ray images without the need to open the bag.
-            We introduce a novel problem of instance-level waste segmentation in X-ray image for intelligent waste inspection,
-            and contribute a real dataset consisting of 5,038 X-ray images (totally 30,881 waste items)
-            with high-quality annotations (i.e., waste categories, object boxes, and instance-level masks)
-            as a benchmark for this problem. As existing segmentation methods are mainly designed for natural images
-            and cannot take advantage of the characteristics of X-ray waste images
-            (e.g., heavy occlusions and penetration effect), we propose a new instance segmentation method to explicitly
-            take these image characteristics into account. Specifically, our method adopts an easy-to-hard disassembling 
-            strategy to use high confidence predictions to guide the segmentation of highly overlapped objects, 
-            and a global structure guidance module to better capture the complex contour information caused by the penetration effect.
-            Extensive experiments demonstrate the effectiveness of the proposed method.
-
-        </p>
-
-        <h3 class="w3-left-align" id="Download"><b>Download</b></h3>
-        <li><a href="https://lingtengqiu.github.io/2022/ETHSeg/" target="_blank" rel="noopener">Paper</a></li>
-        <li><a href="https://lingtengqiu.github.io/2022/ETHSeg/">WIXRay(2GB)</a></li>
-        <li><a href="https://lingtengqiu.github.io/2022/ETHSeg/" target="_blank">Supplementary</a></li>
-        <p>If you use ETHSeg in your work, please consider citing our paper!<br>@article{</p>
+    <div class="container" id="main">
+        <div class="row">
+            <h2 class="col-md-12 text-center">
+                <b>REC-MV: REconstructing 3D Dynamic Cloth<br> from Monucular Videos <br>
+                <small>
+                    CVPR 2023
+                </small>
+            </h2>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul class="list-inline">
+                    <li>
+                        <a href="https://lingtengqiu.github.io/">
+                            Lingteng Qiu<sup>#</sup>
+                        </a>
+                        <br>FNii,SSE and CUHK-Shenzhen
+                    </li>
+                    <li>
+                        <a href="https://guanyingc.github.io/">
+                            Guanying Chen<sup>#</sup>
+                        </a>
+                        <br>FNii and SSE, CUHK-Shenzhen
+                    </li>
+                    <li>
+                            Jiapeng Zhou
+                        <br>CUHK-Shenzhen
+                    </li><br>
+                    <li>
+                        <a href="https://mutianxu.github.io/">
+                            Mutian Xu
+                        </a>
+                        <br>FNii,SSE and CUHK-Shenzhen
+                    </li>
+                    <li>
+                            Junle Wang
+                        <br>Tencent.
+                    </li>
+                    <li>
+                        <a href="https://mypage.cuhk.edu.cn/academics/hanxiaoguang/">
+                            Xiaoguang Han
+                        </a>
+                        <br>FNii,SSE and CUHK-Shenzhen
+                    </li>
 
 
-        <h3 class="w3-left-align" id="Dataset"><b>Dataset</b></h3>
-        <p>
-            According to current waste disposal
-            scenarios, we classify the domestic wastes into four general types and twelve categories: Recyclable (PlasticBottle, Can, Carton, GlassBottle, Stick, and Tableware), Foodwaste (FoodWaste), Residual (HeatingPad, Desiccant, and
-            MealBox), and Hazardous (Battery and Bulb). In total, our WIXray contains 5, 038 X-ray images and
-            30, 845 waste instances covering 12 common waste categories. The following table summarizes the statistics of the introduced
-            dataset. Unlike existing X-ray datasets for security inspection which only annotate a few forbidden objects, we densely labeled the common waste items in the picture.
-        </p>
-        <center>
-        <img src="./Categories_comparison.png" style="max-width:70%" /></a>
-        </center><br>
-    
-        <center>
-            <img src="./table.png" style="max-width:100%" /></a>
-        </center><br>
+                </ul>
+            </div>
+        </div>
 
 
-        <!-- Video Demonstration</h3><p><center><iframe src="//player.youku.com/embed/XNDU5NTkxMjAxNg==" width="540" height="360" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" -->
-        <h3 class="w3-left-align" id="Methodology"><b>Methodology</b></h3>
-        <center>
-            <img src="./Pipeline.png" style="max-width:100%" /></a>
-        </center><br>
+        <div class="row">
+                <div class="col-md-4 col-md-offset-4 text-center">
+                    <ul class="nav nav-pills nav-justified">
+                        <li>
+                            <a href="">
+                            <image src="./icons/paper.png" height="60px">
+                                <h4><strong>Paper</strong></h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                            <image src="./icons/youtube.png" height="60px">
+                                <h4><strong>Video</strong></h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/lingtengqiu/REC-MV">
+                            <image src="./icons/github.png" height="60px">
+                                <h4><strong>Code</strong></h4>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+        </div>
 
-        
-        <h3 class="w3-left-align" id="dataset"><b>Quantitative Results</b></h3>
-        <center>
-            <img src="./quan_result1.png" style="max-width:90%" /></a>
-        </center><br>
-        <center>
-            <img src="./quan_result2.png" style="max-width:90%" /></a>
-        </center><br>
 
-        <h3 class="w3-left-align" id="Qualitative results"><b>Qualitative Results</b></h3>
-        <center>
-            <img src="./qualitative_results1.png" style="max-width:90%" /></a>
-            <br>
-            <img src="./qualitative_results2.png" style="max-width:90%" /></a>
-        </center><br>
-        <h3 class="w3-left-align" id="Acknowledgments"><b>Acknowledgments</b></h3>
-        The work was supported in part by the Basic Research Project 
-        No. HZQB-KCZYZ-2021067 of Hetao Shenzhen-HK S&T Cooperation Zone,
-         National Key R&D Program of China with grant No. 2018YFB1800800,
-          by Shenzhen Outstanding Talents Training Fund 202002, and by Guangdong Research Projects 
-          No. 2017ZT07X152 and No. 2019CX01X104. 
-          Thanks to Chaoyue Duan et al. for their contributions in dataset collection
-           and the ITSO in CUHKSZ for their High-Performance Computing Services.
 
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Abstract
+                </h3>
+                <image src="./images/teaser.png" class="img-responsive" alt="overview"><br>
+                <p class="text-justify">
+                    Reconstructing dynamic 3D garment surfaces with open
+                    boundaries from monocular videos is an important problem
+                    as it provides a practical and low-cost solution for clothes
+                    digitization. Recent neural rendering methods achieve
+                    high-quality dynamic clothed human reconstruction results
+                    from monocular video, but these methods cannot separate
+                    the garment surface from the body. Moreover, despite existing garment reconstruction methods based on feature
+                    curve representation demonstrating impressive results for
+                    garment reconstruction from a single image, they struggle
+                    to generate temporally consistent surfaces for the video input. To address the above limitations, in this paper, we formulate this task as an optimization problem of 3D garment
+                    feature curves and surface reconstruction from monocular
+                    video. We introduce a novel approach, called REC-MV, to
+                    jointly optimize the explicit feature curves and the implicit
+                    signed distance field (SDF) of the garments. Then the open
+                    garment meshes can be extracted via garment template registration in the canonical space. Experiments on multiple
+                    casually captured datasets show that our approach outperforms existing methods and can produce high-quality dynamic garment surfaces.                               
+                </p><br>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Video
+                </h3>
+                <div class="text-center">
+                    <div style="position:relative;padding-top:56.25%;">
+                        <iframe src="./media/demo.mp4" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+                    </div>
+                </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Methodology
+                </h3>
+                <p class="text-justify">
+                    Given a monocular video with Ni frames depicting a moving person {It|t = 1, . . . , Ni}, REC-MV aims to reconstruct high-fidelity and space-time coherent open garment meshes. This is a challenging problem as it requires a
+                    method to simultaneously capture the shape contours, local surface details, and the motion of the garment. Observing that feature curves (e.g., necklines, hemlines) provide critical cues for 
+                    determining the shape contours of garment and implicit signed distance function (SDF) can well represent a detailed closed surface, we propose to first optimize the explicit 3D feature curves and
+                    implicit garment surfaces from the video, and then apply non-rigid clothing template registration to extract the open garment meshes.
+                </p><br>
+                <image src="./images/pipeline.png" class="img-responsive" alt="method"><br>
+                <p class="text-justify">
+                    Our method can be devided into 4 parts:<br>
+                    (a) Starting from a surface template, we initialize the canonical curves by solving Eq. (3), and apply a handle-based deformation to initialize the canonical implicit surface.<br>
+                    (b) Given an i-th frame, canonical curves are deformed to the camera view space to compute the projection loss based on the surface-aware visibility estimation. <br>
+                    (c) Similarly, the canonical surface  is deform to the camera view to compute the photometric loss by differentiable rendering. The curves and surface are jointly optimized to enable a progressive co-evolution.<br>
+                    (d) Last, the open garment meshes can be extracted by template registration in the canonical space.
+                </p><br>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Qualitative Results
+                </h3>
+                <p class="text-justify">
+                    Qualitative comparison on real datasets between BCNet, ClothWild, ReEF, and our method
+                </p><br>
+                <image src="./images/qualitative_results(a).png" class="img-responsive" alt="overview"><br>
+                <image src="./images/qualitative_results(b).png" class="img-responsive" alt="overview"><br>
+                <image src="./images/qualitative_results(e).png" class="img-responsive" alt="overview"><br>
+
+
+                <p class="text-justify">
+                    Dynamic garment reconstruction results of our method
+                </p><br>
+                <image src="./images/qualitative_results(c).png" class="img-responsive" alt="overview"><br>
+
+
+                <p class="text-justify">
+                    Reconstruction results on a large pose sequence
+                </p><br>
+                <image src="./images/qualitative_results(d).png" class="img-responsive" alt="overview"><br>
+
+            </div>
+        </div>
+
+            
+
+            
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    BibTeX
+                </h3>
+                <div class="form-group col-md-10 col-md-offset-1">
+                    <textarea id="bibtex" class="form-control" readonly>
+            @inproceedings{qiu2023REC-MV,
+
+                year={2023}
+}
+                    </textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Acknowledgements
+                </h3>
+                <p class="text-justify">
+                    <!-- This work was partially supported by the National Key R&D Program of China (No.2018YFB1800800), the Basic Research Project No.~HZQB-KCZYZ-2021067 of Hetao Shenzhen-HK S&T Cooperation Zone, and Hong Kong RGC GRF grant (project# 17203119).
+                    <br> -->
+                    The website template was borrowed from <a href="http://mgharbi.com/">Michaël Gharbi</a>.
+                </p>
+            </div>
+        </div>
     </div>
-
-
-</div>
-
-<br/>
-<br/>
-
 </body>
 </html>
