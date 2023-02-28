@@ -129,3 +129,54 @@
   span.highlight {
     background-color: #ffffd0;
   }
+
+
+
+  .grid-container {
+    /*columns: 3 150px; */
+    columns: 3 auto;
+    column-gap: 1.5rem;
+    width: 100%;
+    margin: 0 auto;
+    /*padding-left:20px;*/
+  }
+  .grid-container div {
+    /*width: auto;*/
+    /*width: 150px;*/
+    margin: 0 1.5rem 1.5rem 0;
+    display: inline-block;
+    width: 95%;
+    border: solid 2px black;
+    padding: 5px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    transition: all 0.25s ease-in-out;
+  
+    overflow: hidden;
+    display: block;
+    position: relative;
+    text-align: center;
+  }
+  /*    .grid-container div:hover img {
+    filter: grayscale(0);
+  }*/
+  .grid-container div:hover {
+    border-color: coral;
+  }
+  .grid-container div img {
+    /*width: 70%;*/
+    /*filter: grayscale(100%);*/
+    border-radius: 5px;
+    transition: all 0.25s ease-in-out;
+  
+    margin: auto;
+  }
+  .grid-container div p {
+    margin: 5px 0;
+    padding: 0;
+    text-align: center;
+    font-style: italic;
+    font-family: 'Lato';
+    font-size:14px;
+  }
+  
