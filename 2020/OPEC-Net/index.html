@@ -1,0 +1,408 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Peeking into occluded joints:A novel framework for crowd pose estimation">
+  <meta name="keywords" content="Vid2Avatar">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Peeking into occluded joints: A novel framework for crowd pose estimation</title>
+
+
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h2 class="title is-1 publication-title">
+            <b>Peeking into occluded joints:A novel framework for crowd pose estimation<br>
+            <small>
+                ECCV 2020
+            </small>
+            </h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://lingtengqiu.github.io/">Lingteng Qiu</a><sup>1,2,3</sup>,</span>
+              <span class="author-block">
+              Yanran Li<sup>4</sup>,</span>
+              <span class="author-block">
+              Guanbin Li<sup>5</sup>,</span>
+              <span class="author-block">
+              Xiaojun Wu<sup>3</sup>,</span>
+              <span class="author-block">
+              Zixiang Xiong<sup>6</sup>,</span><br>
+
+                <span class="author-block">
+                <a href="https://mypage.cuhk.edu.cn/academics/hanxiaoguang/">Xiaoguang Han</a><sup>1,2,#</sup>,</span>
+
+                <span class="author-block">
+                Shuguang Cui<sup>1,2</sup>
+                </span>
+
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>CUHK-SZ ,</span>
+            <span class="author-block"><sup>2</sup>SRIBD,</span>
+            <span class="author-block"><sup>3</sup>HIT-SZ,</span>
+            <span class="author-block"><sup>4</sup>Bournemouth University,</span><br>
+            <span class="author-block"><sup>5</sup>Sun Yat-sen University,</span>
+            <span class="author-block"><sup>6</sup>Texas A&M University 
+            </span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2003.10506"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://player.youku.com/embed/XNDU5NTkxMjAxNg=="
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/lingtengqiu/OPEC-Net"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https://drive.google.com/file/d/1C3pUAWzAosujKg63AVELcZXb6Cp0LYXj/view"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-database"></i>
+                  </span>
+                  <span>Dataset</span>
+                  </a>
+              </span>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+        <img src="./media/highlight.png"  class="center"/>
+      <h2 class="subtitle has-text-centered">
+        The current SOTA method (left) VS our method (right). Our method demonstrates a more natural and accurate estimation for occluded joints. 
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Although occlusion widely exists in nature and remains a fundamental challenge for
+            pose estimation, existing heatmap-based approaches suffer serious degradation on occlusions.
+            Their intrinsic problem is that they directly localize the joints based on visual information; however, the invisible joints are lack of that. In contrast to localization, our framework estimates the
+            invisible joints from an inference perspective by proposing an Image-Guided Progressive GCN
+            module which provides a comprehensive understanding of both image context and pose structure.
+            Moreover, existing benchmarks contain limited occlusions for evaluation. Therefore, we thoroughly
+            pursue this problem and propose a novel OPEC-Net framework together with a new Occluded
+            Pose (OCPose) dataset with 9k annotated images. Extensive quantitative and qualitative evaluations on benchmarks demonstrate that OPEC-Net achieves significant improvements over recent
+            leading works. Notably, our OCPose is the most complex occlusion dataset with respect to average
+            IoU between adjacent instances. Source code and OCPose will be publicly available.
+
+        </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <!-- <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe width="560" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div> -->
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+
+<section class="section" id="method">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Method</h2>
+    <img src="./media/pipeline.png"  height="250" class="center"/>
+    <p>
+      This figure depicts the two stages of estimation for one single pose. 
+      The GCN-based pose correction stage contains two modules: the Cascaded Feature Adaptation and the Image-Guided Progressive GCN. 
+      Firstly a base module is employed to generate heatmaps. After that, an integral regression method is employed to transform the heatmap representation into a coordinate representation,
+       which can be the initial pose for GCN network. The initial pose and the three feature maps from the base module are processed in Image-Guided Progressive GCN. 
+       The multi-scale feature maps are updated through the Cascaded Feature Adaptation module and put into each ResGCN Attention blocks.
+        J1, J2 and J3 are the node features excavated on related location (x, y) from image features. 
+        The error of Initial Pose, Pose1, Pose2, and Final Pose are all considered in the objective function. 
+        Then the OPEC-Net is trained entirely to estimate the human pose.
+    </p>
+
+
+  </div>
+</section>
+
+<section class="section" id="result">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Result</h2>
+
+    <h3 class="title">Comparison</h3>
+    <p>
+      Our approach outperforms existing state-of-the-art methods on both multi-person and couple situation.
+    </p>
+
+     <div class="columns is-centered">
+      <div class="column">
+        <div class="content">
+          <h4 class="title">Multi-Person</h4>
+          <video autoplay controls muted loop height="100%">
+            <source src="./video/crowd.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+
+      <div class="column">
+        <h4 class="title">Couple People</h4>
+        <div class="columns is-centered">
+          <div class="column content">
+          <video autoplay controls muted loop height="200%">
+            <source src="./video/couple.mp4"
+                    type="video/mp4">
+          </video>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <h3 class="title">More Qualitative Results</h3>
+
+
+    <section class="hero is-light is-small">
+      <div class="container is-max-desktop">
+        <div class="hero-body">
+            <img src="./media/CrowdPose.png"  class="center"/>
+            <p>
+              The current SOTA method (left) VS our method (right) on CrowdPose Dataset.
+            </p>
+        </div>
+
+        <div class="hero-body">
+          <img src="./media/OChuman.png"  class="center"/>
+          <p>
+            The current SOTA method (left) VS our method (right) on OCHuman Dataset. 
+          </p>
+  
+          <div class="hero-body">
+            <img src="./media/OCPose.png"  class="center"/>
+            <p>
+              The current SOTA method (left) VS our method (right) on OCPose Dataset. 
+            </p>
+      </div>
+
+
+
+      </div>
+    </section>
+
+
+  
+  <!-- <section class="hero is-light is-small">
+    <div class="hero-body">
+      <div class="container">
+        <div id="results-carousel" class="carousel results-carousel">
+          <div class="item item-steve">
+            <video poster="" autoplay controls muted loop height="100%">
+              <source src="https://ait.ethz.ch/projects/2023/vid2avatar/downloads/assets/Helge.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-chair-tp">
+            <video poster="" autoplay controls muted loop height="100%">
+              <source src="https://ait.ethz.ch/projects/2023/vid2avatar/downloads/assets/Lan_2.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-chair-tp">
+            <video poster="" autoplay controls muted loop height="100%">
+              <source src="https://ait.ethz.ch/projects/2023/vid2avatar/downloads/assets/roger.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-chair-tp">
+            <video poster="" autoplay controls muted loop height="100%">
+              <source src="https://ait.ethz.ch/projects/2023/vid2avatar/downloads/assets/Nadia.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-chair-tp">
+            <video poster="" autoplay controls muted loop height="100%">
+              <source src="https://ait.ethz.ch/projects/2023/vid2avatar/downloads/assets/exstrimalik.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-chair-tp">
+            <video poster="" autoplay controls muted loop height="100%">
+              <source src="https://ait.ethz.ch/projects/2023/vid2avatar/downloads/assets/Invisible.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-chair-tp">
+            <video poster="" autoplay controls muted loop height="100%">
+              <source src="https://ait.ethz.ch/projects/2023/vid2avatar/downloads/assets/Suarez.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-chair-tp">
+            <video poster="" autoplay controls muted loop height="100%">
+              <source src="https://ait.ethz.ch/projects/2023/vid2avatar/downloads/assets/truman.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-chair-tp">
+            <video poster="" autoplay controls muted loop height="100%">
+              <source src="https://ait.ethz.ch/projects/2023/vid2avatar/downloads/assets/seattle.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-chair-tp">
+            <video poster="" autoplay controls muted loop height="100%">
+              <source src="https://ait.ethz.ch/projects/2023/vid2avatar/downloads/assets/parkinglot.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- <section class="hero is-light is-small">
+    <div class="hero-body">
+      <div class="container">
+        <div id="results-carousel" class="carousel results-carousel">
+          <div class="item item-chair-tp">
+            <video poster="" autoplay controls muted loop height="100%">
+              <source src="https://ait.ethz.ch/projects/2023/vid2avatar/downloads/assets/ma2.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-chair-tp">
+            <video poster="" autoplay controls muted loop height="100%">
+              <source src="https://ait.ethz.ch/projects/2023/vid2avatar/downloads/assets/emdb_00082_4.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-chair-tp">
+            <video poster="" autoplay controls muted loop height="100%">
+              <source src="https://ait.ethz.ch/projects/2023/vid2avatar/downloads/assets/manuel_outdoor.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  </div>
+</section>
+
+<section class="section" id="SynWild Dataset">
+  <div class="container is-max-desktop content">
+    <h2 class="title">OCPose Dataset</h2>
+    <img src="./media/OCPose_info.png"  class="center"/>
+
+    <p>
+      We create a new dataset called OCPose to evaluate our method on very crowd situation. More details and the download link can be found in our <a href="https://github.com/lingtengqiu/OPEC-Net" >github</a>.
+    </p>
+
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{qiu2020peeking,
+      title={Peeking into occluded joints: A novel framework for crowd pose estimation},
+      author={Qiu, Lingteng and Zhang, Xuanye and Li, Yanran and Li, Guanbin and Wu, Xiaojun and Xiong, Zixiang and Han, Xiaoguang and Cui, Shuguang},
+      booktitle={European Conference on Computer Vision},
+      pages={488--504},
+      year={2020},
+      organization={Springer}
+    }
+    </code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="https://ait.ethz.ch/projects/2023/vid2avatar/downloads/main.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/MoyGcc/vid2avatar" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This webpage is built with the template from <a href="https://github.com/nerfies/nerfies.github.io">NeRFies</a>. We sincerely thank <a href="https://keunhong.com/">Keunhong Park</a> for developing and open-sourcing this template.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
