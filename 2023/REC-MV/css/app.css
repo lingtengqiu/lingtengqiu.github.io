@@ -81,8 +81,13 @@
   p,
   a {
     font-family: 'Lato', Verdana, Helvetica, sans-serif;
-    font-size: 14px
+    font-size: 14px;
+    font-weight: 100;
   }
+
+  
+
+
   
   strong {
     font-family: 'Lato', Verdana, Helvetica, sans-serif;
