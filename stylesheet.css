@@ -133,7 +133,7 @@
 
 
   .grid-container {
-    /*columns: 3 150px; */
+    /* columns: 2 100pt; */
     columns: 3 auto;
     column-gap: 1.5rem;
     width: 100%;
