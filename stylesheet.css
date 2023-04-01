@@ -134,7 +134,7 @@
 
   .grid-container {
     /*columns: 3 150px; */
-    columns: 2 auto;
+    columns: 3 auto;
     column-gap: 1.5rem;
     width: 100%;
     margin: 0 auto;
