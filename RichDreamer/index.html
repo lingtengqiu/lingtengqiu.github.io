@@ -145,6 +145,14 @@
 
     </div>
 
+    <hr class="divider" />
+    <div class="container" style="max-width: 768px;">
+        <div class="compositional captioned_videos">
+            <video class="video lazy" autoplay loop playsinline muted>
+                <source data-src="./static/overview-compress.mp4" type="video/mp4"></source>
+            </video>
+        </div>
+    </div>
 
 
 
@@ -183,25 +191,21 @@
     </div>
     <div class="container" style="max-width: 768px;">
         <div class="row captioned_videos">
+            <div class="col-sm-12">
+                <h2>Methodology</h2>
+                    <p> 
+                        We introduce a generalizable Normal-Depth diffusion model that is trained on the
+                        LAION-2B dataset with normal and depth predicted by Midas, followed by fine-tuning on the synthetic dataset. Our model can be
+                        incorporated with the DMTet and NeRF representations to enhance the geometry generation. To alleviate the ambiguity in appearance
+                        modeling, we propose an albedo diffusion model to impose data-drive prior on the albedo component.
+                    </p>
+            </div>
             <div class="col-md-12">
                 <img src="static/architecture.png" alt="architecture" style="width: 100%">
             </div>
         </div>
     </div>
 
-    <hr class="divider" />
-    <div class="container" style="max-width: 768px;">
-        <div class="row">
-            <div class="col-md-12">
-                <h2>Overview</h2>
-            </div>
-        </div>
-        <div class="compositional captioned_videos">
-            <video class="video lazy" autoplay loop playsinline muted>
-                <source data-src="./static/overview-compress.mp4" type="video/mp4"></source>
-            </video>
-        </div>
-    </div>
 
     <hr class="divider" />
     <div class="container" style="max-width: 768px;">
