@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XB3PR2Y1TQ"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-XB3PR2Y1TQ');
+    </script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>RichDreamer: A Generalizable Normal-Depth Diffusion Model for Detail Richness in Text-to-3D</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,500,600' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="assets/css/Highlight-Clean.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="robots" content="noindex">
+
+    <meta property="og:site_name" content="RichDreamer" />
+    <meta property="og:type" content="video.other" />
+    <meta property="og:title" content="RichDreamer: A Generalizable Normal-Depth Diffusion Model for Detail Richness in Text-to-3D" />
+    <meta property="og:description" content="RichDreamer: A Generalizable Normal-Depth Diffusion Model for Detail Richness in Text-to-3D, 2023" />
+    <meta property="og:url" content="" />
+
+    <script src="assets/js/video_comparison.js"></script>
+    <script type="module" src="https://unpkg.com/@google/model-viewer@2.0.1/dist/model-viewer.min.js"></script>
+</head>
+
+
+
+<body>
+    <div class="highlight-clean" style="padding-bottom: 10px;">
+        <div class="container" style="max-width: 1024px; margin-bottom: 20px;">
+            <h1 class="text-center"><b>RichDreamer</b>: A Generalizable Normal-Depth Diffusion Model for
+                Detail Richness in Text-to-3D</h1>
+        </div>
+        <div class="container" style="max-width: 990px; margin-bottom: 20px;">
+            <div class="row authors">
+                <div class="col">
+                    <h5 class="text-center"></h5>
+                </div>
+                <div class="col">
+                    <h5 class="text-center"><a class="text-center" href="https://lingtengqiu.github.io/", target="_blank">Lingteng Qiu<sup>1,3*</sup> </a></h5>
+                </div>
+                <div class="col">
+                    <h5 class="text-center"><a href="https://guanyingc.github.io/", target="_blank">Guanying Chen<sup>2,1*</sup></a></h5>
+                </div>
+                <div class="col">
+                    <h5 class="text-center"><a class="text-center", href="https://scholar.google.com.hk/citations?user=aJPO514AAAAJ&hl=zh-CN&oi=ao", target="_blank">Xiaodong Gu<sup>3*</sup></a></h5>
+                </div>
+                <div class="col">
+                    <h5 class="text-center"></h5>
+                </div>
+            </div>
+            <div class="row authors">
+                <div class="col">
+                    <h5 class="text-center"><a class="text-center">Qi Zuo<sup>3</sup> </a></h5>
+                </div>
+                <div class="col">
+                    <h5 class="text-center"><a href="https://mutianxu.github.io/", target="_blank">Mutian Xu<sup>1</sup></a></h5>
+                </div>
+                <div class="col">
+                    <h5 class="text-center"><a class="text-center">Yushuang Wu<sup>2,1,3</sup></a></h5>
+                </div>
+                <div class="col">
+                    <h5 class="text-center"><a class="text-center" href="https://weihao-yuan.com/", target="_blank">Weihao Yuan<sup>3</sup></a></h5>
+                </div>
+                <div class="col">
+                    <h5 class="text-center"><a class="text-center", href="https://scholar.google.com/citations?user=GHOQKCwAAAAJ&hl=zh-CN&oi=ao", target="_blank">Zilong Dong<sup>3</sup></a></h5>
+                </div>
+            </div>
+            <div class="row authors">
+                <div class="col">
+                    <h5 class="text-center"></h5>
+                </div>
+                <div class="col">
+                    <h5 class="text-center"><a class="text-center", href="https://research.cs.washington.edu/istc/lfb/", target="_blank">Liefeng Bo<sup>3</sup> </a></h5>
+                </div>
+                <div class="col">
+                    <h5 class="text-center"><a href="https://mypage.cuhk.edu.cn/academics/hanxiaoguang/", target="_blank">Xiaoguang Han<sup>1,2</sup></a></h5>
+                </div>
+                <div class="col">
+                    <h5 class="text-center"></h5>
+                </div>
+            </div>
+
+            <div class="row affiliations">
+                <div class="col">
+                    <h6 class="text-center"></h6>
+                </div>
+                <div class="col">
+                    <h6 class="text-center"><a class="text-center"><sup>1</sup>SSE, CUHKSZ</a></h6>
+                </div>
+                <div class="col">
+                    <h6 class="text-center"><a class="text-center"><sup>2</sup>FNii, CUHKSZ</a></h6>
+                </div>
+                <div class="col">
+                    <h6 class="text-center"><a class="text-center"><sup>3</sup>Alibaba Group</a></h6>
+                </div>
+                <div class="col">
+                    <h6 class="text-center"><a class="text-center"><sup>*</sup>Equal Contribution</a></h6>
+                </div>
+                <div class="col">
+                    <h6 class="text-center"></h6>
+                </div>
+            </div>
+        </div>
+
+        <div class="buttons" style="margin-top: 8px; margin-bottom: 8px;">
+            <a class="btn btn-light" role="button" href="https://arxiv.org/abs/2311.16918">
+                <svg style="width:24px;height:24px;margin-left:-12px;margin-right:12px" viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M16 0H8C6.9 0 6 .9 6 2V18C6 19.1 6.9 20 8 20H20C21.1 20 22 19.1 22 18V6L16 0M20 18H8V2H15V7H20V18M4 4V22H20V24H4C2.9 24 2 23.1 2 22V4H4M10 10V12H18V10H10M10 14V16H15V14H10Z"></path>
+                </svg>Paper
+            </a>
+            <a class="btn btn-light disabled border border-dark" aria-disabled="true" role="button" href="#">
+                <svg style="visibility:hidden;width:0px;height:24px;margin-left:-12px;margin-right:12px" width="0px" height="24px" viewBox="0 0 375 531">
+                    <polygon stroke="#000000" points="0.5,0.866 459.5,265.87 0.5,530.874 "></polygon>
+                </svg>
+                Project
+            </a>
+            <a class="btn btn-light" role="button" href="https://github.com/modelscope/RichDreamer">
+                <svg xmlns="http://www.w3.org/2000/svg" style="width:24px;height:24px;margin-left:-12px;margin-right:12px" viewBox="0 0 24 24">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 
+                            1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 
+                            3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 
+                            2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path>
+                </svg>
+                Code
+            </a>
+            <a class="btn btn-light" role="button" href="#">
+                <svg style="width:24px;height:24px;margin-left:-12px;margin-right:12px" width="24px" height="24px" viewBox="0 0 375 531">
+                    <polygon stroke="#000000" points="0.5,0.866 459.5,265.87 0.5,530.874 "></polygon>
+                </svg>
+                OneDrive (Comming Soon)
+            </a>
+        </div>
+    </div>
+
+
+
+    <hr class="divider" />
+    <div class="container" style="max-width: 768px;">
+        <div class="row">
+            <div class="col-md-12">
+
+                <video class="video lazy" autoplay loop playsinline muted>
+                    <source data-src="./static/first-photo-compress.mp4" type="video/mp4"></source>
+                </video>
+                <h2>Abstract</h2>
+                <p>
+                    Lifting 2D diffusion for 3D generation is a challenging
+                    problem due to the lack of geometric prior and the com-
+                    plex entanglement of materials and lighting in natural im-
+                    ages. Existing methods have shown promise by first creat-
+                    ing the geometry through score-distillation sampling (SDS)
+                    applied to rendered surface normals, followed by appear-
+                    ance modeling. However, relying on a 2D RGB diffusion
+                    model to optimize surface normals is suboptimal due to the
+                    distribution discrepancy between natural images and nor-
+                    mals maps, leading to instability in optimization. In this
+                    paper, recognizing that the normal and depth information
+                    effectively describe scene geometry and be automatically
+                    estimated from images, we propose to learn a generaliz-
+                    able Normal-Depth diffusion model for 3D generation. We
+                    achieve this by training on the large-scale LAION dataset
+                    together with the generalizable image-to-depth and normal
+                    prior models. In an attempt to alleviate the mixed illumi-
+                    nation effects in the generated materials, we introduce an
+                    albedo diffusion model to impose data-driven constraints on
+                    the albedo component. Our experiments show that when in-
+                    tegrated into existing text-to-3D pipelines, our models sig-
+                    nificantly enhance the detail richness, achieving state-of-
+                    the-art results.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="max-width: 768px;">
+        <div class="row captioned_videos">
+            <div class="col-sm-12">
+                <h2>Methodology</h2>
+                    <p> 
+                        We introduce a generalizable Normal-Depth diffusion model that is trained on the
+                        LAION-2B dataset with normal and depth predicted by Midas, followed by fine-tuning on the synthetic dataset. Our model can be
+                        incorporated with the DMTet and NeRF representations to enhance the geometry generation. To alleviate the ambiguity in appearance
+                        modeling, we propose an albedo diffusion model to impose data-drive prior on the albedo component.
+                    </p>
+            </div>
+            <div class="col-md-12">
+                <img src="static/architecture.png" alt="architecture" style="width: 100%">
+            </div>
+        </div>
+    </div>
+
+
+
+    
+    <hr class="divider" />
+    <div class="container" style="max-width: 768px;">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Video</h2>
+                <div class="compositional captioned_videos">
+                    <iframe width="768" height="432" src="https://www.youtube.com/embed/6gQ1VWiKoc0?si=Q7yL4mWmBN3cUaYi" frameborder="no" framespacing="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen> </iframe>
+                </div>
+                <strong>For netizens in China, considering the problem of Internet restrictions, we provide a video link to <a href="https://www.bilibili.com/video/BV1Qb4y1K7Sb/?spm_id_from=888.80997.embed_other.whitelist", target="_blank">bilibili</a>.</strong> 
+            </div>
+        </div>
+    </div>
+
+    <hr class="divider" />
+    <div class="container" style="max-width: 768px;">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2>Gallery Results of <i>Ours (Sphere)</i></h2>
+            </div>
+        </div>
+        <div class="row captioned_videos">
+            <div class="col-4">
+                <video class="video lazy" loop playsinline autoplay muted onplay="resizeAndPlay(this)">
+                    <source data-src="./static/examples/a DSLR photo of a cake covered in colorful frosting with a slice being taken out, high resolution.mp4" type="video/mp4"></source>
+                </video>
+                <h6 class="caption">a DSLR photo of a cake covered in colorful frosting with a slice being taken out, high resolution</h6>
+            </div>
+            <div class="col-4">
+                <video class="video lazy" loop playsinline autoplay muted onplay="resizeAndPlay(this)">
+                    <source data-src="static/examples/A crocheted doll wearing a crown, 4K, HD.mp4" type="video/mp4"></source>
+                </video>
+                <h6 class="caption">A crocheted doll wearing a crown, 4K, HD</h6>
+            </div>
+            <div class="col-4">
+                <video class="video lazy" loop playsinline autoplay muted onplay="resizeAndPlay(this)">
+                    <source data-src="static/examples/A statue of angel, 3d asset.mp4" type="video/mp4"></source>
+                </video>
+                <h6 class="caption">A statue of angel, 3d asset</h6>
+            </div>
+        </div>
+        <div class="row captioned_videos">
+            <div class="col-4">
+                <video class="video lazy" loop playsinline autoplay muted onplay="resizeAndPlay(this)">
+                    <source data-src="static/examples/Fire-breathing Phoenix, mythical bird, engulfed in flames, rebirth and renewal, 3d asset.mp4" type="video/mp4"></source>
+                </video>
+                <h6 class="caption">Fire-breathing Phoenix, mythical bird, engulfed in flames, rebirth and renewal, 3d asset.mp4</h6>
+            </div>
+            <div class="col-4">
+                <video class="video lazy" loop playsinline autoplay muted onplay="resizeAndPlay(this)">
+                    <source data-src="./static/examples/an origami motorcycle.mp4" type="video/mp4"></source>
+                </video>
+                <h6 class="caption">a DSLR photo of an origami motorcycle</h6>
+            </div>
+            <div class="col-4">
+                <video class="video lazy" loop playsinline autoplay muted onplay="resizeAndPlay(this)">
+                    <source data-src="static/examples/mini China town, highly detailed, 3d asset.mp4" type="video/mp4"></source>
+                </video>
+                <h6 class="caption">mini China town, highly detailed, 3d asset.mp4</h6>
+            </div>
+        </div>
+        <div class="row captioned_videos">
+            <div class="col-4">
+                <video class="video lazy" loop playsinline autoplay muted onplay="resizeAndPlay(this)">
+                    <source data-src="./static/examples/a DSLR photo of a knight chopping wood.mp4" type="video/mp4"></source>
+                </video>
+                <h6 class="caption">a DSLR photo of a knight chopping wood</h6>
+            </div>
+            <div class="col-4">
+                <video class="video lazy" loop playsinline autoplay muted onplay="resizeAndPlay(this)">
+                    <source data-src="./static/examples/A punk rock squirrel in a studded leather jacket shouting into a microphone while standing on a stump and holding a beer.mp4" type="video/mp4"></source>
+                </video>
+                <h6 class="caption">A punk rock squirrel in a studded leather jacket shouting into a microphone while standing on a stump and holding a beer</h6>
+            </div>
+            <div class="col-4">
+                <video class="video lazy" loop playsinline autoplay muted onplay="resizeAndPlay(this)">
+                    <source data-src="./static/examples/a squirrel dressed up like a Victorian woman.mp4" type="video/mp4"></source>
+                </video>
+                <h6 class="caption">a squirrel dressed up like a Victorian woman</h6>
+            </div>
+        </div>
+        <div class="row captioned_videos">
+            <div class="col-4">
+                <video class="video lazy" loop playsinline autoplay muted onplay="resizeAndPlay(this)">
+                    <source data-src="./static/examples/a turtle standing on its hind legs, wearing a top hat.mp4" type="video/mp4"></source>
+                </video>
+                <h6 class="caption">a turtle standing on its hind legs, wearing a top hat</h6>
+            </div>
+            <div class="col-4">
+                <video class="video lazy" loop playsinline autoplay muted onplay="resizeAndPlay(this)">
+                    <source data-src="./static/examples/a DSLR photo of an astronaut standing on the surface of mars.mp4" type="video/mp4"></source>
+                </video>
+                <h6 class="caption">a DSLR photo of an astronaut standing on the surface of mars</h6>
+            </div>
+            <div class="col-4">
+                <video class="video lazy" loop playsinline autoplay muted onplay="resizeAndPlay(this)">
+                    <source data-src="./static/examples/a DSLR photo of edible typewriter made out of vegetables.mp4" type="video/mp4"></source>
+                </video>
+                <h6 class="caption">a DSLR photo of edible typewriter made out of vegetables</h6>
+            </div>
+        </div>
+
+        <div class="row captioned_videos">
+            <div class="col-4">
+                <video class="video lazy" loop playsinline autoplay muted onplay="resizeAndPlay(this)">
+                    <source data-src="./static/examples/flying Dragon, highly detailed, breathing fire, 3d asset.mp4" type="video/mp4"></source>
+                </video>
+                <h6 class="caption">flying Dragon, highly detailed, breathing fire, 3d asset</h6>
+            </div>
+            <div class="col-4">
+                <video class="video lazy" loop playsinline autoplay muted onplay="resizeAndPlay(this)">
+                    <source data-src="./static/examples/a tiger wearing sunglasses and a leather jacket, riding a motorcycle.mp4" type="video/mp4"></source>
+                </video>
+                <h6 class="caption">a tiger wearing sunglasses and a leather jacket, riding a motorcycle</h6>
+            </div>
+            <div class="col-4">
+                <video class="video lazy" loop playsinline autoplay muted onplay="resizeAndPlay(this)">
+                    <source data-src="./static/examples/Panda samurai, anthropomorphic panda in samurai armour, soldier, game asset.mp4" type="video/mp4"></source>
+                </video>
+                <h6 class="caption">Panda samurai, anthropomorphic panda in samurai armour, soldier, game asset</h6>
+            </div>
+        </div>
+
+        <div class="row captioned_videos">
+            <div class="col-4">
+                <video class="video lazy" loop playsinline autoplay muted onplay="resizeAndPlay(this)">
+                    <source data-src="./static/examples/Ninja Assassin, stealthy operative, high-tech weaponry.mp4" type="video/mp4"></source>
+                </video>
+                <h6 class="caption">Ninja Assassin, stealthy operative, high-tech weaponry</h6>
+            </div>
+            <div class="col-4">
+                <video class="video lazy" loop playsinline autoplay muted onplay="resizeAndPlay(this)">
+                    <source data-src="./static/examples/the leaning tower of Pisa, aerial view.mp4" type="video/mp4"></source>
+                </video>
+                <h6 class="caption">the leaning tower of Pisa, aerial view</h6>
+            </div>
+            <div class="col-4">
+                <video class="video lazy" loop playsinline autoplay muted onplay="resizeAndPlay(this)">
+                    <source data-src="./static/examples/a DSLR photo of the Statue of Liberty, aerial view.mp4" type="video/mp4"></source>
+                </video>
+                <h6 class="caption">a DSLR photo of the Statue of Liberty, aerial view</h6>
+            </div>
+        </div>
+
+       
+        <div class="col-sm-8 my-auto center" style="margin-left: auto; margin-right: auto;">
+            <a href="./dmtet_dreamfusion_gallery_0.html" class="btn btn-primary btn-lg btn-search">
+                Results from DreamFusion Prompts 
+            </a>
+            <a href="#" class="btn btn-primary btn-lg btn-search">
+                Additional Results (Coming Soon)
+            </a>
+        </div>
+    </div>
+
+
+
+    <hr class="divider" />
+    <div class="container" style="max-width: 768px;">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2>Gallery Results of <i>Ours (NeRF)</i></h2>
+            </div>
+        </div>
+        <div class="row captioned_videos">
+            <div class="col-4">
+                <video class="video lazy" loop playsinline autoplay muted onplay="resizeAndPlay(this)">
+                    <source data-src="./static/NeRF-examples/a Christmas tree with donuts as decorations.mp4" type="video/mp4"></source>
+                </video>
+                <h6 class="caption">a Christmas tree with donuts as decorations</h6>
+            </div>
+            <div class="col-4">
+                <video class="video lazy" loop playsinline autoplay muted onplay="resizeAndPlay(this)">
+                    <source data-src="./static/NeRF-examples/a confused beagle sitting at a desk working on homework.mp4" type="video/mp4"></source>
+                </video>
+                <h6 class="caption">a confused beagle sitting at a desk working on homework</h6>
+            </div>
+            <div class="col-4">
+                <video class="video lazy" loop playsinline autoplay muted onplay="resizeAndPlay(this)">
+                    <source data-src="./static/NeRF-examples/a fox holding a videogame controller.mp4" type="video/mp4"></source>
+                </video>
+                <h6 class="caption">a fox holding a videogame controller</h6>
+            </div>
+        </div>
+       
+        <div class="row captioned_videos">
+            <div class="col-4">
+                <video class="video lazy" loop playsinline autoplay muted onplay="resizeAndPlay(this)">
+                    <source data-src="./static/NeRF-examples/a group of dogs playing poker, 3d asset.mp4" type="video/mp4"></source>
+                </video>
+                <h6 class="caption">a group of dogs playing poker, 3d asset</h6>
+            </div>
+            <div class="col-4">
+                <video class="video lazy" loop playsinline autoplay muted onplay="resizeAndPlay(this)">
+                    <source data-src="./static/NeRF-examples/a group of squirrels rowing crew.mp4" type="video/mp4"></source>
+                </video>
+                <h6 class="caption">a group of squirrels rowing crew</h6>
+            </div>
+            <div class="col-4">
+                <video class="video lazy" loop playsinline autoplay muted onplay="resizeAndPlay(this)">
+                    <source data-src="./static/NeRF-examples/a gummy bear driving a convertible.mp4" type="video/mp4"></source>
+                </video>
+                <h6 class="caption">a gummy bear driving a convertible</h6>
+            </div>
+        </div>
+        <div class="row captioned_videos">
+            <div class="col-4">
+                <video class="video lazy" loop playsinline autoplay muted onplay="resizeAndPlay(this)">
+                    <source data-src="./static/NeRF-examples/a human skeleton relaxing in a lounge chair.mp4" type="video/mp4"></source>
+                </video>
+                <h6 class="caption">a human skeleton relaxing in a lounge chair</h6>
+            </div>
+            <div class="col-4">
+                <video class="video lazy" loop playsinline autoplay muted onplay="resizeAndPlay(this)">
+                    <source data-src="./static/NeRF-examples/a humanoid robot sitting on a chair drinking a cup of coffee.mp4" type="video/mp4"></source>
+                </video>
+                <h6 class="caption">a humanoid robot sitting on a chair drinking a cup of coffee</h6>
+            </div>
+            <div class="col-4">
+                <video class="video lazy" loop playsinline autoplay muted onplay="resizeAndPlay(this)">
+                    <source data-src="./static/NeRF-examples/a panda wearing a chefs hat and kneading bread dough on a countertop.mp4" type="video/mp4"></source>
+                </video>
+                <h6 class="caption">a panda wearing a chefs hat and kneading bread dough on a countertop</h6>
+            </div>
+        </div>
+        <div class="row captioned_videos">
+            <div class="col-4">
+                <video class="video lazy" loop playsinline autoplay muted onplay="resizeAndPlay(this)">
+                    <source data-src="./static/NeRF-examples/a squirrel dressed like Henry VIII king of England.mp4" type="video/mp4"></source>
+                </video>
+                <h6 class="caption">a squirrel dressed like Henry VIII king of England</h6>
+            </div>
+            <div class="col-4">
+                <video class="video lazy" loop playsinline autoplay muted onplay="resizeAndPlay(this)">
+                    <source data-src="./static/NeRF-examples/a tiger waiter at a fancy restaurant.mp4" type="video/mp4"></source>
+                </video>
+                <h6 class="caption">a tiger waiter at a fancy restaurant</h6>
+            </div>
+            <div class="col-4">
+                <video class="video lazy" loop playsinline autoplay muted onplay="resizeAndPlay(this)">
+                    <source data-src="./static/NeRF-examples/a wide angle zoomed out DSLR photo of a skiing penguin wearing a puffy jacket.mp4" type="video/mp4"></source>
+                </video>
+                <h6 class="caption">a wide angle zoomed out DSLR photo of a skiing penguin wearing a puffy jacket</h6>
+            </div>
+        </div>
+        <div class="row captioned_videos">
+            <div class="col-4">
+                <video class="video lazy" loop playsinline autoplay muted onplay="resizeAndPlay(this)">
+                    <source data-src="./static/NeRF-examples/an origami hippo in a river.mp4" type="video/mp4"></source>
+                </video>
+                <h6 class="caption">an origami hippo in a river</h6>
+            </div>
+            <div class="col-4">
+                <video class="video lazy" loop playsinline autoplay muted onplay="resizeAndPlay(this)">
+                    <source data-src="./static/NeRF-examples/Majestic Peacock Throne, golden opulence, feathers adorned with jewels, royal symbolism, 3D asset.mp4" type="video/mp4"></source>
+                </video>
+                <h6 class="caption">Majestic Peacock Throne, golden opulence, feathers adorned with jewels, royal symbolism, 3D asset</h6>
+            </div>
+            <div class="col-4">
+                <video class="video lazy" loop playsinline autoplay muted onplay="resizeAndPlay(this)">
+                    <source data-src="./static/NeRF-examples/two raccoons playing poker.mp4" type="video/mp4"></source>
+                </video>
+                <h6 class="caption">two raccoons playing poker</h6>
+            </div>
+        </div>
+        <div class="row captioned_videos">
+            <div class="col-4">
+                <video class="video lazy" loop playsinline autoplay muted onplay="resizeAndPlay(this)">
+                    <source data-src="./static/NeRF-examples/Army Jacket, 3D scan.mp4" type="video/mp4"></source>
+                </video>
+                <h6 class="caption">Army Jacket, 3D scan</h6>
+            </div>
+            <div class="col-4">
+                <video class="video lazy" loop playsinline autoplay muted onplay="resizeAndPlay(this)">
+                    <source data-src="./static/NeRF-examples/Humoristic san goku body mixed with wild boar head running, 4K, HD.mp4" type="video/mp4"></source>
+                </video>
+                <h6 class="caption">Humoristic san goku body mixed with wild boar head running, 4K, HD</h6>
+            </div>
+            <div class="col-4">
+                <video class="video lazy" loop playsinline autoplay muted onplay="resizeAndPlay(this)">
+                    <source data-src="./static/NeRF-examples/An intricate complex with steam-powered machinery, twisting pipes, and brick warehouses, shrouded in a foggy, industrial atmosphere, 8K, blender 3d.mp4" type="video/mp4"></source>
+                </video>
+                <h6 class="caption">An intricate complex with steam-powered machinery, twisting pipes, and brick warehouses, shrouded in a foggy, industrial atmosphere, 8K, blender 3d</h6>
+            </div>
+        </div>
+       
+        <div class="col-sm-4 my-auto center" style="margin-left: auto; margin-right: auto;">
+            <a href="#" class="btn btn-primary btn-lg btn-search">
+                Additional Results (Coming Soon)
+            </a>
+        </div>
+    </div>
+
+
+
+
+
+    <hr class="divider" />
+    <div class="container" style="max-width: 768px;">
+        <div class="row">
+            <div class="col">
+                <h2>Text to Normal-Depth</h2>
+                <p>Sampling results of our Normal-Depth diffusion model trained on the Laion-2B dataset</p>
+            </div>
+        </div>
+        <div class="row captioned_videos">
+            <div class="col-md-12">
+                <img src="static/text-to-nd.png" alt="text-to-nd" style="width: 100%">
+            </div>
+        </div>
+    </div>
+
+    <hr class="divider" />
+    <div class="container" style="max-width: 768px;">
+        <div class="row">
+            <div class="col">
+                <h2>BibTex</h2>
+                <p>If you find our approach helpful, you may consider citing our work.</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <pre><code>@article{qiu2023richdreamer,
+                    title={RichDreamer: A Generalizable Normal-Depth Diffusion Model for Detail Richness in Text-to-3D}, 
+                    author={Lingteng Qiu and Guanying Chen and Xiaodong Gu and Qi zuo and Mutian Xu and Yushuang Wu and Weihao Yuan and Zilong Dong and Liefeng Bo and Xiaoguang Han},
+                    year={2023},
+                    journal = {arXiv preprint arXiv:2311.16918}
+                }</code></pre>
+            </div>
+        </div>
+    </div>
+
+
+
+    <hr class="divider" />
+    <div class="container" style="max-width: 768px;">
+        <footer>
+            <p> Website template from <a href="https://dreamfusion3d.github.io/">DreamFusion</a>. We thank the authors for the open-source code.</p>
+        </footer>
+    </div>
+    <script src="https://polyfill.io/v3/polyfill.js?features=IntersectionObserver"></script>
+    <script src="assets/js/yall.js"></script>
+    <script>
+        yall(
+            {
+                observeChanges: true
+            }
+        );
+    </script>
+    <script src="assets/js/scripts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://uploads-ssl.webflow.com/51e0d73d83d06baa7a00000f/js/webflow.fd002feec.js"></script>
+    <!-- Import the component -->
+</body>
+
+</html>
