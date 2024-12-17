@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="MCMat: Multiview-Consistent and Physically Accurate PBR Material Generation">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- 这是网页标题，记得也要改 -->
+  <title>MCMat: Multiview-Consistent and Physically Accurate PBR Material Generation</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<!-- 这里整个section都要改 -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">MCMat: Multiview-Consistent and Physically Accurate PBR Material Generation</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://github.com/ShenhaoZhu">Shenhao Zhu</a><sup>1,2*</sup>,</span>
+            </span>
+            <span class="author-block">
+              <a href="https://lingtengqiu.github.io">Lingteng Qiu</a><sup>2*</sup>,</span>
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=aJPO514AAAAJ&hl=zh-CN">Xiaodong Gu</a><sup>2*</sup>,</span>
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=iuJ1buQAAAAJ&hl=en">Zhengyi Zhao</a><sup>2*</sup>,</span>
+            </span>
+            <br>
+            <span class="author-block">
+              Chao Xu<sup>2</sup>,</span>
+            </span>
+            <span class="author-block">
+              Yuxiao He<sup>1</sup>,</span>
+            </span>
+            <span class="author-block">
+              Zhe Li<sup>2,3</sup>,</span>
+            </span>
+            <span class="author-block">
+              <a href="https://mypage.cuhk.edu.cn/academics/hanxiaoguang/">Xiaoguang Han</a><sup>5,6</sup>,</span>
+            </span>
+            <span class="author-block">
+              <a href="https://yoyo000.github.io/">Yao Yao</a><sup>1</sup>,</span>
+            </span>
+            <span class="author-block">
+              <a href="https://cite.nju.edu.cn/People/Faculty/20190621/i5054.html">Xun Cao</a><sup>1</sup>,</span>
+            </span>
+            <span class="author-block">
+              <a href="https://sites.google.com/site/zhusiyucs/home">Siyu Zhu</a><sup>4</sup>,</span>
+            </span>
+            <span class="author-block">
+              <a href="https://weihao-yuan.com/">Weihao Yuan</a><sup>2</sup>,</span>
+            </span>
+            <br>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=GHOQKCwAAAAJ&hl=zh-CN&oi=ao">Zilong Dong</a><sup>2+</sup>,</span>
+            </span>
+            <span class="author-block">
+              <a href="http://zhuhao.cc/home/">Hao Zhu</a><sup>1+</sup></span>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="eql-cntrb"><small><br><sup>1</sup> Nanjing University &nbsp;</small></span>
+            <span class="eql-cntrb"><small><sup>2</sup> Alibaba Group &nbsp;</small></span>
+            <span class="eql-cntrb"><small><sup>3</sup> Huazhong University of Science and Technology &nbsp;</small></span>
+            <br>
+            <span class="eql-cntrb"><small><sup>4</sup> Fudan University &nbsp;</small></span>
+            <span class="eql-cntrb"><small><sup>5</sup> SSE, CUHKSZ &nbsp;</small></span>
+            <span class="eql-cntrb"><small><sup>6</sup> FNii, CUHKSZ &nbsp;</small></span>
+            <br>
+            <span class="eql-cntrb"><small><sup>*</sup> Equal Contribution &nbsp;</small></span>
+            <span class="eql-cntrb"><small><sup>+</sup> Corresponding Author</small></span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. 请上传完arxiv后更新这两条 -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=xGoPk9s6OB0" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/aigc3d/MCMat" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-small"></section>
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <img src="static/images/fig_teaser.png">
+        </div>
+      </div>  
+    </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <div class="content has-text-justified">
+          <h3 class="title is-3">Abstract</h3>
+          Existing 2D methods utilize UNet-based diffusion models to generate multi-view PBR maps but struggle with multi-view inconsistency, while some 3D methods directly generate UV maps, encountering generalization issues due to the limited 3D data. To address these problems, we propose a two-stage approach, including multi-view generation and UV materials refinement. In the generation stage, we adopt a Diffusion Transformer (DiT) model to generate PBR materials, where both the specially designed multi-branch DiT and reference-based DiT blocks adopt a global attention mechanism to promote feature interaction and fusion between different views, thereby improving multi-view consistency. In addition, we adopt a PBR-based diffusion loss to ensure that the generated materials align with realistic physical principles. In the refinement stage, we propose a material-refined DiT that performs inpainting in empty areas and enhances details in UV space. Except for the normal condition, this refinement also takes the material map from the generation stage as an additional condition to reduce the learning difficulty and improve generalization. Extensive experiments show that our method achieves state-of-the-art performance in texturing 3D objects with PBR materials and provides significant advantages for graphics relighting applications.
+        </div>
+      </div>
+    </div>
+
+    <!-- mv video -->
+    <h3 class="title is-3">Multi-View Material Generation</h3>
+
+    <!-- Video 1 & 2 -->
+    <div class="columns is-centered">
+      <div class="column is-half has-text-centered">
+        <video poster="" id="mv_0" autoplay controls muted loop playsinline style="max-width: 100%; width: 100%; margin: 0 auto;">
+          <source src="./static/videos/mv/mv_0.mp4" type="video/mp4">
+        </video>
+        <p style="font-style: italic;">Golden Ray-Ban Aviator Sunglasses</p>
+      </div>
+      <div class="column is-half has-text-centered">
+        <video poster="" id="mv_1" autoplay controls muted loop playsinline style="max-width: 100%; width: 100%; margin: 0 auto;">
+          <source src="./static/videos/mv/mv_1.mp4" type="video/mp4">
+        </video>
+        <p style="font-style: italic;">Imarf logo representing a Jewish festival</p>
+      </div>
+    </div>
+
+    <!-- Video 3 & 4 -->
+    <div class="columns is-centered">
+      <div class="column is-half has-text-centered">
+        <video poster="" id="mv_2" autoplay controls muted loop playsinline style="max-width: 100%; width: 100%; margin: 0 auto;">
+          <source src="./static/videos/mv/mv_2.mp4" type="video/mp4">
+        </video>
+        <p style="font-style: italic;">A yellow shield with a handle and brown accents</p>
+      </div>
+      <div class="column is-half has-text-centered">
+        <video poster="" id="mv_3" autoplay controls muted loop playsinline style="max-width: 100%; width: 100%; margin: 0 auto;">
+          <source src="./static/videos/mv/mv_3.mp4" type="video/mp4">
+        </video>
+        <p style="font-style: italic;">Colt M191</p>
+      </div>
+    </div>
+
+    <!-- Video 5 & 6 -->
+    <div class="columns is-centered">
+      <div class="column is-half has-text-centered">
+        <video poster="" id="mv_4" autoplay controls muted loop playsinline style="max-width: 100%; width: 100%; margin: 0 auto;">
+          <source src="./static/videos/mv/mv_4.mp4" type="video/mp4">
+        </video>
+        <p style="font-style: italic;">A red wooden TV stand with two drawers and a shelf</p>
+      </div>
+      <div class="column is-half has-text-centered">
+        <video poster="" id="mv_5" autoplay controls muted loop playsinline style="max-width: 100%; width: 100%; margin: 0 auto;">
+          <source src="./static/videos/mv/mv_5.mp4" type="video/mp4">
+        </video>
+        <p style="font-style: italic;">A purple and yellow Power Ranger in a robot suit</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section"></section>
+  <div class="container is-max-desktop">
+    <!-- Title for Generated Textured Meshes -->
+    <h3 class="title is-3">Generated Textured Meshes</h3>
+
+    <!-- Video Row 1 -->
+    <div class="columns is-centered">
+      <div class="column is-one-fifth has-text-centered">
+        <video poster="" id="mesh_0" autoplay controls muted loop playsinline style="max-width: 100%; width: 100%; margin: 0 auto;">
+          <source src="./static/videos/meshes/0.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="column is-one-fifth has-text-centered">
+        <video poster="" id="mesh_1" autoplay controls muted loop playsinline style="max-width: 100%; width: 100%; margin: 0 auto;">
+          <source src="./static/videos/meshes/1.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="column is-one-fifth has-text-centered">
+        <video poster="" id="mesh_2" autoplay controls muted loop playsinline style="max-width: 100%; width: 100%; margin: 0 auto;">
+          <source src="./static/videos/meshes/2.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="column is-one-fifth has-text-centered">
+        <video poster="" id="mesh_3" autoplay controls muted loop playsinline style="max-width: 100%; width: 100%; margin: 0 auto;">
+          <source src="./static/videos/meshes/3.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="column is-one-fifth has-text-centered">
+        <video poster="" id="mesh_4" autoplay controls muted loop playsinline style="max-width: 100%; width: 100%; margin: 0 auto;">
+          <source src="./static/videos/meshes/4.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+    <!-- Video Row 2 -->
+    <div class="columns is-centered">
+      <div class="column is-one-fifth has-text-centered">
+        <video poster="" id="mesh_5" autoplay controls muted loop playsinline style="max-width: 100%; width: 100%; margin: 0 auto;">
+          <source src="./static/videos/meshes/5.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="column is-one-fifth has-text-centered">
+        <video poster="" id="mesh_6" autoplay controls muted loop playsinline style="max-width: 100%; width: 100%; margin: 0 auto;">
+          <source src="./static/videos/meshes/6.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="column is-one-fifth has-text-centered">
+        <video poster="" id="mesh_7" autoplay controls muted loop playsinline style="max-width: 100%; width: 100%; margin: 0 auto;">
+          <source src="./static/videos/meshes/7.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="column is-one-fifth has-text-centered">
+        <video poster="" id="mesh_8" autoplay controls muted loop playsinline style="max-width: 100%; width: 100%; margin: 0 auto;">
+          <source src="./static/videos/meshes/8.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="column is-one-fifth has-text-centered">
+        <video poster="" id="mesh_9" autoplay controls muted loop playsinline style="max-width: 100%; width: 100%; margin: 0 auto;">
+          <source src="./static/videos/meshes/9.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+    <!-- Video Row 3 -->
+    <div class="columns is-centered">
+      <div class="column is-one-fifth has-text-centered">
+        <video poster="" id="mesh_10" autoplay controls muted loop playsinline style="max-width: 100%; width: 100%; margin: 0 auto;">
+          <source src="./static/videos/meshes/10.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="column is-one-fifth has-text-centered">
+        <video poster="" id="mesh_11" autoplay controls muted loop playsinline style="max-width: 100%; width: 100%; margin: 0 auto;">
+          <source src="./static/videos/meshes/11.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="column is-one-fifth has-text-centered">
+        <video poster="" id="mesh_12" autoplay controls muted loop playsinline style="max-width: 100%; width: 100%; margin: 0 auto;">
+          <source src="./static/videos/meshes/12.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="column is-one-fifth has-text-centered">
+        <video poster="" id="mesh_13" autoplay controls muted loop playsinline style="max-width: 100%; width: 100%; margin: 0 auto;">
+          <source src="./static/videos/meshes/13.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="column is-one-fifth has-text-centered">
+        <video poster="" id="mesh_14" autoplay controls muted loop playsinline style="max-width: 100%; width: 100%; margin: 0 auto;">
+          <source src="./static/videos/meshes/14.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section"></section>
+  <div class="container is-max-desktop">
+    <!-- Relighting Results Title -->
+    <h3 class="title is-3">Relighting Results</h3>
+
+    <!-- Video 1 & 2 -->
+    <div class="columns is-centered">
+      <div class="column is-half has-text-centered">
+        <video poster="" id="relighting_0" autoplay controls muted loop playsinline style="max-width: 100%; width: 100%; margin: 0 auto;">
+          <source src="./static/videos/relighting_h264/0_h264.mp4" type="video/mp4">
+        </video>
+        <p style="font-style: italic;">Golden Ray-Ban Aviator Sunglasses</p>
+      </div>
+      <div class="column is-half has-text-centered">
+        <video poster="" id="relighting_1" autoplay controls muted loop playsinline style="max-width: 100%; width: 100%; margin: 0 auto;">
+          <source src="./static/videos/relighting_h264/1_h264.mp4" type="video/mp4">
+        </video>
+        <p style="font-style: italic;">Tiki mask model with colorful feathers on it</p>
+      </div>
+    </div>
+
+    <!-- Video 3 & 4 -->
+    <div class="columns is-centered">
+      <div class="column is-half has-text-centered">
+        <video poster="" id="relighting_2" autoplay controls muted loop playsinline style="max-width: 100%; width: 100%; margin: 0 auto;">
+          <source src="./static/videos/relighting_h264/2_h264.mp4" type="video/mp4">
+        </video>
+        <p style="font-style: italic;">Colt M191</p>
+      </div>
+      <div class="column is-half has-text-centered">
+        <video poster="" id="relighting_3" autoplay controls muted loop playsinline style="max-width: 100%; width: 100%; margin: 0 auto;">
+          <source src="./static/videos/relighting_h264/3_h264.mp4" type="video/mp4">
+        </video>
+        <p style="font-style: italic;">A purple and yellow Power Ranger in a robot suit</p>
+      </div>
+    </div>
+
+    <!-- Video 5 & 6 -->
+    <div class="columns is-centered">
+      <div class="column is-half has-text-centered">
+        <video poster="" id="relighting_4" autoplay controls muted loop playsinline style="max-width: 100%; width: 100%; margin: 0 auto;">
+          <source src="./static/videos/relighting_h264/4_h264.mp4" type="video/mp4">
+        </video>
+        <p style="font-style: italic;">Steampunk Steam Engine Clock</p>
+      </div>
+      <div class="column is-half has-text-centered">
+        <video poster="" id="relighting_5" autoplay controls muted loop playsinline style="max-width: 100%; width: 100%; margin: 0 auto;">
+          <source src="./static/videos/relighting_h264/5_h264.mp4" type="video/mp4">
+        </video>
+        <p style="font-style: italic;">Halo Master Chief helmet model by Daniel Taylor on DeviantArt</p>
+      </div>
+    </div>
+
+    <!-- Video 7 & 8 -->
+    <div class="columns is-centered">
+      <div class="column is-half has-text-centered">
+        <video poster="" id="relighting_6" autoplay controls muted loop playsinline style="max-width: 100%; width: 100%; margin: 0 auto;">
+          <source src="./static/videos/relighting_h264/6_h264.mp4" type="video/mp4">
+        </video>
+        <p style="font-style: italic;">Yellow and black DeWalt cordless drill</p>
+      </div>
+      <div class="column is-half has-text-centered">
+        <video poster="" id="relighting_7" autoplay controls muted loop playsinline style="max-width: 100%; width: 100%; margin: 0 auto;">
+          <source src="./static/videos/relighting_h264/7_h264.mp4" type="video/mp4">
+        </video>
+        <p style="font-style: italic;">NASA Voyager spacecraft</p>
+      </div>
+    </div>
+
+    <!-- Video 9 & 10 -->
+    <div class="columns is-centered">
+      <div class="column is-half has-text-centered">
+        <video poster="" id="relighting_8" autoplay controls muted loop playsinline style="max-width: 100%; width: 100%; margin: 0 auto;">
+          <source src="./static/videos/relighting_h264/8_h264.mp4" type="video/mp4">
+        </video>
+        <p style="font-style: italic;">An ornate, floral tiara with intricate details</p>
+      </div>
+      <div class="column is-half has-text-centered">
+        <video poster="" id="relighting_9" autoplay controls muted loop playsinline style="max-width: 100%; width: 100%; margin: 0 auto;">
+          <source src="./static/videos/relighting_h264/9_h264.mp4" type="video/mp4">
+        </video>
+        <p style="font-style: italic;">A military tactical vest</p>
+      </div>
+    </div>
+
+    <!-- Video 11 & 12 -->
+    <div class="columns is-centered">
+      <div class="column is-half has-text-centered">
+        <video poster="" id="relighting_10" autoplay controls muted loop playsinline style="max-width: 100%; width: 100%; margin: 0 auto;">
+          <source src="./static/videos/relighting_h264/10_h264.mp4" type="video/mp4">
+        </video>
+        <p style="font-style: italic;">A snake head with red eyes, silver and gold armor</p>
+      </div>
+      <div class="column is-half has-text-centered">
+        <video poster="" id="relighting_11" autoplay controls muted loop playsinline style="max-width: 100%; width: 100%; margin: 0 auto;">
+          <source src="./static/videos/relighting_h264/11_h264.mp4" type="video/mp4">
+        </video>
+        <p style="font-style: italic;">A marble fountain and tombstone with a pillar</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="section"></section>
+  <div class="container is-max-desktop">
+    <!-- Video Title -->
+    <h3 class="title is-3">Video</h3>
+
+    <!-- Video -->
+    <div class="columns is-centered">
+      <div class="column is-10 has-text-centered">
+        <video autoplay controls muted loop style="max-width: 100%; margin: 0 auto;">
+          <source src="static/videos/page_video_x264.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Methodology Title -->
+    <h3 class="title is-3">Methodology</h3>
+
+    <!-- Pipeline Image -->
+    <div class="columns is-centered">
+      <div class="column is-10 has-text-centered">
+        <img src="./static/images/fig_pipeline.png" alt="Pipeline Diagram" style="max-width: 100%; margin: 0 auto;">
+      </div>
+    </div>
+
+    <!-- Description -->
+    <div class="columns is-centered">
+      <div class="column is-10">
+        <p>Our method consists of a generation stage and a refinement stage. In the generation stage, the Multi-View Generation DiT (MG-DiT) model utilizes surface normal information from the 3D model as geometric conditions, reference images, and textual descriptions to generate multi-view-consistent PBR material properties. In the refinement stage, the Material Refinement DiT (MR-DiT) model performs inpainting in void regions and enhances details in UV space, ultimately producing high-quality 2K resolution textures with precise material information.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@misc{zhu2024mcmat,
+      title={MCMat: Multiview-Consistent and Physically Accurate PBR Material Generation},
+      author={Shenhao Zhu and Lingteng Qiu and Xiaodong Gu and Zhengyi Zhao and Chao Xu and Yuxiao He and Zhe Li and Xiaoguang Han and Yao Yao and Xun Cao and Siyu Zhu and Weihao Yuan and Zilong Dong and Hao Zhu},
+      year={2024},
+    }</code></pre>
+  </div>
+</section>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <!-- 这一部分主要是链接pdf文档和GitHub，如果建好了可以把链接改好上传上去 -->
+    <!-- <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div> -->
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            The website template was borrowed from <a
+              href="https://github.com/nerfies/nerfies.github.io">nerfies</a>. Thanks to <a
+              href="https://github.com/nerfies/nerfies.github.io">nerfies</a>.
+          </p>
+          <p>
+            Like <a
+            href="https://github.com/nerfies/nerfies.github.io">nerfies</a>, this website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
