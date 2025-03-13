@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="keywords" content="LHM: Large Animatable Human Reconstruction Model from a Single Image in Seconds">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LHM</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NQDC0FLLLN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-NQDC0FLLLN');
+  </script>
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://github.com/aigc3d">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://aigc3d.github.io/richdreamer">
+            RichDreamer
+          </a>
+          <a class="navbar-item" href="https://aigc3d.github.io/gobjaverse/">
+            G-buffer Objaverse
+          </a>
+          <a class="navbar-item" href="https://github.com/Stable-X/StableNormal">
+            StableNormal
+          <a class="navbar-item" href="https://aigc3d.github.io/VideoMV">
+            VideoMV
+          </a>
+          <a class="navbar-item" href="https://lingtengqiu.github.io/2024/AniGS/">
+            AniGS 
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h2 class="title is-2 publication-title"><b style="color: #658fbf">L</b><b style="color: #5bcd68">H</b><b style="color: #de5312d0">M</b>: Large Animatable Human Reconstruction Model from a Single Image in Seconds
+          </h2>
+
+          <div class="is-size-5 publication-authors">
+            <!-- Paper authors -->
+            <span class="author-block">
+            <a href="https://lingtengqiu.github.io/" target="_blank">Lingteng Qiu</a><sup>*</sup>,</span>
+            <a href="https://scholar.google.com.hk/citations?user=aJPO514AAAAJ&hl=zh-CN&oi=ao" target="_blank">Xiaodong Gu</a><sup>*</sup>,</span>
+            <a href="https://liphao99.github.io/" target="_blank">Peihao Li</a><sup>*</sup>,</span>
+            <a href="https://scholar.google.com/citations?user=UDnHe2IAAAAJ&hl=zh-CN" target="_blank">Qi Zuo</a><sup>*</sup>,</span>
+            <br>
+            <a href="https://scholar.google.com/citations?user=7gTmYHkAAAAJ&hl=zh-CN" target="_blank">Weichao Shen</a>,</span>
+            <a href="https://scholar.google.com/citations?user=oJjasIEAAAAJ&hl=en" target="_blank">Junfei Zhang</a>,</span>
+            <a href="https://sites.google.com/site/kejieqiujack/home" target="_blank">Kejie Qiu</a>,</span>
+            <a href="https://weihao-yuan.com/" target="_blank">Weihao Yuan</a>,</span>
+            <br>
+            <a href="https://guanyingc.github.io/" target="_blank">Guanying Chen</a><sup>#</sup>,</span>
+            <a href="https://scholar.google.com/citations?user=GHOQKCwAAAAJ&amp;hl=zh-CN&amp;oi=ao" target="_blank">Zilong Dong</a><sup>#</sup></span>
+            <a href="https://scholar.google.com/citations?user=FJwtMf0AAAAJ&amp;hl=zh-CN" target="_blank">Liefeng Bo</a><sup></sup>,</span>
+            </span>
+          </div>
+
+          <div class="is-size-4 publication-authors">
+            Tongyi Lab，Alibaba Group
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="eql-cntrb"><small><sup>*</sup> Equal Contribution &nbsp;</small></span>
+            <span class="eql-cntrb"><small><sup>#</sup>Corresponding Author</small></span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="https://github.com/aigc3d/LHM" target="_blank"
+                   class="external-link button is-medium is-rounded  is-dark">
+                  <span>Code</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="" target="_blank"
+                   class="external-link button is-medium is-rounded  is-dark">
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="" target="_blank"
+                   class="external-link button is-medium is-rounded  is-dark">
+                  <span>Video</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-medium is-rounded is-dark">
+                  <span>Live Demo</span>
+                </a>
+              </span>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column is-four-fifths">
+            <div id="results-carousel" class="carousel results-carousel">
+              <div class="item item-apple">
+                <video poster="" id="teaser_apple_launch" autoplay controls muted loop playsinline height="100%">
+                  <source src="./static/videos/teaser.mp4"
+                          type="video/mp4">
+                </video>
+              </div>
+              <div class="item item-dance_girl">
+                <video poster="" id="dance_girl" autoplay controls muted loop playsinline height="100%">
+                  <source src="./static/videos/teaser1.mp4"
+                          type="video/mp4">
+                </video>
+              </div>
+              <!-- <div class="item item-dance_girl">
+                <video poster="" id="dance_girl" autoplay controls muted loop playsinline height="100%">
+                  <source src="./static/videos/teaser_dance.mp4"
+                          type="video/mp4">
+                </video>
+              </div>
+              <div class="item item-dance_keli">
+                <video poster="" id="dance_keli" autoplay controls muted loop playsinline height="100%">
+                  <source src="./static/videos/teaser_mike.mp4"
+                          type="video/mp4">
+                </video>
+              </div> -->
+              <!-- <div class="item item-dance_keli">
+                <video poster="" id="dance_keli" autoplay controls muted loop playsinline height="100%">
+                  <source src="./static/videos/teaser2.mp4"
+                          type="video/mp4">
+                </video>
+              </div>
+              <div class="item item-dance_keli">
+                <video poster="" id="dance_keli" autoplay controls muted loop playsinline height="100%">
+                  <source src="./static/videos/animation_boluo.mp4"
+                          type="video/mp4">
+                </video>
+              </div> -->
+              <!-- <div class="item item-dance_robot">
+                <video poster="" id="dance_robot" autoplay controls muted loop playsinline height="100%">
+                  <source src="./static/videos/teaser1.mp4"
+                          type="video/mp4">
+                </video>
+              </div>
+              <div class="item item-dance_robot">
+                <video poster="" id="dance_robot" autoplay controls muted loop playsinline height="100%">
+                  <source src="./static/videos/teaser1.mp4"
+                          type="video/mp4">
+                </video>
+              </div>
+              <div class="item item-kongfu_pig">
+                <video poster="" id="kongfu_pig" autoplay controls muted loop playsinline height="100%">
+                  <source src="./static/videos/teaser1.mp4"
+                          type="video/mp4">
+                </video>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section> -->
+
+
+<section class="hero is-small">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <img src="static/images/LHM_teaser_hr.png", width="100%">
+        </div>
+      </div>  
+    </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <div class="content has-text-justified">
+          <h3 class="title is-3">Abstract</h3>
+            Animatable 3D human reconstruction from a single image is a challenging problem due to the ambiguity in decoupling geometry, appearance, and deformation.
+            Recent advances in 3D human reconstruction mainly focus on static human modeling, and the reliance of using synthetic 3D scans for training limits their generalization ability. 
+            Conversely, optimization-based video methods achieve higher fidelity but demand controlled capture conditions and computationally intensive refinement processes. 
+            Motivated by the emergence of large reconstruction models for efficient static reconstruction, we propose LHM (Large Animatable Human Reconstruction Model) to infer high-fidelity avatars represented as 3D Gaussian splatting in a feed-forward pass. 
+            Our model leverages a multimodal transformer architecture to effectively encode the human body positional features and image features with attention mechanism, enabling detailed preservation of clothing geometry and texture. 
+            To further boost the face identity preservation and fine detail recovery, we propose a head feature pyramid encoding scheme to aggregate multi-scale features of the head regions. 
+            Extensive experiments demonstrate that our LHM generates plausible animatable human in seconds without post-processing for face and hands, 
+            outperforming existing methods in both reconstruction accuracy and generalization ability.
+          </p>
+          
+          <!-- video demo -->
+          <h3 class="title is-3">Video</h3>
+            <video poster="https://youtu.be/_GHOg9iwlXE" id="teaser_apple_launch" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/teaser.mp4"
+                      type="video/mp4">
+            </video>
+            <br>
+            For netizens in China, considering the problem of Internet restrictions, we provide a video link to <a href="">bilibili</a>.
+          </p>
+
+
+          <!-- methodology -->
+          <h3 class="title is-3">Methodology</h3>
+            <img src="static/images/LHM_pipeline.png">
+            Overview of the proposed LHM. Our method extracts body and head image tokens from the input image, 
+            and utilizes the proposed Multimodal Body-Head Transformer (MBHT) to fuse the 3D geometric body tokens with the image tokens. 
+            After the attention-based fusion process, the geometric body tokens are decoded into Gaussian parameters.
+          </p>
+
+            <!-- animation video -->
+          <h3 class="title is-3">Animation Results</h3>
+          <p>
+            <!-- basketball -->
+            <div class="container is-max-desktop">
+              <div class="columns is-centered">
+                <div class="column is-four-fifths">
+                    <div id="results-carousel" class="carousel results-carousel">
+
+                      <div class="item item-dance_girl">
+                        <video poster="" id="dance_girl" autoplay controls muted loop playsinline height="100%">
+                          <source src="./static/videos/jntm/jntm_0.mp4"
+                                  type="video/mp4">
+                        </video>
+                      </div>
+                      <div class="item item-dance_girl">
+                        <video poster="" id="dance_girl" autoplay controls muted loop playsinline height="100%">
+                          <source src="./static/videos/jntm/jntm_1.mp4"
+                                  type="video/mp4">
+                        </video>
+                      </div>
+                      <div class="item item-dance_girl">
+                        <video poster="" id="dance_girl" autoplay controls muted loop playsinline height="100%">
+                          <source src="./static/videos/jntm/jntm_2.mp4"
+                                  type="video/mp4">
+                        </video>
+                      </div>
+                      <div class="item item-dance_girl">
+                        <video poster="" id="dance_girl" autoplay controls muted loop playsinline height="100%">
+                          <source src="./static/videos/jntm/jntm_3.mp4"
+                                  type="video/mp4">
+                        </video>
+                      </div>
+                      <div class="item item-dance_girl">
+                        <video poster="" id="dance_girl" autoplay controls muted loop playsinline height="100%">
+                          <source src="./static/videos/jntm/jntm_4.mp4"
+                                  type="video/mp4">
+                        </video>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+            <!-- jljt-->
+            <div class="container is-max-desktop">
+              <div class="columns is-centered">
+                <div class="column is-four-fifths">
+                    <div id="results-carousel" class="carousel results-carousel">
+
+                      <div class="item item-dance_girl">
+                        <video poster="" id="dance_girl" autoplay controls muted loop playsinline height="100%">
+                          <source src="./static/videos/jljt/jljt_0.mp4"
+                                  type="video/mp4">
+                        </video>
+                      </div>
+                      <div class="item item-dance_girl">
+                        <video poster="" id="dance_girl" autoplay controls muted loop playsinline height="100%">
+                          <source src="./static/videos/jljt/jljt_1.mp4"
+                                  type="video/mp4">
+                        </video>
+                      </div>
+                      <div class="item item-dance_girl">
+                        <video poster="" id="dance_girl" autoplay controls muted loop playsinline height="100%">
+                          <source src="./static/videos/jljt/jljt_2.mp4"
+                                  type="video/mp4">
+                        </video>
+                      </div>
+                      <div class="item item-dance_girl">
+                        <video poster="" id="dance_girl" autoplay controls muted loop playsinline height="100%">
+                          <source src="./static/videos/jljt/jljt_3.mp4"
+                                  type="video/mp4">
+                        </video>
+                      </div>
+                      <div class="item item-dance_girl">
+                        <video poster="" id="dance_girl" autoplay controls muted loop playsinline height="100%">
+                          <source src="./static/videos/jljt/jljt_4.mp4"
+                                  type="video/mp4">
+                        </video>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+
+            <!-- meizihaokan-->
+            <div class="container is-max-desktop">
+              <div class="columns is-centered">
+                <div class="column is-four-fifths">
+                    <div id="results-carousel" class="carousel results-carousel">
+
+                      <div class="item item-dance_girl">
+                        <video poster="" id="dance_girl" autoplay controls muted loop playsinline height="100%">
+                          <source src="./static/videos/meizi_hankao_0/meizi_haokan_0.mp4"
+                                  type="video/mp4">
+                        </video>
+                      </div>
+                      <div class="item item-dance_girl">
+                        <video poster="" id="dance_girl" autoplay controls muted loop playsinline height="100%">
+                          <source src="./static/videos/meizi_hankao_0/meizi_haokan_1.mp4"
+                                  type="video/mp4">
+                        </video>
+                      </div>
+                      <div class="item item-dance_girl">
+                        <video poster="" id="dance_girl" autoplay controls muted loop playsinline height="100%">
+                          <source src="./static/videos/meizi_hankao_0/meizi_haokan_2.mp4"
+                                  type="video/mp4">
+                        </video>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+            <!-- nizaichang-->
+            <div class="container is-max-desktop">
+              <div class="columns is-centered">
+                <div class="column is-four-fifths">
+                    <div id="results-carousel" class="carousel results-carousel">
+
+                      <div class="item item-dance_girl">
+                        <video poster="" id="dance_girl" autoplay controls muted loop playsinline height="100%">
+                          <source src="./static/videos/nizaichangge/nizaichangge_0.mp4"
+                                  type="video/mp4">
+                        </video>
+                      </div>
+                      <div class="item item-dance_girl">
+                        <video poster="" id="dance_girl" autoplay controls muted loop playsinline height="100%">
+                          <source src="./static/videos/nizaichangge/nizaichangge_1.mp4"
+                                  type="video/mp4">
+                        </video>
+                      </div>
+                      <div class="item item-dance_girl">
+                        <video poster="" id="dance_girl" autoplay controls muted loop playsinline height="100%">
+                          <source src="./static/videos/nizaichangge/nizaichangge_2.mp4"
+                                  type="video/mp4">
+                        </video>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+            <!-- nezha-->
+            <div class="container is-max-desktop">
+              <div class="columns is-centered">
+                <div class="column is-four-fifths">
+                    <div id="results-carousel" class="carousel results-carousel">
+
+                      <div class="item item-dance_girl">
+                        <video poster="" id="dance_girl" autoplay controls muted loop playsinline height="100%">
+                          <source src="./static/videos/nazha/nazha_0.mp4"
+                                  type="video/mp4">
+                        </video>
+                      </div>
+                      <div class="item item-dance_girl">
+                        <video poster="" id="dance_girl" autoplay controls muted loop playsinline height="100%">
+                          <source src="./static/videos/nazha/nazha_1.mp4"
+                                  type="video/mp4">
+                        </video>
+                      </div>
+                      <div class="item item-dance_girl">
+                        <video poster="" id="dance_girl" autoplay controls muted loop playsinline height="100%">
+                          <source src="./static/videos/nazha/nazha_2.mp4"
+                                  type="video/mp4">
+                        </video>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+            <!-- wanxinln-->
+            <div class="container is-max-desktop">
+              <div class="columns is-centered">
+                <div class="column is-four-fifths">
+                    <div id="results-carousel" class="carousel results-carousel">
+
+                      <div class="item item-dance_girl">
+                        <video poster="" id="dance_girl" autoplay controls muted loop playsinline height="100%">
+                          <source src="./static/videos/wxl/wxl_0.mp4"
+                                  type="video/mp4">
+                        </video>
+                      </div>
+                      <div class="item item-dance_girl">
+                        <video poster="" id="dance_girl" autoplay controls muted loop playsinline height="100%">
+                          <source src="./static/videos/wxl/wxl_1.mp4"
+                                  type="video/mp4">
+                        </video>
+                      </div>
+                      <div class="item item-dance_girl">
+                        <video poster="" id="dance_girl" autoplay controls muted loop playsinline height="100%">
+                          <source src="./static/videos/wxl/wxl_2.mp4"
+                                  type="video/mp4">
+                        </video>
+                      </div>
+                      <div class="item item-dance_girl">
+                        <video poster="" id="dance_girl" autoplay controls muted loop playsinline height="100%">
+                          <source src="./static/videos/wxl/wxl_3.mp4"
+                                  type="video/mp4">
+                        </video>
+                      </div>
+                      <div class="item item-dance_girl">
+                        <video poster="" id="dance_girl" autoplay controls muted loop playsinline height="100%">
+                          <source src="./static/videos/wxl/wxl_4.mp4"
+                                  type="video/mp4">
+                        </video>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+            <!-- lanqiu-->
+            <div class="container is-max-desktop">
+              <div class="columns is-centered">
+                <div class="column is-four-fifths">
+                    <div id="results-carousel" class="carousel results-carousel">
+
+                      <div class="item item-dance_girl">
+                        <video poster="" id="dance_girl" autoplay controls muted loop playsinline height="100%">
+                          <source src="./static/videos/lanqiu/lanqiu_0.mp4"
+                                  type="video/mp4">
+                        </video>
+                      </div>
+                      <div class="item item-dance_girl">
+                        <video poster="" id="dance_girl" autoplay controls muted loop playsinline height="100%">
+                          <source src="./static/videos/lanqiu/lanqiu_1.mp4"
+                                  type="video/mp4">
+                        </video>
+                      </div>
+                      <div class="item item-dance_girl">
+                        <video poster="" id="dance_girl" autoplay controls muted loop playsinline height="100%">
+                          <source src="./static/videos/lanqiu/lanqiu_2.mp4"
+                                  type="video/mp4">
+                        </video>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+            <!-- mimo_lanqiu-->
+            <div class="container is-max-desktop">
+              <div class="columns is-centered">
+                <div class="column is-four-fifths">
+                    <div id="results-carousel" class="carousel results-carousel">
+
+                      <div class="item item-dance_girl">
+                        <video poster="" id="dance_girl" autoplay controls muted loop playsinline height="100%">
+                          <source src="./static/videos/mimo_lanqiu/mimo_lanqiu_0.mp4"
+                                  type="video/mp4">
+                        </video>
+                      </div>
+                      <div class="item item-dance_girl">
+                        <video poster="" id="dance_girl" autoplay controls muted loop playsinline height="100%">
+                          <source src="./static/videos/mimo_lanqiu/mimo_lanqiu_1.mp4"
+                                  type="video/mp4">
+                        </video>
+                      </div>
+                      <div class="item item-dance_girl">
+                        <video poster="" id="dance_girl" autoplay controls muted loop playsinline height="100%">
+                          <source src="./static/videos/mimo_lanqiu/mimo_lanqiu_2.mp4"
+                                  type="video/mp4">
+                        </video>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+
+          </div>
+        </p>
+
+
+        </div>
+      </div>
+          <h3 class="title is-3">Citation</h3>
+            If you find our approach helpful, you may consider citing our work.
+            <hr style="margin-top: 0px" />
+            <pre style="background-color: #e9eeef; padding: 1.5em 1.5em; border-radius: 20px">
+              <code>@article{qiu2025LHM,
+                title={LHM: Large Animatable Human Reconstruction Model from a Single Image in One Second},
+                author={Lingteng Qiu and Xiaodong Gu and Peihao Li  and Qi Zuo
+                  and Weichao Shen and Junfei Zhang and Kejie Qiu and Weihao Yuan
+                  and Guanying Chen and Zilong Dong and Liefeng Bo 
+                  },
+                booktitle={arXiv preprint arXiv:xxxxx},
+                year={2025}
+              }</code>
+            </pre>
+            <hr />
+    </div>
+
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p> Website template from <a href="https://nerfies.github.io//">Nerfies</a>. We thank the authors for the open-source code </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
+
+
