@@ -34,19 +34,39 @@ $(document).ready(function() {
 			slidesToShow: 1,
 			loop: true,
 			infinite: true,
-			autoplay: true,
-			autoplaySpeed: 3000,
+			autoplay: false,
     }
 
 		// Initialize all div with carousel class
     var carousels = bulmaCarousel.attach('.carousel', options);
 
-    // Loop on each carousel initialized
+    // For each carousel, listen for video 'ended' events to advance to next slide
     for(var i = 0; i < carousels.length; i++) {
-    	// Add listener to  event
-    	carousels[i].on('before:show', state => {
-    		console.log(state);
-    	});
+    	(function(carousel) {
+    		// When a slide is shown, play its video
+    		carousel.on('after:show', function(state) {
+    			var currentSlide = carousel.slides[carousel.state.currentIndex || 0];
+    			if (currentSlide) {
+    				var video = currentSlide.querySelector('video');
+    				if (video) {
+    					video.currentTime = 0;
+    					video.play();
+    				}
+    			}
+    		});
+
+    		// Attach ended listeners to all videos in the carousel
+    		if (carousel.slides) {
+    			carousel.slides.forEach(function(slide) {
+    				var video = slide.querySelector('video');
+    				if (video) {
+    					video.addEventListener('ended', function() {
+    						carousel.next();
+    					});
+    				}
+    			});
+    		}
+    	})(carousels[i]);
     }
 
     // Access to bulmaCarousel instance of an element
