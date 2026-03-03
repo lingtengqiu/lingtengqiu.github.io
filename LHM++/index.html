@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="keywords" content="LHM++: An Efficient Large Human Reconstruction Model for Pose-free Images to 3D">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LHM++</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NQDC0FLLLN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-NQDC0FLLLN');
+  </script>
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://github.com/aigc3d">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://aigc3d.github.io/projects/LHM/">
+            LHM
+          </a>
+          <a class="navbar-item" href="https://aigc3d.github.io/richdreamer">
+            RichDreamer
+          </a>
+          <a class="navbar-item" href="https://aigc3d.github.io/gobjaverse/">
+            G-buffer Objaverse
+          </a>
+          <a class="navbar-item" href="https://github.com/Stable-X/StableNormal">
+            StableNormal
+          <a class="navbar-item" href="https://aigc3d.github.io/VideoMV">
+            VideoMV
+          </a>
+          <a class="navbar-item" href="https://lingtengqiu.github.io/2024/AniGS/">
+            AniGS 
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <div style="text-align: center; margin-bottom: 12px;">
+            <img src="./static/images/LHM++_logo.png" alt="LHM++ Logo" style="height: 140px; display: block; margin: 0 auto 10px auto;">
+            <h2 class="title is-2 publication-title" style="margin-bottom: 0;"><b style="color: #7B2FBE">L</b><b style="color: #9B59B6">H</b><b style="color: #C084FC">M</b><b style="background: linear-gradient(135deg, #C084FC, #E879F9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 1.1em;">++</b>: <b style="color: #6D28D9">A</b>n <b style="color: #7C3AED">E</b>fficient <b style="color: #8B5CF6">L</b>arge <b style="color: #9B59B6">H</b>uman <b style="color: #A78BFA">R</b>econstruction <b style="color: #B794F4">M</b>odel for <b style="color: #C084FC">P</b>ose-free <b style="color: #D6BCFA">I</b>mages to <b style="color: #E879F9">3D</b>
+            </h2>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <!-- Paper authors -->
+            <span class="author-block">
+            <a href="https://lingtengqiu.github.io/" target="_blank">Lingteng Qiu</a><sup>1*</sup>,</span>
+            <a href="https://liphao99.github.io/" target="_blank">Peihao Li</a><sup>1*</sup>,</span>
+            <a href="https://lhyfst.github.io/" target="_blank">Heyuan Li</a><sup>3*</sup>,</span>
+            <br>
+            <a href="https://scholar.google.com/citations?user=UDnHe2IAAAAJ&hl=zh-CN" target="_blank">Qi Zuo</a><sup>1</sup>,</span>
+            <a href="https://scholar.google.com.hk/citations?user=aJPO514AAAAJ&hl=zh-CN&oi=ao" target="_blank">Xiaodong Gu</a><sup>1</sup>,</span>
+            <a href="https://fdyuandong.github.io/yuandong/" target="_blank">Yuan Dong</a><sup>1</sup>,</span>
+            <a href="https://weihao-yuan.com/" target="_blank">Weihao Yuan</a><sup>1</sup>,</span>
+            <a href="https://prstrive.github.io/" target="_blank">Rui Peng</a><sup>1</sup>,</span>
+            <a href="https://sites.google.com/site/zhusiyucs/home" target="_blank">Siyu Zhu</a><sup>4</sup>,</span>
+            <br>
+            <a href="https://gaplab.cuhk.edu.cn/pages/people" target="_blank">Xiaoguang Han</a><sup>3</sup>,</span>
+            <a href="https://guanyingc.github.io/" target="_blank">Guanying Chen</a><sup>2✉</sup>,</span>
+            <a href="https://scholar.google.com/citations?user=GHOQKCwAAAAJ&amp;hl=zh-CN&amp;oi=ao" target="_blank">Zilong Dong</a><sup>1✉</sup></span>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <sup>1</sup>Tongyi Lab, Alibaba Group &nbsp;&nbsp; <sup>2</sup>SYSU &nbsp;&nbsp; <sup>3</sup>CUHK-SZ &nbsp;&nbsp; <sup>4</sup>Fudan University
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="eql-cntrb"><small><sup>*</sup> Equal Contribution &nbsp;</small></span>
+            <span class="eql-cntrb"><small><sup>✉</sup>Corresponding Author</small></span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="https://github.com/aigc3d/LHM" target="_blank"
+                   class="external-link button is-medium is-rounded  is-dark">
+                  <span>Code</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2503.10625" target="_blank"
+                   class="external-link button is-medium is-rounded  is-dark">
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://youtu.be/tivEpz_yiEo" target="_blank"
+                   class="external-link button is-medium is-rounded  is-dark">
+                  <span>Video</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://huggingface.co/spaces/DyrusQZ/LHM"
+                   class="external-link button is-medium is-rounded is-dark">
+                  <span>Live Demo</span>
+                </a>
+              </span>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column is-four-fifths">
+            <div id="results-carousel" class="carousel results-carousel">
+              <div class="item item-apple">
+                <video poster="" id="teaser_apple_launch" autoplay controls muted loop playsinline height="100%">
+                  <source src="./static/videos/teaser.mp4"
+                          type="video/mp4">
+                </video>
+              </div>
+              <div class="item item-dance_girl">
+                <video poster="" id="dance_girl" autoplay controls muted loop playsinline height="100%">
+                  <source src="./static/videos/teaser1.mp4"
+                          type="video/mp4">
+                </video>
+              </div>
+              <!-- <div class="item item-dance_girl">
+                <video poster="" id="dance_girl" autoplay controls muted loop playsinline height="100%">
+                  <source src="./static/videos/teaser_dance.mp4"
+                          type="video/mp4">
+                </video>
+              </div>
+              <div class="item item-dance_keli">
+                <video poster="" id="dance_keli" autoplay controls muted loop playsinline height="100%">
+                  <source src="./static/videos/teaser_mike.mp4"
+                          type="video/mp4">
+                </video>
+              </div> -->
+              <!-- <div class="item item-dance_keli">
+                <video poster="" id="dance_keli" autoplay controls muted loop playsinline height="100%">
+                  <source src="./static/videos/teaser2.mp4"
+                          type="video/mp4">
+                </video>
+              </div>
+              <div class="item item-dance_keli">
+                <video poster="" id="dance_keli" autoplay controls muted loop playsinline height="100%">
+                  <source src="./static/videos/animation_boluo.mp4"
+                          type="video/mp4">
+                </video>
+              </div> -->
+              <!-- <div class="item item-dance_robot">
+                <video poster="" id="dance_robot" autoplay controls muted loop playsinline height="100%">
+                  <source src="./static/videos/teaser1.mp4"
+                          type="video/mp4">
+                </video>
+              </div>
+              <div class="item item-dance_robot">
+                <video poster="" id="dance_robot" autoplay controls muted loop playsinline height="100%">
+                  <source src="./static/videos/teaser1.mp4"
+                          type="video/mp4">
+                </video>
+              </div>
+              <div class="item item-kongfu_pig">
+                <video poster="" id="kongfu_pig" autoplay controls muted loop playsinline height="100%">
+                  <source src="./static/videos/teaser1.mp4"
+                          type="video/mp4">
+                </video>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section> -->
+
+
+<section class="hero is-small">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <img src="static/images/LHM++_teaser.png", width="100%">
+        </div>
+      </div>  
+    </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <div class="content has-text-justified">
+          <h3 class="title is-3">Abstract</h3>
+            Reconstructing animatable 3D humans from casually captured images of articulated subjects without camera or pose information is highly practical but remains challenging due to view misalignment, occlusions, and the absence of structural priors. In this work, we present LHM++, an efficient large-scale human reconstruction model that generates high-quality, animatable 3D avatars within seconds from one or multiple pose-free images. At its core is an Encoder–Decoder Point–Image Transformer architecture that progressively encodes and decodes 3D geometric point features to improve efficiency, while fusing hierarchical 3D point features with image features through multimodal attention. The fused features are decoded into 3D Gaussian splats to recover detailed geometry and appearance. To further enhance visual fidelity, we introduce a lightweight 3D-aware neural animation renderer that refines the rendering quality of reconstructed avatars. Extensive experiments show that our method produces high-fidelity, animatable 3D humans without requiring camera or pose annotations.
+          </p>
+          
+          <!-- video demo -->
+          <h3 class="title is-3">Video</h3>
+            <video autoplay controls muted loop playsinline width="100%" style="border-radius: 10px;">
+              <source src="./static/videos/DEMO_LHMM+_Youtube_compressed.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <br>
+            For netizens in China, considering the problem of Internet restrictions, we provide a video link to <a href="https://www.bilibili.com/video/BV1p2QKY4Ekz/?vd_source=5949a08560b9d4e5fa715d8b1e5a186c">bilibili</a>.
+          </p>
+
+
+          <!-- methodology -->
+          <h3 class="title is-3">Methodology</h3>
+            <img src="static/images/LHM++_pipeline.png">
+            <b>Overview of the proposed <em>LHM++</em>.</b> In 2D space, we extract image tokens <b>T<sub>2D</sub></b> from input RGB images by DINOv2. In 3D space, geometric tokens <b>T<sub>3D</sub></b> are derived from SMPL-X anchor points via an MLP.
+            Next, we design an Encoder-Decoder Point-Image Transformer (PIT) to hierarchically fuse 3D and 2D tokens, where the downsampled 3D tokens interact with 2D tokens via multi-modal attention in each layer.
+            The final 3D tokens are decoded to predict 3D Gaussian parameters, followed by a light-weight DPT head for photorealistic animation.
+          </p>
+
+          <!-- Efficiency Analysis -->
+          <h3 class="title is-3">Efficiency Analysis</h3>
+          <p>
+            Thanks to the proposed Encoder-Decoder Point-Image Transformer, <b>LHM++</b> achieves dramatic speedups over LHM-0.7B across all configurations.
+            As shown below, LHM++ reconstructs a 160K-point avatar from a single image in under <b>0.79 s</b>, compared to <b>74.31 s</b> for LHM-0.7B — a <b>94×</b> speedup.
+            Even with 16 input views, LHM++ completes inference in only <b>2.13 s</b>, making it highly practical for real-time applications.
+          </p>
+          <p>
+            <img src="static/images/efficiency_analysis.png" style="width: 100%; display: block; margin: 0 auto;">
+          </p>
+          <p>
+            <img src="static/images/efficiency_animation.gif" style="width: 100%; max-width: 700px; display: block; margin: 0 auto;">
+          </p>
+          <p>
+            <img src="static/images/comparison_efficiency.jpg" style="width: 100%; max-width: 900px; display: block; margin: 0 auto;">
+          </p>
+
+            <!-- animation video -->
+          <h3 class="title is-3">Animation Results</h3>
+          <p>
+            <!-- TODO: Add animation videos here -->
+            <div class="container is-max-desktop">
+              <div class="columns is-centered">
+                <div class="column is-four-fifths" style="text-align:center; padding: 60px 0; color: #999;">
+                  <p style="font-size: 1.2rem;">Animation videos coming soon...</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Comparison Section -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <div class="content has-text-justified">
+
+          <h3 class="title is-3">Comparison Results</h3>
+
+          <!-- Comparison with Feedforward -->
+          <h4 class="title is-4" style="margin-top: 1.5rem;"></h4>
+          <p>
+            <div class="container is-max-desktop">
+              <div class="columns is-centered">
+                <div class="column is-four-fifths">
+                    <div id="results-carousel" class="carousel results-carousel">
+                      <div class="item item-feed_comparison_1">
+                        <video poster="" id="feed_comparison_1" autoplay controls muted loop playsinline height="100%">
+                          <source src="./static/videos/comparison_with_feedfoward/comparison_with_feed_1.mp4"
+                                  type="video/mp4">
+                        </video>
+                      </div>
+                      <div class="item item-feed_comparison_2">
+                        <video poster="" id="feed_comparison_2" autoplay controls muted loop playsinline height="100%">
+                          <source src="./static/videos/comparison_with_feedfoward/comparison_with_feed_2.mp4"
+                                  type="video/mp4">
+                        </video>
+                      </div>
+                      <div class="item item-feed_comparison_3">
+                        <video poster="" id="feed_comparison_3" autoplay controls muted loop playsinline height="100%">
+                          <source src="./static/videos/comparison_with_feedfoward/comparison_with_feed_3.mp4"
+                                  type="video/mp4">
+                        </video>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </p>
+
+          <!-- Comparison with Exavatar -->
+          <h4 class="title is-4" style="margin-top: 1.5rem;"></h4>
+          <p>
+            <div class="container is-max-desktop">
+              <div class="columns is-centered">
+                <div class="column is-four-fifths">
+                    <div id="results-carousel" class="carousel results-carousel">
+                      <div class="item item-comparison_1">
+                        <video poster="" id="comparison_1" autoplay controls muted loop playsinline height="100%">
+                          <source src="./static/videos/comparison_with_exavatar/part_1.mp4"
+                                  type="video/mp4">
+                        </video>
+                      </div>
+                      <div class="item item-comparison_2">
+                        <video poster="" id="comparison_2" autoplay controls muted loop playsinline height="100%">
+                          <source src="./static/videos/comparison_with_exavatar/part_2.mp4"
+                                  type="video/mp4">
+                        </video>
+                      </div>
+                      <div class="item item-comparison_3">
+                        <video poster="" id="comparison_3" autoplay controls muted loop playsinline height="100%">
+                          <source src="./static/videos/comparison_with_exavatar/part_3.mp4"
+                                  type="video/mp4">
+                        </video>
+                      </div>
+                      <div class="item item-comparison_4">
+                        <video poster="" id="comparison_4" autoplay controls muted loop playsinline height="100%">
+                          <source src="./static/videos/comparison_with_exavatar/part_4.mp4"
+                                  type="video/mp4">
+                        </video>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Citation Section -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <div class="content has-text-justified">
+          <h3 class="title is-3">Citation</h3>
+If you find our approach helpful, you may consider citing our works.
+<hr style="margin-top: 0px" />
+<pre style="background-color: #e9eeef; padding: 1.5em 1.5em; border-radius: 20px">
+  <code>@article{qiu2025lhmpp,
+    title={LHM++: An Efficient Large Human Reconstruction Model for Pose-free Images to 3D},
+    author={Lingteng Qiu and Peihao Li and Heyuan Li 
+        and Qi Zuo and Xiaodong Gu and Yuan Dong and Weihao Yuan and Rui Peng and Siyu Zhu 
+        and Xiaoguang Han and Guanying Chen and Zilong Dong
+      },
+    booktitle={arXiv preprint arXiv:2503.10625},
+    year={2025}
+    }
+    @inproceedings{qiu2025LHM,
+    title={LHM: Large Animatable Human Reconstruction Model from a Single Image in Seconds},
+    author={Lingteng Qiu and Xiaodong Gu and Peihao Li  and Qi Zuo
+      and Weichao Shen and Junfei Zhang and Kejie Qiu and Weihao Yuan
+      and Guanying Chen and Zilong Dong and Liefeng Bo 
+      },
+    booktitle={ICCV},
+    year={2025}
+    }</code>
+</pre>
+<hr />
+    </div>
+
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p> Website template from <a href="https://nerfies.github.io//">Nerfies</a>. We thank the authors for the open-source code </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
