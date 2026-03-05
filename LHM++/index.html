@@ -283,18 +283,262 @@
 
             <!-- animation video -->
           <h3 class="title is-3">Animation Results</h3>
-          <p>
-            <!-- TODO: Add animation videos here -->
-            <div class="container is-max-desktop">
-              <div class="columns is-centered">
-                <div class="column is-four-fifths" style="text-align:center; padding: 60px 0; color: #999;">
-                  <p style="font-size: 1.2rem;">Animation videos coming soon...</p>
+          <p style="font-style: italic; color: #d32f2f; font-size: 1.5rem;">
+            Note: Videos may exhibit white occlusion artifacts due to cropping with the original mask, and some motion estimation may have slight jittering.
+          </p>
+          <!-- Tab Navigation -->
+          <div class="tabs is-centered is-boxed is-medium" id="demo-tabs" style="margin-bottom: 0.5rem;">
+            <ul>
+              <li class="is-active" data-tab="girl_dance"><a>Dance I</a></li>
+              <li data-tab="girl_dance2"><a>Dance II</a></li>
+              <li data-tab="jljt"><a>Dance III</a></li>
+              <li data-tab="wanxinlin"><a>Dance IV</a></li>
+              <li data-tab="jntm"><a>Basketball</a></li>
+              <li data-tab="mimo1"><a>Jump</a></li>
+              <li data-tab="mimo2"><a>Breaking</a></li>
+              <li data-tab="taiji"><a>Tai Chi</a></li>
+            </ul>
+          </div>
+
+          <!-- Tab Contents with Carousels -->
+          <div id="demo-tab-contents">
+
+            <!-- girl_dance -->
+            <div class="demo-tab-content" data-content="girl_dance">
+              <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                  <div class="column is-four-fifths">
+                    <div class="demo-carousel-pending">
+                      <div class="item"><video poster="" autoplay controls muted loop playsinline height="100%"><source src="./static/videos/demo/girl_dance/parkinglot_accelerated.mp4" type="video/mp4"></video></div>
+                      <div class="item"><video poster="" autoplay controls muted loop playsinline height="100%"><source src="./static/videos/demo/girl_dance/lab_accelerated.mp4" type="video/mp4"></video></div>
+                      <div class="item"><video poster="" autoplay controls muted loop playsinline height="100%"><source src="./static/videos/demo/girl_dance/seattle_accelerated.mp4" type="video/mp4"></video></div>
+                      <div class="item"><video poster="" autoplay controls muted loop playsinline height="100%"><source src="./static/videos/demo/girl_dance/testimg_000089_accelerated.mp4" type="video/mp4"></video></div>
+                      <div class="item"><video poster="" autoplay controls muted loop playsinline height="100%"><source src="./static/videos/demo/girl_dance/testimg_000092_accelerated.mp4" type="video/mp4"></video></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- girl_dance2 -->
+            <div class="demo-tab-content" data-content="girl_dance2" style="display:none;">
+              <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                  <div class="column is-four-fifths">
+                    <div class="demo-carousel-pending">
+                      <div class="item"><video poster="" autoplay controls muted loop playsinline height="100%"><source src="./static/videos/demo/girl_dance2/anran_purble.mp4" type="video/mp4"></video></div>
+                      <div class="item"><video poster="" autoplay controls muted loop playsinline height="100%"><source src="./static/videos/demo/girl_dance2/video_image_20240923__-videos_clips__-data__-464137851508_2.mp4" type="video/mp4"></video></div>
+                      <div class="item"><video poster="" autoplay controls muted loop playsinline height="100%"><source src="./static/videos/demo/girl_dance2/xiaolin.mp4" type="video/mp4"></video></div>
+                      <div class="item"><video poster="" autoplay controls muted loop playsinline height="100%"><source src="./static/videos/demo/girl_dance2/000110_0.mp4" type="video/mp4"></video></div>
+                      <div class="item"><video poster="" autoplay controls muted loop playsinline height="100%"><source src="./static/videos/demo/girl_dance2/citron.mp4" type="video/mp4"></video></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- jljt -->
+            <div class="demo-tab-content" data-content="jljt" style="display:none;">
+              <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                  <div class="column is-four-fifths">
+                    <div class="demo-carousel-pending">
+                      <div class="item"><video poster="" autoplay controls muted loop playsinline height="100%"><source src="./static/videos/demo/jljt/extract_frame_datasetv6_video_image_20250122_286074978792_11.mp4" type="video/mp4"></video></div>
+                      <div class="item"><video poster="" autoplay controls muted loop playsinline height="100%"><source src="./static/videos/demo/jljt/taobao_man_2025_2_17_446409-23447370-1286601560.mp4" type="video/mp4"></video></div>
+                      <div class="item"><video poster="" autoplay controls muted loop playsinline height="100%"><source src="./static/videos/demo/jljt/204141.mp4" type="video/mp4"></video></div>
+                      <div class="item"><video poster="" autoplay controls muted loop playsinline height="100%"><source src="./static/videos/demo/jljt/000193_0.mp4" type="video/mp4"></video></div>
+                      <div class="item"><video poster="" autoplay controls muted loop playsinline height="100%"><source src="./static/videos/demo/jljt/000196_0.mp4" type="video/mp4"></video></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- jntm -->
+            <div class="demo-tab-content" data-content="jntm" style="display:none;">
+              <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                  <div class="column is-four-fifths">
+                    <div class="demo-carousel-pending">
+                      <div class="item"><video poster="" autoplay controls muted loop playsinline height="100%"><source src="./static/videos/demo/jntm/IMG_9334.mp4" type="video/mp4"></video></div>
+                      <div class="item"><video poster="" autoplay controls muted loop playsinline height="100%"><source src="./static/videos/demo/jntm/phonecall.mp4" type="video/mp4"></video></div>
+                      <div class="item"><video poster="" autoplay controls muted loop playsinline height="100%"><source src="./static/videos/demo/jntm/IMG_9333.mp4" type="video/mp4"></video></div>
+                      <div class="item"><video poster="" autoplay controls muted loop playsinline height="100%"><source src="./static/videos/demo/jntm/testimg_000011.mp4" type="video/mp4"></video></div>
+                      <div class="item"><video poster="" autoplay controls muted loop playsinline height="100%"><source src="./static/videos/demo/jntm/000032_0.mp4" type="video/mp4"></video></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- mimo1 -->
+            <div class="demo-tab-content" data-content="mimo1" style="display:none;">
+              <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                  <div class="column is-four-fifths">
+                    <div class="demo-carousel-pending">
+                      <div class="item"><video poster="" autoplay controls muted loop playsinline height="100%"><source src="./static/videos/demo/mimo1/extract_frame_taobao_oldchild_0_445363-23369543-1280534667.mp4" type="video/mp4"></video></div>
+                      <div class="item"><video poster="" autoplay controls muted loop playsinline height="100%"><source src="./static/videos/demo/mimo1/extract_frame_taobao_oldchild_0_445363-23369376-1280517932.mp4" type="video/mp4"></video></div>
+                      <div class="item"><video poster="" autoplay controls muted loop playsinline height="100%"><source src="./static/videos/demo/mimo1/000090_0.mp4" type="video/mp4"></video></div>
+                      <div class="item"><video poster="" autoplay controls muted loop playsinline height="100%"><source src="./static/videos/demo/mimo1/extract_frame_taobao_oldchild_0_445363-23369449-1280525246.mp4" type="video/mp4"></video></div>
+                      <div class="item"><video poster="" autoplay controls muted loop playsinline height="100%"><source src="./static/videos/demo/mimo1/extract_frame_taobao_oldchild_0_445363-23369495-1280529771.mp4" type="video/mp4"></video></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- mimo2 -->
+            <div class="demo-tab-content" data-content="mimo2" style="display:none;">
+              <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                  <div class="column is-four-fifths">
+                    <div class="demo-carousel-pending">
+                      <div class="item"><video poster="" autoplay controls muted loop playsinline height="100%"><source src="./static/videos/demo/mimo2/testimg_000038.mp4" type="video/mp4"></video></div>
+                      <div class="item"><video poster="" autoplay controls muted loop playsinline height="100%"><source src="./static/videos/demo/mimo2/testimg_000041.mp4" type="video/mp4"></video></div>
+                      <div class="item"><video poster="" autoplay controls muted loop playsinline height="100%"><source src="./static/videos/demo/mimo2/testimg_000045.mp4" type="video/mp4"></video></div>
+                      <div class="item"><video poster="" autoplay controls muted loop playsinline height="100%"><source src="./static/videos/demo/mimo2/00020_Dance.mp4" type="video/mp4"></video></div>
+                      <div class="item"><video poster="" autoplay controls muted loop playsinline height="100%"><source src="./static/videos/demo/mimo2/extract_frame_taobao_oldchild_0_445363-23369613-1280541623.mp4" type="video/mp4"></video></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- taiji -->
+            <div class="demo-tab-content" data-content="taiji" style="display:none;">
+              <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                  <div class="column is-four-fifths">
+                    <div class="demo-carousel-pending">
+                      <div class="item"><video poster="" autoplay controls muted loop playsinline height="100%"><source src="./static/videos/demo/taiji/yuliang.mp4" type="video/mp4"></video></div>
+                      <div class="item"><video poster="" autoplay controls muted loop playsinline height="100%"><source src="./static/videos/demo/taiji/exstrimalik_crop.mp4" type="video/mp4"></video></div>
+                      <div class="item"><video poster="" autoplay controls muted loop playsinline height="100%"><source src="./static/videos/demo/taiji/IMG_9336.mp4" type="video/mp4"></video></div>
+                      <div class="item"><video poster="" autoplay controls muted loop playsinline height="100%"><source src="./static/videos/demo/taiji/roger_crop.mp4" type="video/mp4"></video></div>
+                      <div class="item"><video poster="" autoplay controls muted loop playsinline height="100%"><source src="./static/videos/demo/taiji/testimg_000050.mp4" type="video/mp4"></video></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- wanxinlin -->
+            <div class="demo-tab-content" data-content="wanxinlin" style="display:none;">
+              <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                  <div class="column is-four-fifths">
+                    <div class="demo-carousel-pending">
+                      <div class="item"><video poster="" autoplay controls muted loop playsinline height="100%"><source src="./static/videos/demo/wanxinlin/extract_frame_datasetv6_video_image_20250123_327363779052_3.mp4" type="video/mp4"></video></div>
+                      <div class="item"><video poster="" autoplay controls muted loop playsinline height="100%"><source src="./static/videos/demo/wanxinlin/video_image_2024082101__-videos_clips__-data__-58023_0.mp4" type="video/mp4"></video></div>
+                      <div class="item"><video poster="" autoplay controls muted loop playsinline height="100%"><source src="./static/videos/demo/wanxinlin/testimg_000033.mp4" type="video/mp4"></video></div>
+                      <div class="item"><video poster="" autoplay controls muted loop playsinline height="100%"><source src="./static/videos/demo/wanxinlin/extract_frame_datasetv6_video_image_20250125_374725637006_1.mp4" type="video/mp4"></video></div>
+                      <div class="item"><video poster="" autoplay controls muted loop playsinline height="100%"><source src="./static/videos/demo/wanxinlin/extract_frame_datasetv6_video_image_20250124_314763226079_0.mp4" type="video/mp4"></video></div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
 
           </div>
-        </p>
+
+          <!-- Tab switching + carousel init script -->
+          <script>
+            document.addEventListener('DOMContentLoaded', function() {
+              var tabs = document.querySelectorAll('#demo-tabs li');
+              var contents = document.querySelectorAll('.demo-tab-content');
+              var initializedTabs = {};
+
+              var carouselOptions = {
+                slidesToScroll: 1,
+                slidesToShow: 1,
+                loop: true,
+                infinite: true,
+                autoplay: false,
+              };
+
+              function setupCarouselEvents(carousel) {
+                carousel.on('after:show', function(state) {
+                  var currentSlide = carousel.slides[carousel.state.currentIndex || 0];
+                  if (currentSlide) {
+                    var video = currentSlide.querySelector('video');
+                    if (video) { video.currentTime = 0; video.play(); }
+                  }
+                });
+                if (carousel.slides) {
+                  carousel.slides.forEach(function(slide) {
+                    var video = slide.querySelector('video');
+                    if (video) {
+                      video.addEventListener('ended', function() { carousel.next(); });
+                    }
+                  });
+                }
+              }
+
+              function initCarouselInTab(tabContent) {
+                var key = tabContent.getAttribute('data-content');
+                if (initializedTabs[key]) return;
+                initializedTabs[key] = true;
+
+                var pendingEl = tabContent.querySelector('.demo-carousel-pending');
+                if (!pendingEl) return;
+
+                // Add carousel classes now (after element is visible)
+                pendingEl.classList.remove('demo-carousel-pending');
+                pendingEl.classList.add('carousel', 'results-carousel');
+
+                // Use requestAnimationFrame to ensure the browser has painted the element
+                // before bulmaCarousel measures it
+                requestAnimationFrame(function() {
+                  requestAnimationFrame(function() {
+                    var instances = bulmaCarousel.attach(pendingEl, carouselOptions);
+                    if (instances && instances.length > 0) {
+                      setupCarouselEvents(instances[0]);
+                      // Play first video
+                      var firstSlide = instances[0].slides ? instances[0].slides[0] : null;
+                      if (firstSlide) {
+                        var v = firstSlide.querySelector('video');
+                        if (v) { v.currentTime = 0; v.play(); }
+                      }
+                    }
+                  });
+                });
+              }
+
+              function activateTab(tab) {
+                tabs.forEach(function(t) { t.classList.remove('is-active'); });
+                contents.forEach(function(c) {
+                  c.style.display = 'none';
+                  c.querySelectorAll('video').forEach(function(v) { v.pause(); });
+                });
+
+                tab.classList.add('is-active');
+                var target = tab.getAttribute('data-tab');
+                var activeContent = document.querySelector('.demo-tab-content[data-content="' + target + '"]');
+                activeContent.style.display = 'block';
+                initCarouselInTab(activeContent);
+                // Auto-play all videos in the newly activated tab
+                var videos = activeContent.querySelectorAll('.carousel .item video, .results-carousel .item video');
+                videos.forEach(function(video) {
+                  video.currentTime = 0;
+                  setTimeout(function() { video.play(); }, 100);
+                  video.addEventListener('pause', function handler() {
+                    if (!video.ended && activeContent.style.display === 'block') {
+                      video.play();
+                    }
+                    video.removeEventListener('pause', handler);
+                  });
+                });
+              }
+
+              tabs.forEach(function(tab) {
+                tab.addEventListener('click', function() { activateTab(tab); });
+              });
+
+              // Init the first (visible) tab's carousel
+              var firstContent = document.querySelector('.demo-tab-content[data-content="girl_dance"]');
+              if (firstContent) { initCarouselInTab(firstContent); }
+            });
+          </script>
 
         </div>
       </div>
@@ -311,73 +555,172 @@
 
           <h3 class="title is-3">Comparison Results</h3>
 
-          <!-- Comparison with Feedforward -->
-          <h4 class="title is-4" style="margin-top: 1.5rem;"></h4>
-          <p>
-            <div class="container is-max-desktop">
-              <div class="columns is-centered">
-                <div class="column is-four-fifths">
-                    <div id="results-carousel" class="carousel results-carousel">
+          <!-- Comparison Tab Navigation -->
+          <div class="tabs is-centered is-boxed is-medium" id="comparison-tabs" style="margin-bottom: 0.5rem;">
+            <ul>
+              <li class="is-active" data-tab="feedforward"><a>Feedforward</a></li>
+              <li data-tab="optimization"><a>Optimization-based</a></li>
+            </ul>
+          </div>
+
+          <!-- Comparison Tab Contents -->
+          <div id="comparison-tab-contents">
+
+            <!-- Feedforward -->
+            <div class="comparison-tab-content" data-content="feedforward">
+              <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                  <div class="column is-four-fifths">
+                    <div class="comparison-carousel-pending">
                       <div class="item item-feed_comparison_1">
                         <video poster="" id="feed_comparison_1" autoplay controls muted loop playsinline height="100%">
-                          <source src="./static/videos/comparison_with_feedfoward/comparison_with_feed_1.mp4"
-                                  type="video/mp4">
+                          <source src="./static/videos/comparison_with_feedfoward/comparison_with_feed_1.mp4" type="video/mp4">
                         </video>
                       </div>
                       <div class="item item-feed_comparison_2">
                         <video poster="" id="feed_comparison_2" autoplay controls muted loop playsinline height="100%">
-                          <source src="./static/videos/comparison_with_feedfoward/comparison_with_feed_2.mp4"
-                                  type="video/mp4">
+                          <source src="./static/videos/comparison_with_feedfoward/comparison_with_feed_2.mp4" type="video/mp4">
                         </video>
                       </div>
                       <div class="item item-feed_comparison_3">
                         <video poster="" id="feed_comparison_3" autoplay controls muted loop playsinline height="100%">
-                          <source src="./static/videos/comparison_with_feedfoward/comparison_with_feed_3.mp4"
-                                  type="video/mp4">
+                          <source src="./static/videos/comparison_with_feedfoward/comparison_with_feed_3.mp4" type="video/mp4">
                         </video>
                       </div>
                     </div>
                   </div>
                 </div>
+              </div>
             </div>
-          </p>
 
-          <!-- Comparison with Exavatar -->
-          <h4 class="title is-4" style="margin-top: 1.5rem;"></h4>
-          <p>
-            <div class="container is-max-desktop">
-              <div class="columns is-centered">
-                <div class="column is-four-fifths">
-                    <div id="results-carousel" class="carousel results-carousel">
+            <!-- Optimization-based -->
+            <div class="comparison-tab-content" data-content="optimization" style="display:none;">
+              <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                  <div class="column is-four-fifths">
+                    <div class="comparison-carousel-pending">
                       <div class="item item-comparison_1">
                         <video poster="" id="comparison_1" autoplay controls muted loop playsinline height="100%">
-                          <source src="./static/videos/comparison_with_exavatar/part_1.mp4"
-                                  type="video/mp4">
+                          <source src="./static/videos/comparison_with_exavatar/part_1.mp4" type="video/mp4">
                         </video>
                       </div>
                       <div class="item item-comparison_2">
                         <video poster="" id="comparison_2" autoplay controls muted loop playsinline height="100%">
-                          <source src="./static/videos/comparison_with_exavatar/part_2.mp4"
-                                  type="video/mp4">
+                          <source src="./static/videos/comparison_with_exavatar/part_2.mp4" type="video/mp4">
                         </video>
                       </div>
                       <div class="item item-comparison_3">
                         <video poster="" id="comparison_3" autoplay controls muted loop playsinline height="100%">
-                          <source src="./static/videos/comparison_with_exavatar/part_3.mp4"
-                                  type="video/mp4">
+                          <source src="./static/videos/comparison_with_exavatar/part_3.mp4" type="video/mp4">
                         </video>
                       </div>
                       <div class="item item-comparison_4">
                         <video poster="" id="comparison_4" autoplay controls muted loop playsinline height="100%">
-                          <source src="./static/videos/comparison_with_exavatar/part_4.mp4"
-                                  type="video/mp4">
+                          <source src="./static/videos/comparison_with_exavatar/part_4.mp4" type="video/mp4">
                         </video>
                       </div>
                     </div>
                   </div>
                 </div>
+              </div>
             </div>
-          </p>
+
+          </div>
+
+          <!-- Comparison tab switching + carousel init script -->
+          <script>
+            document.addEventListener('DOMContentLoaded', function() {
+              var cmpTabs = document.querySelectorAll('#comparison-tabs li');
+              var cmpContents = document.querySelectorAll('.comparison-tab-content');
+              var cmpInitialized = {};
+
+              var cmpCarouselOptions = {
+                slidesToScroll: 1,
+                slidesToShow: 1,
+                loop: true,
+                infinite: true,
+                autoplay: false,
+              };
+
+              function setupCmpCarouselEvents(carousel) {
+                carousel.on('after:show', function(state) {
+                  var currentSlide = carousel.slides[carousel.state.currentIndex || 0];
+                  if (currentSlide) {
+                    var video = currentSlide.querySelector('video');
+                    if (video) { video.currentTime = 0; video.play(); }
+                  }
+                });
+                if (carousel.slides) {
+                  carousel.slides.forEach(function(slide) {
+                    var video = slide.querySelector('video');
+                    if (video) {
+                      video.addEventListener('ended', function() { carousel.next(); });
+                    }
+                  });
+                }
+              }
+
+              function initCmpCarousel(tabContent) {
+                var key = tabContent.getAttribute('data-content');
+                if (cmpInitialized[key]) return;
+                cmpInitialized[key] = true;
+
+                var pendingEl = tabContent.querySelector('.comparison-carousel-pending');
+                if (!pendingEl) return;
+
+                pendingEl.classList.remove('comparison-carousel-pending');
+                pendingEl.classList.add('carousel', 'results-carousel');
+
+                requestAnimationFrame(function() {
+                  requestAnimationFrame(function() {
+                    var instances = bulmaCarousel.attach(pendingEl, cmpCarouselOptions);
+                    if (instances && instances.length > 0) {
+                      setupCmpCarouselEvents(instances[0]);
+                      var firstSlide = instances[0].slides ? instances[0].slides[0] : null;
+                      if (firstSlide) {
+                        var v = firstSlide.querySelector('video');
+                        if (v) { v.currentTime = 0; v.play(); }
+                      }
+                    }
+                  });
+                });
+              }
+
+              function activateCmpTab(tab) {
+                cmpTabs.forEach(function(t) { t.classList.remove('is-active'); });
+                cmpContents.forEach(function(c) {
+                  c.style.display = 'none';
+                  c.querySelectorAll('video').forEach(function(v) { v.pause(); });
+                });
+
+                tab.classList.add('is-active');
+                var target = tab.getAttribute('data-tab');
+                var activeContent = document.querySelector('.comparison-tab-content[data-content="' + target + '"]');
+                activeContent.style.display = 'block';
+                initCmpCarousel(activeContent);
+                // Auto-play all videos in the newly activated comparison tab
+                var videos = activeContent.querySelectorAll('.carousel .item video, .results-carousel .item video');
+                videos.forEach(function(video) {
+                  video.currentTime = 0;
+                  setTimeout(function() { video.play(); }, 100);
+                  video.addEventListener('pause', function handler() {
+                    if (!video.ended && activeContent.style.display === 'block') {
+                      video.play();
+                    }
+                    video.removeEventListener('pause', handler);
+                  });
+                });
+              }
+
+              cmpTabs.forEach(function(tab) {
+                tab.addEventListener('click', function() { activateCmpTab(tab); });
+              });
+
+              // Init the first (visible) comparison tab's carousel
+              var firstCmp = document.querySelector('.comparison-tab-content[data-content="feedforward"]');
+              if (firstCmp) { initCmpCarousel(firstCmp); }
+            });
+          </script>
 
         </div>
       </div>
