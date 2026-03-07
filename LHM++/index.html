@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <meta name="description" content="">
+  <meta name="description" content="LHM++: An Efficient Large Human Reconstruction Model for Pose-free Images to 3D">
   <meta name="keywords" content="LHM++: An Efficient Large Human Reconstruction Model for Pose-free Images to 3D">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>LHM++</title>
@@ -441,105 +441,6 @@
 
           </div>
 
-          <!-- Tab switching + carousel init script -->
-          <script>
-            document.addEventListener('DOMContentLoaded', function() {
-              var tabs = document.querySelectorAll('#demo-tabs li');
-              var contents = document.querySelectorAll('.demo-tab-content');
-              var initializedTabs = {};
-
-              var carouselOptions = {
-                slidesToScroll: 1,
-                slidesToShow: 1,
-                loop: true,
-                infinite: true,
-                autoplay: false,
-              };
-
-              function setupCarouselEvents(carousel) {
-                carousel.on('after:show', function(state) {
-                  var currentSlide = carousel.slides[carousel.state.currentIndex || 0];
-                  if (currentSlide) {
-                    var video = currentSlide.querySelector('video');
-                    if (video) { video.currentTime = 0; video.play(); }
-                  }
-                });
-                if (carousel.slides) {
-                  carousel.slides.forEach(function(slide) {
-                    var video = slide.querySelector('video');
-                    if (video) {
-                      video.addEventListener('ended', function() { carousel.next(); });
-                    }
-                  });
-                }
-              }
-
-              function initCarouselInTab(tabContent) {
-                var key = tabContent.getAttribute('data-content');
-                if (initializedTabs[key]) return;
-                initializedTabs[key] = true;
-
-                var pendingEl = tabContent.querySelector('.demo-carousel-pending');
-                if (!pendingEl) return;
-
-                // Add carousel classes now (after element is visible)
-                pendingEl.classList.remove('demo-carousel-pending');
-                pendingEl.classList.add('carousel', 'results-carousel');
-
-                // Use requestAnimationFrame to ensure the browser has painted the element
-                // before bulmaCarousel measures it
-                requestAnimationFrame(function() {
-                  requestAnimationFrame(function() {
-                    var instances = bulmaCarousel.attach(pendingEl, carouselOptions);
-                    if (instances && instances.length > 0) {
-                      setupCarouselEvents(instances[0]);
-                      // Play first video
-                      var firstSlide = instances[0].slides ? instances[0].slides[0] : null;
-                      if (firstSlide) {
-                        var v = firstSlide.querySelector('video');
-                        if (v) { v.currentTime = 0; v.play(); }
-                      }
-                    }
-                  });
-                });
-              }
-
-              function activateTab(tab) {
-                tabs.forEach(function(t) { t.classList.remove('is-active'); });
-                contents.forEach(function(c) {
-                  c.style.display = 'none';
-                  c.querySelectorAll('video').forEach(function(v) { v.pause(); });
-                });
-
-                tab.classList.add('is-active');
-                var target = tab.getAttribute('data-tab');
-                var activeContent = document.querySelector('.demo-tab-content[data-content="' + target + '"]');
-                activeContent.style.display = 'block';
-                initCarouselInTab(activeContent);
-                // Auto-play all videos in the newly activated tab
-                var videos = activeContent.querySelectorAll('.carousel .item video, .results-carousel .item video');
-                videos.forEach(function(video) {
-                  video.currentTime = 0;
-                  setTimeout(function() { video.play(); }, 100);
-                  video.addEventListener('pause', function handler() {
-                    if (!video.ended && activeContent.style.display === 'block') {
-                      video.play();
-                    }
-                    video.removeEventListener('pause', handler);
-                  });
-                });
-              }
-
-              tabs.forEach(function(tab) {
-                tab.addEventListener('click', function() { activateTab(tab); });
-              });
-
-              // Init the first (visible) tab's carousel
-              var firstContent = document.querySelector('.demo-tab-content[data-content="girl_dance"]');
-              if (firstContent) { initCarouselInTab(firstContent); }
-            });
-          </script>
-
         </div>
       </div>
     </div>
@@ -627,14 +528,11 @@
 
           </div>
 
-          <!-- Comparison tab switching + carousel init script -->
+          <!-- Unified Tab switching + carousel init script -->
           <script>
             document.addEventListener('DOMContentLoaded', function() {
-              var cmpTabs = document.querySelectorAll('#comparison-tabs li');
-              var cmpContents = document.querySelectorAll('.comparison-tab-content');
-              var cmpInitialized = {};
-
-              var cmpCarouselOptions = {
+              // Common carousel options
+              var carouselOptions = {
                 slidesToScroll: 1,
                 slidesToShow: 1,
                 loop: true,
@@ -642,7 +540,8 @@
                 autoplay: false,
               };
 
-              function setupCmpCarouselEvents(carousel) {
+              // Helper to setup video events for a carousel instance
+              function setupCarouselEvents(carousel) {
                 carousel.on('after:show', function(state) {
                   var currentSlide = carousel.slides[carousel.state.currentIndex || 0];
                   if (currentSlide) {
@@ -660,65 +559,95 @@
                 }
               }
 
-              function initCmpCarousel(tabContent) {
-                var key = tabContent.getAttribute('data-content');
-                if (cmpInitialized[key]) return;
-                cmpInitialized[key] = true;
+              // Generic function to initialize a tab system
+              function initTabSystem(tabContainerId, contentClass, pendingClass) {
+                var tabs = document.querySelectorAll('#' + tabContainerId + ' li');
+                var contents = document.querySelectorAll('.' + contentClass);
+                var initializedTabs = {};
 
-                var pendingEl = tabContent.querySelector('.comparison-carousel-pending');
-                if (!pendingEl) return;
+                function initCarouselInTab(tabContent) {
+                  var key = tabContent.getAttribute('data-content');
+                  if (initializedTabs[key]) return;
+                  initializedTabs[key] = true;
 
-                pendingEl.classList.remove('comparison-carousel-pending');
-                pendingEl.classList.add('carousel', 'results-carousel');
+                  var pendingEl = tabContent.querySelector('.' + pendingClass);
+                  if (!pendingEl) return;
 
-                requestAnimationFrame(function() {
+                  // Prepare element for bulmaCarousel
+                  pendingEl.classList.remove(pendingClass);
+                  pendingEl.classList.add('carousel', 'results-carousel');
+
+                  // Initialize carousel
                   requestAnimationFrame(function() {
-                    var instances = bulmaCarousel.attach(pendingEl, cmpCarouselOptions);
-                    if (instances && instances.length > 0) {
-                      setupCmpCarouselEvents(instances[0]);
-                      var firstSlide = instances[0].slides ? instances[0].slides[0] : null;
-                      if (firstSlide) {
-                        var v = firstSlide.querySelector('video');
-                        if (v) { v.currentTime = 0; v.play(); }
+                    requestAnimationFrame(function() {
+                      var instances = bulmaCarousel.attach(pendingEl, carouselOptions);
+                      if (instances && instances.length > 0) {
+                        setupCarouselEvents(instances[0]);
+                        // Play first video immediately
+                        var firstSlide = instances[0].slides ? instances[0].slides[0] : null;
+                        if (firstSlide) {
+                          var v = firstSlide.querySelector('video');
+                          if (v) { v.currentTime = 0; v.play(); }
+                        }
                       }
-                    }
+                    });
                   });
+                }
+
+                function activateTab(tab) {
+                  // Deactivate all tabs
+                  tabs.forEach(function(t) { t.classList.remove('is-active'); });
+                  // Hide all contents and pause videos
+                  contents.forEach(function(c) {
+                    c.style.display = 'none';
+                    c.querySelectorAll('video').forEach(function(v) { v.pause(); });
+                  });
+
+                  // Activate clicked tab
+                  tab.classList.add('is-active');
+                  var target = tab.getAttribute('data-tab');
+                  var activeContent = document.querySelector('.' + contentClass + '[data-content="' + target + '"]');
+                  
+                  if (activeContent) {
+                    activeContent.style.display = 'block';
+                    initCarouselInTab(activeContent);
+                    
+                    // Auto-play videos in the active tab
+                    var videos = activeContent.querySelectorAll('.carousel .item video, .results-carousel .item video');
+                    videos.forEach(function(video) {
+                      video.currentTime = 0;
+                      // Small delay to ensure visibility
+                      setTimeout(function() { video.play(); }, 100);
+                      
+                      // Ensure video keeps playing if it pauses unexpectedly while visible
+                      var playHandler = function() {
+                        if (!video.ended && activeContent.style.display === 'block' && video.paused) {
+                           video.play();
+                        }
+                        video.removeEventListener('pause', playHandler);
+                      };
+                      video.addEventListener('pause', playHandler);
+                    });
+                  }
+                }
+
+                // Add click listeners
+                tabs.forEach(function(tab) {
+                  tab.addEventListener('click', function() { activateTab(tab); });
                 });
+
+                // Initialize the currently active tab (if any)
+                var activeTab = document.querySelector('#' + tabContainerId + ' li.is-active');
+                if (activeTab) {
+                  activateTab(activeTab);
+                }
               }
 
-              function activateCmpTab(tab) {
-                cmpTabs.forEach(function(t) { t.classList.remove('is-active'); });
-                cmpContents.forEach(function(c) {
-                  c.style.display = 'none';
-                  c.querySelectorAll('video').forEach(function(v) { v.pause(); });
-                });
+              // Initialize Demo Tabs
+              initTabSystem('demo-tabs', 'demo-tab-content', 'demo-carousel-pending');
 
-                tab.classList.add('is-active');
-                var target = tab.getAttribute('data-tab');
-                var activeContent = document.querySelector('.comparison-tab-content[data-content="' + target + '"]');
-                activeContent.style.display = 'block';
-                initCmpCarousel(activeContent);
-                // Auto-play all videos in the newly activated comparison tab
-                var videos = activeContent.querySelectorAll('.carousel .item video, .results-carousel .item video');
-                videos.forEach(function(video) {
-                  video.currentTime = 0;
-                  setTimeout(function() { video.play(); }, 100);
-                  video.addEventListener('pause', function handler() {
-                    if (!video.ended && activeContent.style.display === 'block') {
-                      video.play();
-                    }
-                    video.removeEventListener('pause', handler);
-                  });
-                });
-              }
-
-              cmpTabs.forEach(function(tab) {
-                tab.addEventListener('click', function() { activateCmpTab(tab); });
-              });
-
-              // Init the first (visible) comparison tab's carousel
-              var firstCmp = document.querySelector('.comparison-tab-content[data-content="feedforward"]');
-              if (firstCmp) { initCmpCarousel(firstCmp); }
+              // Initialize Comparison Tabs
+              initTabSystem('comparison-tabs', 'comparison-tab-content', 'comparison-carousel-pending');
             });
           </script>
 
@@ -747,6 +676,7 @@ If you find our approach helpful, you may consider citing our works.
     booktitle={arXiv preprint arXiv:2503.10625},
     year={2025}
     }
+
     @inproceedings{qiu2025LHM,
     title={LHM: Large Animatable Human Reconstruction Model from a Single Image in Seconds},
     author={Lingteng Qiu and Xiaodong Gu and Peihao Li  and Qi Zuo
